@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
-;
+import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
   title: "La Grupa DK",
@@ -13,7 +13,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es">
       <body>
         <Navbar />
-        {children}
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
