@@ -1,0 +1,62 @@
+.hero {
+  background-color: #c5d2b3; /* light green */
+  padding: 3rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.imageWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.textWrapper {
+  flex: 1;
+}
+
+.textWrapper h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.textWrapper p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.button {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: #333;
+}
