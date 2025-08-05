@@ -21,9 +21,10 @@ export default function Navbar() {
         <ul className={styles.menu}>
           <li><Link href="/quienes-somos">Quiénes Somos</Link></li>
           <li><Link href="/que-hacemos">¿Qué hacemos?</Link></li>
-          <li><Link href="/recursos">Recursos</Link></li>
+          <li><Link href="/recursos">Recursero</Link></li>
           <li><Link href="/faq">Preguntas Frecuentes</Link></li>
-          <li><Link href="/contacto">Contactanos</Link></li>
+          <li><a href="/contact">Contáctanos</a></li>
+
         </ul>
       </nav>
     </header>

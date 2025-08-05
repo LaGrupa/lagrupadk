@@ -1,0 +1,43 @@
+.section {
+  padding: 3rem 1rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+
+.item {
+  background: #c5d2b3; /* green background */
+  margin-bottom: 0.5rem;
+  padding: 1.2rem 1.5rem; /* extra padding */
+}
+
+.question {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.answer {
+  margin-top: 0.8rem;
+  line-height: 1.6;
+}
+
+.icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
