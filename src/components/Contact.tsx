@@ -1,74 +1,97 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import styles from "./Contact.module.css";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const handleChange = (
+  const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // hook Formspree / API later
     alert("Mensaje enviado (demo).");
     setForm({ name: "", email: "", message: "" });
   };
 
   return (
-    <section className={styles.section}>
+    <section className={styles.hero}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Contáctanos</h2>
-        <p className={styles.info}>
-          Escribinos para sumarte a nuestras actividades o hacer cualquier consulta.
-        </p>
+        {/* Left: title, copy, form */}
+        <div className={styles.left}>
+          <h2 className={styles.title}>Ponete en contacto con nosotras</h2>
 
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="name">Nombre</label>
+          <p className={styles.lead}>
+            Envíanos un mensaje con tu consulta o información. Nuestro equipo te
+            responderá lo más pronto posible.
+          </p>
+          <p className={styles.lead}>
+            Si querés unirte a La Grupa como miembra, escribinos una solicitud a{" "}
+            <a href="mailto:lagrupa.dk@gmail.com">lagrupa.dk@gmail.com</a>
+          </p>
+          <p className={styles.lead}>
+            Estamos abiertas a todas las propuestas constructivas. Si tenés ideas
+            que te gustaría compartir, nos encantará leerlas.
+          </p>
+
+          <form className={styles.form} onSubmit={onSubmit}>
+            <label className={styles.label} htmlFor="name">
+              Nombre <span className={styles.req}>(obligatorio)</span>
+            </label>
             <input
               id="name"
-              className={styles.input}
-              type="text"
               name="name"
+              className={styles.input}
               value={form.name}
-              onChange={handleChange}
+              onChange={onChange}
               required
             />
-          </div>
 
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="email">Email</label>
+            <label className={styles.label} htmlFor="email">
+              Email <span className={styles.req}>(obligatorio)</span>
+            </label>
             <input
               id="email"
-              className={styles.input}
               type="email"
               name="email"
+              className={styles.input}
               value={form.email}
-              onChange={handleChange}
+              onChange={onChange}
               required
             />
-          </div>
 
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="message">Mensaje</label>
+            <label className={styles.label} htmlFor="message">
+              Mensaje
+            </label>
             <textarea
               id="message"
-              className={styles.textarea}
               name="message"
-              rows={5}
+              className={styles.textarea}
+              rows={6}
               value={form.message}
-              onChange={handleChange}
+              onChange={onChange}
               required
             />
-          </div>
 
-          <button className={styles.button} type="submit">Enviar</button>
-        </form>
+            <button type="submit" className={styles.button}>
+              Enviar
+            </button>
+          </form>
+        </div>
 
-        <div className={styles.details}>
-          <p><strong>Email:</strong> lagrupa.dk@gmail.com</p>
-          <p><strong>Redes sociales:</strong> (agregar enlaces)</p>
+        {/* Right: image */}
+        <div className={styles.right}>
+          <Image
+            src="/contact.jpg"          // poné tu imagen en /public/contact.jpg
+            alt="Copenhague"
+            width={460}
+            height={600}
+            className={styles.image}
+            priority
+          />
         </div>
       </div>
     </section>

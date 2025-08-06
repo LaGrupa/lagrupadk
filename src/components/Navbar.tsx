@@ -23,7 +23,7 @@ export default function Navbar() {
           <li><Link href="/que-hacemos">¿Qué hacemos?</Link></li>
           <li><Link href="/recursos">Recursero</Link></li>
           <li><Link href="/faq">Preguntas Frecuentes</Link></li>
-          <li><a href="/contact">Contáctanos</a></li>
+          <li><a href="/contact">Contactanos</a></li>
 
         </ul>
       </nav>
