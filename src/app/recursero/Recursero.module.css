@@ -1,0 +1,69 @@
+.section {
+  padding: 2.5rem 1rem 3rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0 0 1.5rem;
+  font-weight: 800;
+}
+
+/* Two centered cards, responsive */
+.cards {
+  display: grid;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+@media (min-width: 700px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 22px rgba(0,0,0,.08);
+  overflow: hidden;
+  transition: transform .15s ease, box-shadow .15s ease;
+  max-width: 520px;          /* keeps a nice width on large screens */
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0,0,0,.12);
+}
+
+.media {
+  background: #f3f3f6;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0.75rem 1rem 0.25rem;
+}
+
+.cardText {
+  margin: 0 1rem 1rem;
+  color: #444;
+  line-height: 1.4;
+}
+
