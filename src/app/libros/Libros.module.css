@@ -1,7 +1,13 @@
 .page { background: #fff; }
 
-/* Placeholder banner */
-.banner {
+/* --- Banner (supports both variants) --- */
+/* Emprendedoras-style image banner */
+.bannerWrap { background: #e9e6ee; }
+.bannerInner { max-width: 1400px; margin: 0 auto; padding: 0.75rem 1rem; }
+.banner { width: 100%; height: auto; border-radius: 8px; display: block; }
+
+/* Optional gradient placeholder (use className={styles.bannerPlaceholder}) */
+.bannerPlaceholder {
   width: 100%;
   height: 180px;
   background: linear-gradient(135deg, #b9a9d2, #8db697);
@@ -16,62 +22,71 @@
   text-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
-/* Header */
-.header { padding: 1rem 1rem 0.5rem; text-align: center; }
-.headerInner { max-width: 800px; margin: 0 auto; }
-.subtitle { margin: 0; color: #444; font-size: 1rem; }
-
-/* Filters */
+/* --- Filters (match Emprendedoras) --- */
 .filters { padding: 1rem; }
 .filtersInner {
-  max-width: 1200px;
+  max-width: 900px;                 /* same as Emprendedoras */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
 }
+
+/* Search bar — identical look & feel */
 .search {
-  padding: 0.5rem 0.7rem;
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  font-size: 0.95rem;
-  width: 250px;
+  width: 100%;
+  max-width: 640px;                 /* same cap */
+  margin: 0 auto;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid #cfcfd4;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #fff;
 }
+.search:focus {
+  outline: none;
+  border-color: #98a0ac;
+  box-shadow: 0 0 0 3px rgba(10,102,194,.12);
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 .tag {
   padding: 0.35rem 0.7rem;
-  font-size: 0.85rem;
-  border: 1px solid #aaa;
-  border-radius: 4px;
+  font-size: 0.9rem;
+  border: 1px solid #cfcfd4;
+  border-radius: 999px;
   background: #fff;
   cursor: pointer;
   transition: background 0.2s ease;
 }
-.tag:hover { background: #eee; }
+.tag:hover { background: #f3f6fb; }
 .activeTag {
-  background: #b9a9d2;
-  border-color: #b9a9d2;
-  color: white;
+  background: #0a66c2;
+  border-color: #0a66c2;
+  color: #905fbc;
 }
 
-/* Gallery */
+/* --- Gallery (fixed-size grid) --- */
 .gallery { padding: 1.25rem 1rem 3rem; }
 .galleryInner {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, 240px);
+  justify-content: center;
 }
 
-/* Card */
+/* --- Card (button) --- */
 .card {
+  width: 240px;
+  height: 380px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 22px rgba(0,0,0,.08);
@@ -79,27 +94,136 @@
   transition: transform .15s ease, box-shadow .15s ease;
   display: flex;
   flex-direction: column;
+  border: none;
+  cursor: pointer;
 }
 .card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,.12); }
 
-.media { background: #f3f3f6; }
-.placeholder {
-  height: 360px;
+.media {
+  background: #f3f3f6;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  text-align: center;
+}
+.cardImg { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem; text-align: center;
   background: linear-gradient(135deg, #b9a9d2, #8db697);
   color: #fff;
 }
 .placeholderText {
   font-weight: 800;
-  font-size: 1.3rem;
-  line-height: 1.2;
+  font-size: 1.1rem;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.meta { padding: .85rem .9rem 1rem; }
-.cardTitle { margin: 0 0 .25rem; font-size: 1.05rem; font-weight: 800; }
-.cardSubtitle { margin: 0 0 .25rem; color: #555; font-size: .95rem; }
-.cardCategory { margin: 0; font-size: 0.8rem; color: #777; }
+
+.meta {
+  padding: .85rem .9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  min-height: 0;
+}
+.cardTitle {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cardSubtitle {
+  margin: 0;
+  color: #555;
+  font-size: .95rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.cardCategory { margin: 0; font-size: 0.8rem; color: #777; margin-top: auto; }
+
+/* --- Modal --- */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+.modal {
+  width: min(920px, 94vw);
+  max-height: min(82vh, 1000px);
+  background: #1b1b1f;
+  color: #e9e9ee;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
+}
+.modalHeader { padding: 1.1rem 1.4rem 0.4rem; }
+.modalTitle { margin: 0; font-size: 1.8rem; font-weight: 800; }
+.modalSubtitle { margin: 0.2rem 0 0.6rem; color: #c7c9d1; }
+
+.modalBody {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1rem;
+  padding: 0.2rem 1.4rem 1rem;
+  overflow: auto;
+}
+@media (max-width: 720px) { .modalBody { grid-template-columns: 1fr; } }
+
+.modalCover { background: #111; border-radius: 8px; overflow: hidden; }
+.modalCoverImg { width: 100%; height: auto; display: block; }
+.modalInfo { min-width: 0; }
+
+.modalRow {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.modalLabel { color: #9aa0a6; }
+.modalValue { color: #e9e9ee; }
+.modalLinks { display: flex; gap: .6rem; flex-wrap: wrap; }
+.modalLink { color: #8ab4ff; text-decoration: none; }
+.modalLink:hover { text-decoration: underline; }
+
+.modalFooter {
+  padding: 1rem 1.4rem 1.2rem;
+  display: flex; gap: .6rem; justify-content: flex-end;
+  background: rgba(0,0,0,.12);
+}
+
+.primaryBtn, .secondaryBtn, .modalClose {
+  appearance: none; border: 0; border-radius: 10px;
+  padding: .6rem .85rem; font-weight: 700; cursor: pointer;
+}
+.primaryBtn { background: #8ab4ff; color: #111; text-decoration: none; }
+.primaryBtn:hover { filter: brightness(1.05); }
+.secondaryBtn { background: #2a2d35; color: #e9e9ee; }
+
+.modalClose {
+  position: absolute; right: 14px; top: 12px;
+  background: transparent; color: #c7c9d1; font-size: 1.1rem;
+}
+.modalClose:hover { color: #fff; }
+
+
+
 

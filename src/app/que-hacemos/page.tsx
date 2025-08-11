@@ -14,7 +14,13 @@ export default function QueHacemosPage() {
           <h2>Talleres</h2>
         </Link>
         <Link href="/encuentros" className={styles.card}>
-          <Image src={encuentrosImg} alt="Encuentros" />
+          <Image
+                src={encuentrosImg}
+                alt="Encuentros"
+                width={480}
+                height={300}
+                className={styles.image}
+              />
           <h2>Encuentros</h2>
         </Link>
       </div>

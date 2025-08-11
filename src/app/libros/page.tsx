@@ -1,13 +1,23 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useMemo, useEffect, useRef } from "react";
+import Image from "next/image";
+import { createPortal } from "react-dom";
 import styles from "./Libros.module.css";
 
 type Book = {
   title: string;
   subtitle?: string;
   category: string;
-  image?: string;
-  url?: string;
+  image?: string;   // cover
+  url?: string;     // external link
+
+  // optional fields for the modal
+  author?: string;
+  description?: string;
+  year?: number | string;
+  rating?: number;  // 0–5
+  links?: { label: string; href: string }[];
 };
 
 const categories = [
@@ -26,62 +36,70 @@ const books: Book[] = Array.from({ length: 12 }).map((_, i) => ({
   title: `Libro ${i + 1}`,
   subtitle: "Descripción breve o autora",
   category: categories[(i % (categories.length - 1)) + 1],
+  author: "Autora Demo",
+  year: 2024,
+  description:
+    "Pequeña sinopsis del libro. Puedes ampliar este texto para ver el scroll del modal.",
+  rating: (i % 5) + 1,
+  links: [{ label: "Más info", href: "https://example.com" }],
+  // image: "/covers/book-01.jpg",
 }));
 
 export default function LibrosPage() {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Todos");
+  const [selected, setSelected] = useState<Book | null>(null);
 
-  const filteredBooks = books.filter((book) => {
-    const matchesCategory =
-      selectedCategory === "Todos" || book.category === selectedCategory;
-    const matchesSearch =
-      book.title.toLowerCase().includes(search.toLowerCase()) ||
-      (book.subtitle?.toLowerCase() || "").includes(search.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const sortedCats = useMemo(
+    () =>
+      categories.slice().sort((a, b) => (a === "Todos" ? -1 : a.localeCompare(b))),
+    []
+  );
+
+  const filtered = useMemo(() => {
+    const q = search.toLowerCase();
+    return books.filter((b) => {
+      const matchesCategory = selectedCategory === "Todos" || b.category === selectedCategory;
+      const matchesSearch =
+        b.title.toLowerCase().includes(q) ||
+        (b.subtitle?.toLowerCase() ?? "").includes(q) ||
+        (b.author?.toLowerCase() ?? "").includes(q);
+      return matchesCategory && matchesSearch;
+    });
+  }, [search, selectedCategory]);
 
   return (
     <main className={styles.page}>
-      {/* Placeholder Banner */}
-      <div className={styles.banner}>
-        <h1 className={styles.bannerTitle}>Libros</h1>
-      </div>
+      <section className={styles.bannerWrap}>
+  <div className={styles.bannerInner}>
+    <Image src="/recursero-libros.jpg" alt="Nuestra biblioteca" width={1600} height={360} className={styles.banner} />
+  </div>
+</section>
 
-      {/* Subtitle */}
-      <section className={styles.header}>
-        <div className={styles.headerInner}>
-          <p className={styles.subtitle}>
-            Explora nuestra colección de libros recomendados por la comunidad.
-          </p>
-        </div>
-      </section>
 
-      {/* Search + Filters */}
+      {/* Filters */}
       <section className={styles.filters}>
         <div className={styles.filtersInner}>
           <input
             type="text"
-            placeholder="Buscar por título o autora"
+            placeholder="Buscar por título, autora…"
             className={styles.search}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            aria-label="Buscar libros"
           />
           <div className={styles.tags}>
-            {categories
-              .slice()
-              .sort((a, b) => (a === "Todos" ? -1 : a.localeCompare(b)))
-              .map((cat) => (
-                <button
-                  key={cat}
-                  className={`${styles.tag} ${
-                    selectedCategory === cat ? styles.activeTag : ""
-                  }`}
-                  onClick={() => setSelectedCategory(cat)}
-                >
-                  {cat}
-                </button>
-              ))}
+            {sortedCats.map((cat) => (
+              <button
+                key={cat}
+                className={`${styles.tag} ${
+                  selectedCategory === cat ? styles.activeTag : ""
+                }`}
+                onClick={() => setSelectedCategory(cat)}
+              >
+                {cat}
+              </button>
+            ))}
           </div>
         </div>
       </section>
@@ -89,27 +107,171 @@ export default function LibrosPage() {
       {/* Gallery */}
       <section className={styles.gallery}>
         <div className={styles.galleryInner}>
-          {filteredBooks.map((b, idx) => (
-            <article key={idx} className={styles.card}>
+          {filtered.map((b, idx) => (
+            <button
+              key={idx}
+              type="button"
+              className={styles.card}
+              onClick={() => setSelected(b)}
+              aria-haspopup="dialog"
+              aria-label={`Abrir detalles de ${b.title}`}
+            >
               <div className={styles.media}>
-                <div className={styles.placeholder}>
-                  <span className={styles.placeholderText}>{b.title}</span>
-                </div>
+                {b.image ? (
+                  <Image
+                    src={b.image}
+                    alt={b.title}
+                    width={300}
+                    height={420}
+                    className={styles.cardImg}
+                  />
+                ) : (
+                  <div className={styles.placeholder}>
+                    <span className={styles.placeholderText}>{b.title}</span>
+                  </div>
+                )}
               </div>
               <div className={styles.meta}>
                 <h3 className={styles.cardTitle}>{b.title}</h3>
-                {b.subtitle && (
-                  <p className={styles.cardSubtitle}>{b.subtitle}</p>
-                )}
+                {b.subtitle && <p className={styles.cardSubtitle}>{b.subtitle}</p>}
                 <p className={styles.cardCategory}>{b.category}</p>
               </div>
-            </article>
+            </button>
           ))}
         </div>
       </section>
+
+      {selected && (
+        <BookModal
+          book={selected}
+          onClose={() => setSelected(null)}
+        />
+      )}
     </main>
   );
 }
+
+/* ------------ Modal ------------- */
+
+function BookModal({ book, onClose }: { book: Book; onClose: () => void }) {
+  const [mounted, setMounted] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose]);
+
+  if (!mounted) return null;
+
+  const node = (
+    <div className={styles.modalBackdrop} onMouseDown={onClose}>
+      <div
+        className={styles.modal}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="book-title"
+        onMouseDown={(e) => e.stopPropagation()}
+        ref={dialogRef}
+      >
+        <button className={styles.modalClose} onClick={onClose} aria-label="Cerrar">
+          ✕
+        </button>
+
+        <header className={styles.modalHeader}>
+          <h2 id="book-title" className={styles.modalTitle}>
+            {book.title}
+          </h2>
+          {book.author && <p className={styles.modalSubtitle}>{book.author}</p>}
+        </header>
+
+        <div className={styles.modalBody}>
+          {book.image && (
+            <div className={styles.modalCover}>
+              <Image
+                src={book.image}
+                alt={book.title}
+                width={360}
+                height={520}
+                className={styles.modalCoverImg}
+              />
+            </div>
+          )}
+
+          <div className={styles.modalInfo}>
+            <ModalRow label="Categoría">{book.category}</ModalRow>
+            {book.year && <ModalRow label="Año">{book.year}</ModalRow>}
+            {typeof book.rating === "number" && (
+              <ModalRow label="Valoración" aria-label={`${book.rating} de 5`}>
+                {"★".repeat(book.rating)}{"☆".repeat(5 - book.rating)}
+              </ModalRow>
+            )}
+            {book.description && (
+              <ModalRow label="Descripción">{book.description}</ModalRow>
+            )}
+            {book.links?.length ? (
+              <ModalRow label="Enlaces">
+                <div className={styles.modalLinks}>
+                  {book.links.map((l) => (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className={styles.modalLink}
+                    >
+                      {l.label}
+                    </a>
+                  ))}
+                </div>
+              </ModalRow>
+            ) : null}
+          </div>
+        </div>
+
+        <footer className={styles.modalFooter}>
+          {book.url && (
+            <a
+              href={book.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              className={styles.primaryBtn}
+            >
+              Visitar
+            </a>
+          )}
+          <button className={styles.secondaryBtn} onClick={onClose}>
+            Cerrar
+          </button>
+        </footer>
+      </div>
+    </div>
+  );
+
+  return createPortal(node, document.body);
+}
+
+function ModalRow({
+  label,
+  children,
+  ...rest
+}: React.PropsWithChildren<{ label: string } & React.HTMLAttributes<HTMLDivElement>>) {
+  return (
+    <div className={styles.modalRow} {...rest}>
+      <span className={styles.modalLabel}>{label}</span>
+      <div className={styles.modalValue}>{children}</div>
+    </div>
+  );
+}
+
+
 
 
 

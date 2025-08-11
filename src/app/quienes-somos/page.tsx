@@ -67,7 +67,7 @@ export default function QuienesSomosPage() {
             </div>
 
             <Image
-              src="/quienes2.jpg"  // put this in /public
+              src="/quienes2.jpg"  
               alt="Integrantes de La Grupa"
               className={styles.image}
               width={550}

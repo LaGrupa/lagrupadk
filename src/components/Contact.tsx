@@ -17,9 +17,9 @@ export default function Contact() {
   };
 
   return (
-    <section className={styles.hero}>
+    <section className={styles.section}>
       <div className={styles.container}>
-        {/* Left column: stacked content */}
+        {/* Left column */}
         <div className={styles.left}>
           <div className={styles.leftInner}>
             <h2 className={styles.title}>Ponete en contacto con nosotras</h2>
@@ -83,14 +83,14 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Right column: image fills height on desktop */}
+        {/* Right column: image */}
         <div className={styles.right}>
           <div className={styles.imageWrap}>
             <Image
-              src="/contact.jpg"                 
+              src="/contact.jpg"
               alt="Copenhague"
               fill
-              sizes="(min-width: 900px) 50vw, 100vw"
+              sizes="(min-width: 900px) 48vw, 100vw"
               className={styles.image}
               priority
             />
@@ -100,3 +100,4 @@ export default function Contact() {
     </section>
   );
 }
+

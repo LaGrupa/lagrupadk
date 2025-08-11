@@ -1,62 +1,79 @@
+/* Green hero block that dominates but leaves next section peeking */
 .hero {
-  background-color: #c5d2b3; /* light green */
-  padding: 3rem 1rem;
+  background: #c5d2b3;
+  min-height: clamp(560px, 72vh, 880px);   /* ~most of the page */
+  display: flex;
+  align-items: center;                      /* center inner vertically */
+  padding: clamp(1.25rem, 3vw, 3rem) 1rem;
 }
 
-.container {
+/* Robust 2‑column layout on desktop, stacked on mobile */
+.inner {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  width: 100%;
+  display: grid;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  grid-template-columns: 1fr;              /* mobile: stack */
   align-items: center;
 }
 
-@media (min-width: 768px) {
-  .container {
-    flex-direction: row;
-    align-items: center;
+@media (min-width: 900px) {
+  .inner {
+    grid-template-columns: 1.2fr 1fr;      /* desktop: image + text */
   }
 }
 
-.imageWrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.image {
-  border-radius: 1rem;
+/* --- IMAGE --- */
+.media {
+  position: relative;
   width: 100%;
-  max-width: 500px;
-  height: auto;
+  border-radius: 18px;
+  overflow: hidden;
+
+  /* Force a horizontal box; prevents tall/vertical disasters */
+  aspect-ratio:5 / 4;
+
+  /* Keep the image from eating the whole row on huge screens */
+  max-width: 720px;
 }
 
-.textWrapper {
-  flex: 1;
+/* next/image fills the box; crop nicely and keep focal area */
+.img {
+  object-fit: cover;
+  object-position: 50% 44%; /* tweak to keep the main area in frame */
 }
 
-.textWrapper h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+/* --- TEXT --- */
+.content {}
+
+.title {
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 .75rem;
 }
 
-.textWrapper p {
-  margin-bottom: 1.5rem;
+.lead {
+  margin: 0 0 1.25rem;
   line-height: 1.6;
 }
 
 .button {
   display: inline-block;
-  background-color: black;
-  color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: 0.3rem;
+  background: #000;
+  color: #fff;
+  padding: 0.65rem 1.1rem;
+  border-radius: 8px;
+  font-weight: 700;
   text-decoration: none;
-  font-weight: bold;
+}
+.button:hover { background: #333; }
+
+/* Optional: a bit shorter hero on tiny phones so text isn’t pushed off */
+@media (max-width: 480px) {
+  .hero { min-height: 64vh; }
 }
 
-.button:hover {
-  background-color: #333;
-}
+
+

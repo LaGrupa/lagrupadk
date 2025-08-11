@@ -7,7 +7,7 @@ export default function EncuentrosPage() {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Emprendedoras</h1>
+        <h1 className={styles.title}>Encuentros</h1>
 
         <div className={styles.grid}>
           {photos.map((src, i) => (
