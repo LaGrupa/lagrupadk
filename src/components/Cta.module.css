@@ -1,14 +1,15 @@
 .section {
-  background: #d3c5d6;           /* light purple */
-  padding: 3.5rem 1rem;
+  background: #d3c5d6;
+  padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2rem);
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  gap: 2rem;
-  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  grid-template-columns: 1fr; /* mobile: stack */
+  align-items: start;         /* don't stretch rows to tallest column */
 }
 
 @media (min-width: 900px) {
@@ -18,7 +19,7 @@
 }
 
 .text h3 {
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 2.2vw + 0.6rem, 2rem);
   font-weight: 700;
   line-height: 1.25;
   margin: 0 0 1rem;
@@ -27,11 +28,10 @@
 .list {
   margin: 0 0 1.5rem;
   padding-left: 1.1rem;
+  line-height: 1.6;
 }
 
-.list li {
-  margin: 0.35rem 0;
-}
+.list li { margin: 0.35rem 0; }
 
 .button {
   display: inline-block;
@@ -39,20 +39,25 @@
   color: #fff;
   text-decoration: none;
   font-weight: 700;
-  border-radius: 0.4rem;
+  border-radius: 0.6rem;
   padding: 0.65rem 1.1rem;
 }
-
 .button:hover { background: #333; }
 
+/* ✅ Proper wrapper for Image with `fill` */
 .imageWrap {
-  display: flex;
-  justify-content: center;
+  position: relative;
+  width: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;                 /* solid box on all breakpoints */
+  max-height: 420px;                    /* cap growth so it never fills the screen */
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+  place-self: start;                    /* don't vertically center/stretch */
 }
 
+/* ✅ With `fill`, don't set width/height; just fit it */
 .image {
-  width: 100%;
-  height: auto;
-  border-radius: 0.75rem;
-  display: block;
+  object-fit: cover;
+  object-position: 50% 50%;
 }

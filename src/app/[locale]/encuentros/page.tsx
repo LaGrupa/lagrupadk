@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./Encuentros.module.css";
 
 export default function EncuentrosPage() {
-  const photos = ["/enc-1.jpg", "/enc-2.jpg", "/enc-3.jpg"]; // put these in /public
+  const photos = ["/site/enc-1.jpg", "/site/enc-2.jpg", "/site/enc-3.jpg"]; // put these in /public
 
   return (
     <section className={styles.section}>

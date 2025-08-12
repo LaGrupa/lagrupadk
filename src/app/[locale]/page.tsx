@@ -2,14 +2,12 @@ import Hero from "@/components/Hero";
 import ThreeColumns from "@/components/ThreeColumns";
 import Cta from "@/components/Cta";
 
-
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <main>
+    <>
       <Hero />
       <ThreeColumns />
-      <Cta /> 
-    </main>
+      <Cta />
+    </>
   );
 }

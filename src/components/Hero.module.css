@@ -1,79 +1,108 @@
-/* Green hero block that dominates but leaves next section peeking */
+/* Container: generous but fluid */
 .hero {
-  background: #c5d2b3;
-  min-height: clamp(560px, 72vh, 880px);   /* ~most of the page */
-  display: flex;
-  align-items: center;                      /* center inner vertically */
-  padding: clamp(1.25rem, 3vw, 3rem) 1rem;
+  --pad-x: clamp(1rem, 3vw, 2rem);
+  --pad-y: clamp(1.25rem, 3.5vw, 3rem);
+  --max-w: 1200px;
+
+  background: #c5d2b3;               /* keep your green */
+  color: #0b0b0b;                     /* stronger contrast on green */
+  padding: var(--pad-y) var(--pad-x);
+  display: block;
 }
 
-/* Robust 2‑column layout on desktop, stacked on mobile */
+/* Grid: stack on mobile, 2 cols from ~600px+, wider ratio on desktop */
 .inner {
-  max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
+  max-width: var(--max-w);
   display: grid;
   gap: clamp(1rem, 3vw, 2.5rem);
-  grid-template-columns: 1fr;              /* mobile: stack */
   align-items: center;
+  grid-template-columns: 1fr;         /* mobile first */
 }
 
-@media (min-width: 900px) {
-  .inner {
-    grid-template-columns: 1.2fr 1fr;      /* desktop: image + text */
-  }
+@media (min-width: 600px) {
+  .inner { grid-template-columns: 1.1fr 1fr; }
+}
+@media (min-width: 1024px) {
+  .inner { grid-template-columns: 1.2fr 1fr; }
 }
 
-/* --- IMAGE --- */
+/* Media box with intrinsic ratio to avoid CLS; image fills and crops nicely */
 .media {
   position: relative;
   width: 100%;
+  aspect-ratio: 5 / 4;                /* keeps a pleasant horizontal frame */
+  max-width: 720px;
   border-radius: 18px;
   overflow: hidden;
-
-  /* Force a horizontal box; prevents tall/vertical disasters */
-  aspect-ratio:5 / 4;
-
-  /* Keep the image from eating the whole row on huge screens */
-  max-width: 720px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.12);
 }
 
-/* next/image fills the box; crop nicely and keep focal area */
+/* next/image fills parent */
 .img {
   object-fit: cover;
-  object-position: 50% 44%; /* tweak to keep the main area in frame */
+  object-position: 50% 44%;
+  transform: scale(1.001);            /* avoid sub‑pixel seams in some browsers */
 }
 
-/* --- TEXT --- */
-.content {}
+/* Text column with readable line-length */
+.content {
+  max-width: 60ch;
+}
 
+/* Fluid, bold hero title */
 .title {
-  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
   font-weight: 800;
-  line-height: 1.2;
-  margin: 0 0 .75rem;
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.75rem, 2.6vw + 1rem, 2.6rem);
 }
 
+/* Comfortable body */
 .lead {
   margin: 0 0 1.25rem;
   line-height: 1.6;
+  font-size: clamp(1rem, 0.35vw + 0.95rem, 1.1rem);
+  color: #202020;
 }
 
+/* Primary CTA */
 .button {
   display: inline-block;
   background: #000;
   color: #fff;
   padding: 0.65rem 1.1rem;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 700;
   text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,.12);
+  transition: background-color .18s ease, transform .18s ease, box-shadow .18s ease;
 }
-.button:hover { background: #333; }
+.button:hover { background: #1a1a1a; box-shadow: 0 6px 20px rgba(0,0,0,.18); }
+.button:active { transform: translateY(1px); }
 
-/* Optional: a bit shorter hero on tiny phones so text isn’t pushed off */
 @media (max-width: 480px) {
-  .hero { min-height: 64vh; }
+  /* Slightly shorter on very small screens so content isn't pushed off */
+  .hero { padding-top: clamp(1rem, 3vw, 1.5rem); }
 }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .button { transition: none; }
+}
+
+@media (max-width: 599px) {
+  .button {
+    display: block;
+    width: 90%;              /* almost full width */
+    max-width: 20rem;        /* optional: prevent huge button on very wide phones */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}
+
+
 
 
 

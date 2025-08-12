@@ -24,3 +24,14 @@ header { flex-shrink: 0; }     /* Navbar */
 main   { flex: 1 0 auto; }     /* Grows to fill the space */
 footer { flex-shrink: 0; }     /* Footer stays at bottom */
 
+/* globals.css */
+@media (max-width: 599px) {
+  .u-btnWideMobile {
+    display: block !important;
+    width: 90% !important;
+    max-width: 20rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+}

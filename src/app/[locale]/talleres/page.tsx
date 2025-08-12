@@ -12,35 +12,35 @@ const talleres: Taller[] = [
   {
     title: "Hatha Yoga",
     date: "19 Abril de 2025",
-    img: "/taller-hatha.jpg",
+    img: "/site/taller-hatha.jpg",
     desc:
       "Yoga para dar paso a un post taller en el bar, compartiendo unas cervezas.",
   },
   {
     title: "Acuarelas",
     date: "25 Mayo de 2025",
-    img: "/taller-acuarelas.jpg",
+    img: "/site/taller-acuarelas.jpg",
     desc:
       "El segundo taller a cargo de Lucía. Nos llevó del día a la noche para poder frenar la magia de los pinceles.",
   },
   {
     title: "Círculo de mujeres",
     date: "22 Junio de 2025",
-    img: "/taller-circulo.jpg",
+    img: "/site/taller-circulo.jpg",
     desc:
       "El tercer taller fue un Círculo de Mujeres: espacios íntimos para la escucha, reflexión y red.",
   },
   {
     title: "Yoga Facial",
     date: "13 Julio de 2025",
-    img: "/taller-yoga-facial.jpg",
+    img: "/site/taller-yoga-facial.jpg",
     desc:
       "En el último taller antes del verano, practicamos Yoga Facial y meditación facial.",
   },
   {
     title: "Dibujar para encontrarse",
     date: "19 Agosto de 2025",
-    img: "/taller-dibujar.jpg",
+    img: "/site/taller-dibujar.jpg",
     desc:
       "El quinto taller nos encontró dibujando juntas. Un espacio para explorar y compartir procesos creativos.",
   },

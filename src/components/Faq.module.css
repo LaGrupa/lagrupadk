@@ -1,43 +1,77 @@
 .section {
-  padding: 3rem 1rem;
+  background: #e7dcea; /* soft lilac like before */
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
 }
 
 .container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
-}
-
-.title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-
-.item {
-  background: #c5d2b3; /* green background */
-  margin-bottom: 0.5rem;
-  padding: 1.2rem 1.5rem; /* extra padding */
-}
-
-.question {
-  background: none;
-  border: none;
-  font-size: 1.1rem;
-  font-weight: 600;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  gap: clamp(1rem, 3vw, 2rem);
+  grid-template-columns: 1fr;                 /* mobile: stack */
   align-items: center;
 }
 
-.answer {
-  margin-top: 0.8rem;
+@media (min-width: 900px) {
+  .container {
+    grid-template-columns: 1fr 1fr;           /* desktop: text + image */
+  }
+}
+
+.text { max-width: 60ch; }
+
+.text h3 {
+  font-size: clamp(1.4rem, 2.2vw + 0.6rem, 2rem);
+  line-height: 1.2;
+  margin: 0 0 .8rem;
+  font-weight: 800;
+}
+
+.list {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
   line-height: 1.6;
 }
 
-.icon {
-  font-size: 1.5rem;
-  line-height: 1;
+.button {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: .65rem 1rem;
+  border-radius: 10px;
+  font-weight: 800;
+  text-decoration: none;
 }
+.button:hover { background: #222; }
+
+/* Image area with intrinsic ratio on mobile */
+.imageWrap {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;                /* mobile: keep a nice box */
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+
+@media (min-width: 900px) {
+  .imageWrap { aspect-ratio: auto; min-height: 340px; }
+}
+
+.image {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* Mobile wide CTA (if you don't use the global utility) */
+@media (max-width: 599px) {
+  .button {
+    display: block;
+    width: 90%;
+    max-width: 22rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}
+

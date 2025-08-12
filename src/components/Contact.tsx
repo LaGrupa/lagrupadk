@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import Image from "next/image";
 import styles from "./Contact.module.css";
@@ -17,24 +18,26 @@ export default function Contact() {
   };
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} aria-labelledby="contact-title">
       <div className={styles.container}>
         {/* Left column */}
         <div className={styles.left}>
           <div className={styles.leftInner}>
-            <h2 className={styles.title}>Ponete en contacto con nosotras</h2>
+            <h2 id="contact-title" className={styles.title}>
+              Ponete en contacto con nosotras
+            </h2>
 
             <p className={styles.lead}>
               Envíanos un mensaje con tu consulta o información. Nuestro equipo
               te responderá lo más pronto posible.
             </p>
             <p className={styles.lead}>
-              Si querés unirte a La Grupa como miembra, escribinos una solicitud a{" "}
+              Si querés unirte a La Grupa como miembra, escribinos una solicitud a:{" "}
               <a href="mailto:lagrupa.dk@gmail.com">lagrupa.dk@gmail.com</a>
             </p>
             <p className={styles.lead}>
-              Estamos abiertas a todas las propuestas constructivas. Si tenés
-              ideas que te gustaría compartir, nos encantará leerlas.
+              Estamos abiertas a todas las propuestas constructivas.</p>
+             <p>Si tenés ideas que te gustaría compartir, nos encantará leerlas.
             </p>
 
             <form className={styles.form} onSubmit={onSubmit}>
@@ -48,6 +51,8 @@ export default function Contact() {
                 value={form.name}
                 onChange={onChange}
                 required
+                autoComplete="name"
+                inputMode="text"
               />
 
               <label className={styles.label} htmlFor="email">
@@ -61,6 +66,8 @@ export default function Contact() {
                 value={form.email}
                 onChange={onChange}
                 required
+                autoComplete="email"
+                inputMode="email"
               />
 
               <label className={styles.label} htmlFor="message">
@@ -87,12 +94,12 @@ export default function Contact() {
         <div className={styles.right}>
           <div className={styles.imageWrap}>
             <Image
-              src="/contact.jpg"
+              src="/site/contact.jpg"
               alt="Copenhague"
               fill
-              sizes="(min-width: 900px) 48vw, 100vw"
-              className={styles.image}
               priority
+              sizes="(max-width: 899px) 100vw, 48vw"
+              className={styles.image}
             />
           </div>
         </div>
@@ -100,4 +107,5 @@ export default function Contact() {
     </section>
   );
 }
+
 

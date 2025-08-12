@@ -7,14 +7,18 @@ export default function QuienesSomosPage() {
       {/* FULL-WIDTH HERO (pastel background) */}
       <section className={styles.heroSection}>
         <div className={styles.heroContent}>
-          <Image
-            src="/quienes1.jpg"  
-            alt="La Grupa en marcha en Copenhague"
-            className={styles.image}
-            width={550}
-            height={366}
-            priority
-          />
+          <div className={styles.media}>
+            <Image
+              src="/site/quienes1.jpg" 
+              alt="La Grupa en marcha en Copenhague"
+              className={styles.image}
+              width={550}
+              height={366}
+              priority
+              sizes="(max-width: 899px) 100vw, 48vw"
+            />
+          </div>
+
           <div className={styles.text}>
             <h2>Quiénes Somos</h2>
             <p>
@@ -35,10 +39,10 @@ export default function QuienesSomosPage() {
         </div>
       </section>
 
-      {/* REST OF PAGE (normal width) */}
+      {/* REST OF PAGE (contained) */}
       <section className={styles.section}>
         <div className={styles.container}>
-          {/* Block 2 (white background) */}
+          {/* Block 2 */}
           <div className={styles.block}>
             <div className={styles.text}>
               <p>
@@ -66,16 +70,19 @@ export default function QuienesSomosPage() {
               </p>
             </div>
 
-            <Image
-              src="/quienes2.jpg"  
-              alt="Integrantes de La Grupa"
-              className={styles.image}
-              width={550}
-              height={366}
-            />
+            <div className={styles.media}>
+              <Image
+                src="/site/quienes2.jpg"
+                alt="Integrantes de La Grupa"
+                className={styles.image}
+                width={550}
+                height={366}
+                sizes="(max-width: 899px) 100vw, 40vw"
+              />
+            </div>
           </div>
 
-          {/* Misión / Visión (green box, contained) */}
+          {/* Misión / Visión */}
           <div className={styles.missionVision}>
             <div>
               <h3>Nuestra Misión</h3>

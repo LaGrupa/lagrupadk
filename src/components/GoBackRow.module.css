@@ -1,0 +1,6 @@
+.row {
+  max-width: 800px;      /* same as your pages */
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;        /* same gutter as content */
+}

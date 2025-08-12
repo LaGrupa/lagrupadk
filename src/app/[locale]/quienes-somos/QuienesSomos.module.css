@@ -1,0 +1,108 @@
+/* Full-width hero (pastel) */
+.heroSection {
+  --pad-x: clamp(1rem, 3vw, 2rem);
+  --pad-y: clamp(1.25rem, 4vw, 3rem);
+  background-color: #d1cad5;
+  width: 100%;
+  padding: var(--pad-y) var(--pad-x);
+}
+
+/* Grid that stacks on mobile, splits on ≥900px */
+.heroContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(1rem, 3vw, 2rem);
+  grid-template-columns: 1fr;        /* mobile */
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .heroContent {
+    grid-template-columns: 1.1fr 1fr; /* image + text */
+  }
+}
+
+/* Contained sections */
+.section {
+  padding: clamp(1.75rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Second block (image + text) */
+.block {
+  display: grid;
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: center;
+  margin: 0 0 clamp(2rem, 5vw, 3rem);
+  grid-template-columns: 1fr;  /* stack on mobile */
+}
+@media (min-width: 900px) {
+  .block {
+    grid-template-columns: 1.2fr 0.8fr; /* text + image */
+  }
+}
+
+/* Shared media wrapper so images don't overflow and get rounded nicely */
+.media {
+  align-self: start;
+}
+.image {
+  display: block;
+  width: 100%;
+  height: auto;                 /* let Next/Image size intrinsically */
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+}
+
+/* Text */
+.text {
+  max-width: 72ch;              /* readable line length */
+  line-height: 1.65;
+}
+.text h2 {
+  font-size: clamp(1.8rem, 2.6vw + 0.6rem, 2.4rem);
+  font-weight: 800;
+  margin: 0 0 0.75rem;
+}
+.text p { margin: 0 0 1rem; }
+
+/* Mission / Vision (contained green block) */
+.missionVision {
+  background: #c5d2b3;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: 12px;
+  display: grid;
+  gap: clamp(1rem, 3vw, 2rem);
+  grid-template-columns: 1fr;   /* stack */
+}
+.missionVision h3 {
+  font-size: clamp(1.2rem, 1.2vw + 0.9rem, 1.5rem);
+  font-weight: 800;
+  margin: 0 0 0.75rem;
+}
+@media (min-width: 900px) {
+  .missionVision { grid-template-columns: 1fr 1fr; }
+}
+/* Ensure grid items can actually shrink inside the viewport */
+.heroContent > *,
+.block > * {
+  min-width: 0;                 /* <-- key for Grid/Flex overflow */
+}
+
+/* Make text wrap instead of forcing the grid wider */
+.text {
+  min-width: 0;
+  overflow-wrap: anywhere;      /* break very long words/links if needed */
+  word-break: normal;
+}
+
+/* Belt-and-suspenders: clip any accidental horizontal overflow per section */
+.heroSection,
+.section {
+  overflow-x: clip;             /* behaves like hidden for the x-axis */
+}
+

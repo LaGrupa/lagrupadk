@@ -5,6 +5,8 @@ import Image from "next/image";
 import { createPortal } from "react-dom";
 import styles from "./Libros.module.css";
 
+import GoBackRow from "@/components/GoBackRow";
+
 type Book = {
   title: string;
   subtitle?: string;
@@ -72,7 +74,7 @@ export default function LibrosPage() {
     <main className={styles.page}>
       <section className={styles.bannerWrap}>
   <div className={styles.bannerInner}>
-    <Image src="/recursero-libros.jpg" alt="Nuestra biblioteca" width={1600} height={360} className={styles.banner} />
+    <Image src="/site/recursero-libros.jpg" alt="Nuestra biblioteca" width={1600} height={360} className={styles.banner} />
   </div>
 </section>
 
@@ -147,6 +149,10 @@ export default function LibrosPage() {
           onClose={() => setSelected(null)}
         />
       )}
+       <div className={styles.row}>
+      <GoBackRow />
+
+    </div>
     </main>
   );
 }

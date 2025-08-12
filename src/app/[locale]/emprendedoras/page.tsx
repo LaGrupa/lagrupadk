@@ -4,6 +4,8 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { createPortal } from "react-dom";
 import styles from "./Emprendedoras.module.css";
+import GoBackRow from "@/components/GoBackRow";
+
 
 type Biz = {
   name: string;
@@ -83,7 +85,7 @@ export default function EmprendedorasPage() {
       <section className={styles.bannerWrap}>
         <div className={styles.bannerInner}>
           <Image
-            src="/recursero-emprendedoras.jpg"
+            src="/site/recursero-emprendedoras.jpg"
             alt="Emprendedoras de La Grupa"
             width={1600}
             height={360}
@@ -184,7 +186,11 @@ export default function EmprendedorasPage() {
       </section>
 
       {selected && <BizModal biz={selected} onClose={() => setSelected(null)} />}
+        
+     <GoBackRow />
+
     </main>
+    
   );
 }
 
@@ -284,3 +290,4 @@ function ModalRow({
     </div>
   );
 }
+

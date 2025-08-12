@@ -1,0 +1,33 @@
+.goBack {
+  display: inline-block;
+  background: #6b57a3;
+  color: #fff;
+  padding: 0.8rem 1.25rem;
+  border: none;
+  border-radius: 50px; /* pill shape */
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.goBack:hover {
+  background-color: #584688;
+}
+
+.goBack:active {
+  transform: translateY(1px);
+}
+
+/* Mobile: full width */
+@media (max-width: 599px) {
+  .goBack {
+    width: 90%;
+    max-width: 22rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+}

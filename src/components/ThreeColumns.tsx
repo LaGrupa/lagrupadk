@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./ThreeColumns.module.css";
 
 export default function ThreeColumns() {
@@ -11,7 +12,7 @@ export default function ThreeColumns() {
             herramientas, experiencias y conocimientos. Han pasado por nuestros
             espacios talleres de yoga, dibujo, círculo de mujeres, acuarelas y más.
           </p>
-          <a href="#" className={styles.link}>Ver nuestros talleres</a>
+          <Link href="/talleres" className={styles.link}>Ver nuestros talleres</Link>
         </div>
 
         <div className={styles.col}>
@@ -21,7 +22,7 @@ export default function ThreeColumns() {
             comunidad. Esos espacios son tan importantes como cualquier otra actividad:
             nos ayudan a sentirnos menos solas.
           </p>
-          <a href="#" className={styles.link}>Fecha del próximo encuentro</a>
+          <Link href="/encuentros" className={styles.link}>Fecha del próximo encuentro</Link>
         </div>
 
         <div className={styles.col}>
@@ -31,7 +32,7 @@ export default function ThreeColumns() {
             discriminación, o un momento de crisis) acompañamos y escuchamos, compartimos
             recursos y buscamos juntas formas de sostener.
           </p>
-          <a href="#" className={styles.link}>Contactanos</a>
+          <Link href="/contact" className={styles.link}>Contactanos</Link>
         </div>
       </div>
     </section>

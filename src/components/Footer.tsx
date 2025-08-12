@@ -17,14 +17,13 @@ export default function Footer() {
         {/* Columns */}
         <nav className={styles.links} aria-label="Acerca de">
           <h4>Acerca de</h4>
-          <a href="#">Equipo</a>
-          <a href="#">Historial</a>
+          <a href="/quienes-somos">Quiénes somos</a>
         </nav>
 
         <nav className={styles.links} aria-label="Privacidad">
           <h4>Privacidad</h4>
           <a href="#">Política de privacidad</a>
-          <a href="#">Contacto</a>
+          <a href="/contacto">Contacto</a>
         </nav>
 
         {/* Social */}

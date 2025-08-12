@@ -13,20 +13,24 @@ export default function Cta() {
             <li>Participá en encuentros para compartir, sanar y organizarnos</li>
             <li>Construí con nosotras un espacio seguro y colectivo</li>
           </ul>
-          <a href="#" className={styles.button}>Contactanos</a>
+          <a className={`${styles.button} u-btnWideMobile`} href="/contact">Contactanos</a>
         </div>
 
         {/* Image */}
         <div className={styles.imageWrap}>
           <Image
-            src="/cta.jpg"  // put this file in /public
+            src="/site/cta.jpg"
             alt="Miembros de La Grupa"
-            width={560}
-            height={360}
+            fill
+            sizes="(max-width: 899px) 100vw, 44vw"
             className={styles.image}
+            priority={false}
           />
         </div>
       </div>
     </section>
   );
 }
+
+
+

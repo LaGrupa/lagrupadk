@@ -13,7 +13,7 @@ export default function RecurseroPage() {
           <Link href="/emprendedoras" className={styles.card}>
             <div className={styles.media}>
               <Image
-                src="/recursero-emprendedoras.jpg"   // put in /public or swap for placeholder
+                src="/site/recursero-emprendedoras.jpg"   // put in /public or swap for placeholder
                 alt="Emprendedoras de La Grupa"
                 width={480}
                 height={300}
@@ -30,7 +30,7 @@ export default function RecurseroPage() {
           <Link href="/libros" className={styles.card}>
             <div className={styles.media}>
               <Image
-                src="/recursero-libros.jpg"          // put in /public or use placeholder
+                src="/site/recursero-libros.jpg"          // put in /public or use placeholder
                 alt="Libros recomendados"
                 width={480}
                 height={300}

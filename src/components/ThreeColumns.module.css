@@ -1,40 +1,56 @@
 .section {
-  background: #fff;
-  padding: 3rem 1rem;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  gap: 2rem;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  grid-template-columns: 1fr;                 /* mobile: stack */
 }
 
 @media (min-width: 900px) {
   .container {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);    /* desktop: 3 columns */
   }
 }
 
-.col h3 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin: 0 0 0.75rem;
+.col {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
 }
 
-.col p {
-  margin: 0 0 0.75rem;
-  line-height: 1.6;
-  color: #333;
+.col h3 {
+  margin: 0 0 .6rem;
+  font-size: clamp(1.1rem, 1vw + 1rem, 1.4rem);
+  font-weight: 800;
 }
+
+.col p { margin: 0 0 .9rem; line-height: 1.65; }
 
 .link {
   display: inline-block;
+  background: #000;
+  color: #fff;
   text-decoration: none;
-  font-weight: 600;
-  color: #0a66c2; /* subtle link color */
+  font-weight: 700;
+  padding: .6rem .9rem;
+  border-radius: 10px;
+  transition: background-color .15s ease, transform .15s ease;
 }
+.link:hover { background: #222; }
+.link:active { transform: translateY(1px); }
 
-.link:hover {
-  text-decoration: underline;
+/* Mobile: wide, centered buttons for tap comfort */
+@media (max-width: 599px) {
+  .link {
+    display: block;
+    width: 90%;
+    max-width: 20rem;
+    margin: .25rem auto 0;
+    text-align: center;
+  }
 }
