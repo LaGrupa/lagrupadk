@@ -4,7 +4,9 @@ import {createContext, useContext} from 'react';
 import type {ReactNode} from 'react';
 
 type Locale = 'es' | 'da';
-type Dict = Record<string, unknown>;
+type Dict = {
+  [key: string]: unknown;
+};
 type Ctx = {locale: Locale; dict: Dict};
 
 const I18nCtx = createContext<Ctx | null>(null);
@@ -25,10 +27,15 @@ export function useT(ns?: string) {
   const ctx = useContext(I18nCtx);
   if (!ctx) throw new Error('I18nProvider missing');
 
-  const base: any = ns ? (ctx.dict as any)[ns] ?? {} : (ctx.dict as any);
+  const base: unknown = ns ? (ctx.dict as Dict)[ns] ?? {} : (ctx.dict as Dict);
 
   const t = (key: string) => {
-    const val = key.split('.').reduce<any>((o, k) => (o == null ? undefined : o[k]), base);
+    const val = key
+      .split('.')
+      .reduce<unknown>(
+        (o, k) => (o == null ? undefined : (o as Record<string, unknown>)[k]),
+        base
+      );
     return typeof val === 'string' ? val : '';
   };
 

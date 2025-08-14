@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import styles from './Hero.module.css';
-import {I18nLink as Link} from '@/i18nLink';
-import {useT} from '@/i18n';
+import {I18nLink as Link} from '../i18nLink';
+import {useT} from '../i18n';
 
 export default function Hero() {
   const {t} = useT('hero');

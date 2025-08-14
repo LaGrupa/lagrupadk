@@ -1,21 +1,38 @@
 'use client';
 
-import NextLink, {LinkProps} from 'next/link';
+import Link from 'next/link';
+import type {ComponentProps} from 'react';
+import {usePathname} from 'next/navigation';
 import {useT} from './i18n';
 
-type Props = LinkProps & {
-  locale?: string;
-  href: string;
-  children?: React.ReactNode;
+type Locale = 'es' | 'da';
+
+type Props = Omit<ComponentProps<typeof Link>, 'href'> & {
+  href: string;      // '', '/', '/contact', '/faq', etc.
+  locale?: Locale;   // force a locale (used by the language switcher)
 };
 
-export function I18nLink(props: Props) {
-  const {locale} = useT();
-  const targetLocale = props.locale ?? locale;
-  const href =
-    targetLocale === 'es'
-      ? props.href
-      : `/da${props.href === '/' ? '' : props.href}`;
+function stripLocalePrefix(path: string): string {
+  // Remove a single leading /es or /da
+  return path.replace(/^\/(es|da)(?=\/|$)/, '') || '/';
+}
 
-  return <NextLink {...props} href={href} />;
+export function I18nLink({href, locale: forcedLocale, ...rest}: Props) {
+  const {locale} = useT();
+  const pathname = usePathname() || '/';
+
+  const target: Locale = forcedLocale ?? locale;
+
+  // Base path: explicit href or current path
+  const rawBase = href === '' ? pathname : href;
+
+  // Normalize: strip any existing /es or /da
+  const base = stripLocalePrefix(rawBase);
+
+  // Apply target locale (Spanish has no prefix)
+  const out = target === 'da'
+    ? `/da${base === '/' ? '' : base}`
+    : base;
+
+  return <Link {...rest} href={out} />;
 }

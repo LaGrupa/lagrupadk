@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import styles from './Cta.module.css';
-import {useT} from '@/i18n';
-import {I18nLink as Link} from '@/i18nLink';
+import {useT} from '../i18n';
+import {I18nLink as Link} from '../i18nLink';
 
 export default function Cta() {
   const {t} = useT('cta');

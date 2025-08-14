@@ -1,23 +1,30 @@
-import '../globals.css';
-import type {ReactNode} from 'react';
-import {I18nProvider} from '@/i18n';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+"use client";
 
-export function generateStaticParams() { return [{locale:'es'},{locale:'da'}]; }
+import type { ReactNode } from "react";
+import { use } from "react";
+import Navbar from "../../components/Navbar";
+import { I18nProvider } from "../../i18n";
+import es from "../../messages/es.json";
+import da from "../../messages/da.json";
 
-export default async function LocaleLayout({
-  children, params
-}:{children:ReactNode; params:Promise<{locale:'es'|'da'}>}) {
-  const {locale} = await params;
-  const dict = (await import(`@/messages/${locale}.json`)).default;
+const dictionaries = { es, da } as const;
+
+export default function LocaleLayout({
+  children,
+  params,
+}: {
+  children: ReactNode;
+  params: Promise<{ locale: "es" | "da" }>;
+}) {
+  const { locale } = use(params);   // <-- unwrap the params Promise
+  const dict = dictionaries[locale];
+
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body className="site">
         <I18nProvider locale={locale} dict={dict}>
           <Navbar />
-          <main className="site-main">{children}</main>
-          <Footer />
+          {children}
         </I18nProvider>
       </body>
     </html>
