@@ -35,3 +35,7 @@ footer { flex-shrink: 0; }     /* Footer stays at bottom */
     text-align: center !important;
   }
 }
+
+html, body { height: 100%; }
+
+

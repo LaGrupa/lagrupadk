@@ -1,16 +1,25 @@
 {
-  "nav.who": "Hvem er vi",
-  "nav.what": "Hvad laver vi?",
-  "nav.pubs": "Publikationer",
-  "nav.resources": "Ressourcer",
-  "nav.faq": "Ofte stillede spørgsmål",
-  "nav.contact": "Kontakt os",
-
-  "hero.title": "Feministisk fællesskab for migrantkvinder",
-  "hero.cta": "Læs mere om La Grupa",
-
-  "contact.title": "Kontakt os",
-  "contact.send": "Send",
-
-  "goback": "← Tilbage"
+  "nav": {
+    "who": "Hvem er vi",
+    "what": "Hvad laver vi",
+    "pubs": "Publikationer",
+    "resources": "Ressourcebank",
+    "faq": "Ofte stillede spørgsmål",
+    "contact": "Kontakt os"
+  },
+  "hero": {
+    "title": "Feministisk fællesskab for migrantkvinder",
+    "cta": "Lær mere om La Grupa",
+    "alt": "Gruppe af kvinder til picnic",
+    "lead": "er et trygt og politisk rum skabt af og for migrantkvinder og -minoriteter i Danmark. Vi organiserer os kollektivt for at modstå, hele og forandre vores virkeligheder."
+  },
+  "cta": {
+    "title": "Styrk din migrantrejse\nsammen med La Grupa",
+    "b1": "Bliv medlem af vores feministiske fællesskab",
+    "b2": "Deltag i møder for at dele, hele og organisere",
+    "b3": "Vær med til at skabe et sikkert, kollektivt rum",
+    "button": "Kontakt os",
+    "imgAlt": "Medlemmer af La Grupa"
+  }
 }
+

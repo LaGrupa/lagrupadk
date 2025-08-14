@@ -1,15 +1,20 @@
-import Link from "next/link";
-import Image from "next/image";
-import styles from "./Hero.module.css";
+'use client';
+
+import Image from 'next/image';
+import styles from './Hero.module.css';
+import {I18nLink as Link} from '@/i18nLink';
+import {useT} from '@/i18n';
 
 export default function Hero() {
+  const {t} = useT('hero');
+
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.inner}>
         <div className={styles.media}>
           <Image
-            src="/site/hero.jpg"                   // moved into /public/site
-            alt="Grupo de mujeres en picnic"
+            src="/site/hero.jpg"
+            alt={t('alt')}
             fill
             priority
             sizes="(max-width: 599px) 100vw, (max-width: 1023px) 50vw, 640px"
@@ -18,22 +23,20 @@ export default function Hero() {
         </div>
 
         <div className={styles.content}>
-          <h2 id="hero-title" className={styles.title}>
-            Comunidad Feminista de Mujeres Migrantes
-          </h2>
+          <h2 id="hero-title" className={styles.title}>{t('title')}</h2>
           <p className={styles.lead}>
-            <strong>La Grupa</strong> es un espacio seguro y político creado por y para
-            mujeres y disidencias migrantes en Dinamarca. Nos organizamos colectivamente
-            para resistir, sanar y transformar nuestras realidades.
+            <strong>La Grupa</strong> {t('lead')}
           </p>
-          <Link href="/quienes-somos" className={styles.button} aria-label="Conocé más de La Grupa">
-            Conocé más de La Grupa
+          <Link href="/quienes-somos" className={styles.button} aria-label={t('cta')}>
+            {t('cta')}
           </Link>
         </div>
       </div>
     </section>
   );
 }
+
+
 
 
 

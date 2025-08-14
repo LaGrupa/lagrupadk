@@ -1,16 +1,26 @@
 {
-  "nav.who": "Quiénes Somos",
-  "nav.what": "¿Qué hacemos?",
-  "nav.pubs": "Publicaciones",
-  "nav.resources": "Recursero",
-  "nav.faq": "Preguntas Frecuentes",
-  "nav.contact": "Contactanos",
-
-  "hero.title": "Comunidad Feminista de Mujeres Migrantes",
-  "hero.cta": "Conocé más de La Grupa",
-
-  "contact.title": "Ponete en contacto con nosotras",
-  "contact.send": "Enviar",
-
-  "goback": "← Volver"
+  "nav": {
+    "who": "Quiénes Somos",
+    "what": "¿Qué hacemos?",
+    "pubs": "Publicaciones",
+    "resources": "Recursero",
+    "faq": "Preguntas Frecuentes",
+    "contact": "Contactanos"
+  },
+  "hero": {
+    "title": "Comunidad Feminista de Mujeres Migrantes",
+    "cta": "Conocé más de La Grupa",
+    "alt": "Grupo de mujeres en picnic",
+    "lead": "es un espacio seguro y político creado por y para mujeres y disidencias migrantes en Dinamarca. Nos organizamos colectivamente para resistir, sanar y transformar nuestras realidades."
+  },
+  "cta": {
+    "title": "Fortalecé tu camino migrante\njunto a La Grupa",
+    "b1": "Sumate como miembra en nuestra comunidad feminista",
+    "b2": "Participá en encuentros para compartir, sanar y organizarnos",
+    "b3": "Construí con nosotras un espacio seguro y colectivo",
+    "button": "Contactanos",
+    "imgAlt": "Miembros de La Grupa"
+  }
 }
+
+

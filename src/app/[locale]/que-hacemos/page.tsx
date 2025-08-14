@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "./QueHacemos.module.css";
 
 const encuentrosImg = "/site/encuentros.jpg";
-const talleresImg = "/site/talleres.jpg";
+const talleresImg   = "/site/talleres.jpg";
 
 export default function QueHacemosPage() {
   return (
@@ -12,30 +12,39 @@ export default function QueHacemosPage() {
 
       <div className={styles.cards}>
         <Link href="/talleres" className={styles.card}>
-          <Image
-            src={talleresImg}
-            alt="Talleres"
-            width={480}
-            height={300}
-            className={styles.image}
-          />
-          <h2 className={styles.cardTitle}>Talleres</h2>
+          <div className={styles.media}>
+            <Image
+              src={talleresImg}
+              alt="Talleres"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className={styles.img}
+            />
+          </div>
+          <div className={styles.body}>
+            <h2 className={styles.cardTitle}>Talleres</h2>
+          </div>
         </Link>
 
         <Link href="/encuentros" className={styles.card}>
-          <Image
-            src={encuentrosImg}
-            alt="Encuentros"
-            width={480}
-            height={300}
-            className={styles.image}
-          />
-          <h2 className={styles.cardTitle}>Encuentros</h2>
+          <div className={styles.media}>
+            <Image
+              src={encuentrosImg}
+              alt="Encuentros"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className={styles.img}
+            />
+          </div>
+          <div className={styles.body}>
+            <h2 className={styles.cardTitle}>Encuentros</h2>
+          </div>
         </Link>
       </div>
     </div>
   );
 }
+
 
 
 
