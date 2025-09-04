@@ -13,13 +13,11 @@
     "alt": "Grupo de mujeres en un picnic",
     "lead": "es un espacio seguro y político creado por y para mujeres y disidencias migrantes en Dinamarca. Nos organizamos colectivamente para resistir, sanar y transformar nuestras realidades."
   },
-
   "cta": {
     "title": "Fortalece tu viaje migrante\njunto a La Grupa",
     "lead": "Únete a nuestra comunidad feminista en Dinamarca.",
     "btn": { "label": "Quiero participar", "href": "contact" }
   },
-
   "home": {
     "cards": {
       "workshops": {
@@ -39,7 +37,6 @@
       }
     }
   },
-
   "quienes": {
     "title": "Quiénes somos",
     "heroImgAlt": "La Grupa en una manifestación en Copenhague",
@@ -55,7 +52,6 @@
     "visionTitle": "Nuestra visión",
     "visionP1": "Ser el punto de referencia para mujeres hispanohablantes en Dinamarca que buscan una comunidad feminista, comprometida, cálida y solidaria; fortalecer el orgullo de pertenecer a una red que refleja nuestros valores y convicciones en su apoyo real, emocional y práctico, para enfrentar juntas los desafíos de migrar y vivir lejos de casa."
   },
-
   "quehacemos": {
     "title": "¿Qué hacemos?",
     "workshops": "Talleres",
@@ -63,7 +59,6 @@
     "meetings": "Encuentros",
     "meetingsAlt": "Encuentros"
   },
-
   "contact": {
     "title": "Contacto",
     "lead": "¿Tienes preguntas, propuestas o querés colaborar? Completá el formulario y te respondemos.",
@@ -91,7 +86,6 @@
     },
     "imageAlt": "Copenhague"
   },
-
   "footer": {
     "desc": "Colectiva de mujeres migrantes en Dinamarca que se organiza para tejer comunidad, acompañarnos y compartir recursos, saberes y cuidados.",
     "about": "Sobre nosotras",
@@ -102,29 +96,44 @@
     "social": "Redes sociales",
     "credit": "Diseñado con 💜 y fuerza feminista por"
   },
-
   "faq": {
     "title": "Preguntas Frecuentes",
     "items": [
-      {
-        "q": "¿Qué es La Grupa?",
-        "a": "La Grupa es una colectiva de mujeres migrantes en Dinamarca que se organiza para crear comunidad, acompañarse mutuamente y compartir recursos, saberes y cuidados."
-      },
-      {
-        "q": "¿Quiénes pueden participar en La Grupa?",
-        "a": "Cualquier mujer migrante, en todas sus diversidades, que viva en Dinamarca y quiera formar parte de una red de apoyo feminista, horizontal y antirracista."
-      },
-      {
-        "q": "¿Qué tipo de actividades hacen?",
-        "a": "Organizamos talleres para mujeres (como costura, escritura, autocuidado), encuentros para conversar y compartir experiencias, y también acompañamientos personales o colectivos en situaciones de dificultad."
-      },
-      {
-        "q": "¿Cómo puedo sumarme?",
-        "a": "Si querés unirte a La Grupa como miembra, escribinos a lagrupa.dk@gmail.com"
-      }
+      { "q": "¿Qué es La Grupa?", "a": "La Grupa es una colectiva de mujeres migrantes en Dinamarca que se organiza para crear comunidad, acompañarse mutuamente y compartir recursos, saberes y cuidados." },
+      { "q": "¿Quiénes pueden participar en La Grupa?", "a": "Cualquier mujer migrante, en todas sus diversidades, que viva en Dinamarca y quiera formar parte de una red de apoyo feminista, horizontal y antirracista." },
+      { "q": "¿Qué tipo de actividades hacen?", "a": "Organizamos talleres para mujeres (como costura, escritura, autocuidado), encuentros para conversar y compartir experiencias, y también acompañamientos personales o colectivos en situaciones de dificultad." },
+      { "q": "¿Cómo puedo sumarme?", "a": "Si querés unirte a La Grupa como miembra, escribinos a lagrupa.dk@gmail.com" }
     ]
+  },
+  "workshops": {
+    "title": "Talleres",
+    "intro": "El principal objetivo de los talleres de La Grupa es que ninguna mujer de nuestra comunidad se quede aislada, sin referentes y afrontando en soledad situaciones machistas. Queremos que todas cuenten con un espacio donde puedan ser escuchadas y contenidas, donde tengan herramientas prácticas y una red que las entienda y acompañe.",
+    "upcoming": "Próximos talleres",
+    "past": "Talleres anteriores",
+    "empty": { "title": "No hay próximos talleres", "desc": "Vuelve pronto; anunciaremos nuevas fechas." },
+    "items": {
+      "hatha": { "title": "Hatha Yoga", "desc": "Yoga para dar paso a un post taller en el bar, compartiendo unas cervezas." },
+      "acuarelas": { "title": "Acuarelas", "desc": "El segundo taller a cargo de Lucía. Nos llevó del día a la noche para poder frenar la magia de los pinceles." },
+      "circulo": { "title": "Círculo de mujeres", "desc": "El tercer taller fue un Círculo de Mujeres: espacios íntimos para la escucha, reflexión y red." },
+      "yoga_facial": { "title": "Yoga Facial", "desc": "En el último taller antes del verano, practicamos Yoga Facial y meditación facial." },
+      "dibujar": { "title": "Dibujar para encontrarse", "desc": "El quinto taller nos encontró dibujando juntas. Un espacio para explorar y compartir procesos creativos." }
+    }
+  },
+   "cookies": {
+    "title": "Cookies",
+    "text": "Usamos cookies para entender el uso del sitio y mejorar la experiencia. Las cookies esenciales se usan siempre.",
+    "accept": "Aceptar todas",
+    "reject": "Rechazar",
+    "manage": "Preferencias de cookies",
+    "learnMore": "Política de privacidad"
   }
 }
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,26 @@
+.banner {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 60;
+  background: rgba(17, 24, 39, 0.95);
+  color: #fff;
+  padding: 14px;
+  backdrop-filter: saturate(140%) blur(4px);
+}
+.inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; gap: 16px; align-items: center; justify-content: space-between;
+}
+.text { max-width: 760px; }
+.text p { margin: 4px 0 8px; opacity: .9; }
+.link { color: #c7f9cc; text-decoration: underline; }
+.actions { display: flex; gap: 10px; }
+.accept, .reject {
+  border-radius: 999px; padding: 10px 14px; font-weight: 600; border: 0; cursor: pointer;
+}
+.accept { background: #c7f9cc; color: #052e16; }
+.reject { background: #e5e7eb; color: #111827; }
+@media (max-width: 640px) {
+  .inner { flex-direction: column; align-items: stretch; }
+  .actions { justify-content: flex-end; }
+}

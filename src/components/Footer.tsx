@@ -3,6 +3,7 @@ import styles from "./Footer.module.css";
 import { FaLinkedin, FaSpotify } from "react-icons/fa";
 import { useT } from "@/i18n";
 import { I18nLink as Link } from "@/i18nLink";
+import { CookieSettingsLink } from "@/components/CookieSettingsLink";
 
 export default function Footer() {
   const { t, locale } = useT();
@@ -12,21 +13,24 @@ export default function Footer() {
       <div className={styles.container}>
         {/* Brand */}
         <div className={styles.brand}>
-          {/* use the same heading class as other columns so it aligns exactly */}
           <h4 className={`${styles.h4} ${styles.brandTitle}`}>La Grupa DK</h4>
           <p className={styles.desc}>{t("footer.desc") as string}</p>
         </div>
 
-        {/* Columns */}
+        {/* About */}
         <nav className={styles.links} aria-label={t("footer.about") as string}>
           <h4 className={styles.h4}>{t("footer.about") as string}</h4>
           <Link href={`/${locale}/quienes-somos`}>{t("footer.who") as string}</Link>
         </nav>
 
+        {/* Privacy + Cookie settings */}
         <nav className={styles.links} aria-label={t("footer.privacy") as string}>
           <h4 className={styles.h4}>{t("footer.privacy") as string}</h4>
           <Link href={`/${locale}/privacy`}>{t("footer.policy") as string}</Link>
           <Link href={`/${locale}/contact`}>{t("footer.contact") as string}</Link>
+
+          {/* Cookie settings button styled like a link */}
+          <CookieSettingsLink className={styles.textButton} />
         </nav>
 
         {/* Social */}
