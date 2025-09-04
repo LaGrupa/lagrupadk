@@ -1,26 +1,132 @@
 {
   "nav": {
-    "who": "Quiénes Somos",
-    "what": "¿Qué hacemos?",
+    "who": "Quiénes somos",
+    "what": "Qué hacemos",
     "pubs": "Publicaciones",
     "resources": "Recursero",
-    "faq": "Preguntas Frecuentes",
-    "contact": "Contactanos"
+    "faq": "Preguntas frecuentes",
+    "contact": "Contacto"
   },
   "hero": {
-    "title": "Comunidad Feminista de Mujeres Migrantes",
-    "cta": "Conocé más de La Grupa",
-    "alt": "Grupo de mujeres en picnic",
+    "title": "Colectiva feminista de mujeres migrantes",
+    "cta": "Conocé más sobre La Grupa",
+    "alt": "Grupo de mujeres en un picnic",
     "lead": "es un espacio seguro y político creado por y para mujeres y disidencias migrantes en Dinamarca. Nos organizamos colectivamente para resistir, sanar y transformar nuestras realidades."
   },
+
   "cta": {
-    "title": "Fortalecé tu camino migrante\njunto a La Grupa",
-    "b1": "Sumate como miembra en nuestra comunidad feminista",
-    "b2": "Participá en encuentros para compartir, sanar y organizarnos",
-    "b3": "Construí con nosotras un espacio seguro y colectivo",
-    "button": "Contactanos",
-    "imgAlt": "Miembros de La Grupa"
+    "title": "Fortalece tu viaje migrante\njunto a La Grupa",
+    "lead": "Únete a nuestra comunidad feminista en Dinamarca.",
+    "btn": { "label": "Quiero participar", "href": "contact" }
+  },
+
+  "home": {
+    "cards": {
+      "workshops": {
+        "title": "Talleres",
+        "body": "Organizamos talleres de y para mujeres, donde compartimos herramientas, experiencias y conocimientos. Han pasado por nuestros espacios yoga, dibujo, círculo de mujeres, acuarelas y más.",
+        "btn": "Ver nuestros talleres"
+      },
+      "meetups": {
+        "title": "Encuentros",
+        "body": "También hacemos encuentros abiertos para conversar, descansar y pensar en comunidad. Estos espacios son tan importantes como cualquier otra actividad: nos ayudan a sentirnos menos solas.",
+        "btn": "Fecha del próximo encuentro"
+      },
+      "support": {
+        "title": "Acompañamientos",
+        "body": "Cuando alguna mujer atraviesa una situación difícil (violencia, discriminación o un momento de crisis), acompañamos y escuchamos, compartimos recursos y buscamos juntas formas de sostener.",
+        "btn": "Contáctanos"
+      }
+    }
+  },
+
+  "quienes": {
+    "title": "Quiénes somos",
+    "heroImgAlt": "La Grupa en una manifestación en Copenhague",
+    "secondImgAlt": "Integrantes de La Grupa",
+    "p1": "La Grupa nació en febrero de 2020 como una forma de juntarnos para marchar el 8 de marzo en Copenhague. Fue un gesto simple pero potente: una invitación a reconocernos como mujeres migrantes hispanohablantes con trayectorias diversas, ganas de organizarnos y la necesidad compartida de sentirnos menos solas.",
+    "p2": "Ese primer encuentro encendió algo. Con el tiempo, La Grupa dejó de ser solo un espacio para actividades puntuales y se volvió una red viva: un lugar donde compartimos información útil, ayudamos en emergencias, nos acompañamos en la vida cotidiana en Dinamarca y, sobre todo, nos cuidamos.",
+    "p3": "En julio de 2023 decidimos dar un paso más y convertirnos en una colectiva organizada. Lo hicimos con la convicción de que La Grupa no es solo otro grupo: es un espacio seguro y feminista, construido colectivamente, donde el respeto, la escucha, la empatía y la sororidad son principios fundamentales.",
+    "p4": "Desde entonces funcionamos como una comunidad autogestionada con un equipo voluntario de admin que sostiene y cuida el espacio. Hoy La Grupa es una red que acompaña y abraza: un lugar para todo, desde preguntas pequeñas hasta situaciones complejas; para pedir productos de nuestros países, ayuda con trámites o apoyo en una crisis. También hemos respondido a casos de violencia, diversas emergencias y otras situaciones que atraviesan nuestras vidas como mujeres migrantes.",
+    "p5": "Queremos seguir creciendo de manera colectiva, cuidadosa y comprometida. Por eso es importante que quienes se acerquen comprendan nuestra historia, nuestros valores y el lugar que queremos seguir construyendo juntas.",
+    "missionTitle": "Nuestra misión",
+    "missionP1": "La misión de La Grupa es construir una comunidad feminista de mujeres migrantes hispanohablantes en Dinamarca, basada en la sororidad, la escucha activa, la horizontalidad, las redes y el cuidado colectivo. Acompañamos con empatía en la vida cotidiana, en situaciones urgentes y en emergencias, compartiendo recursos, conocimientos útiles y apoyo mutuo.",
+    "missionStrong": "Queremos transformar la experiencia migratoria en algo acompañado, digno y colectivo.",
+    "visionTitle": "Nuestra visión",
+    "visionP1": "Ser el punto de referencia para mujeres hispanohablantes en Dinamarca que buscan una comunidad feminista, comprometida, cálida y solidaria; fortalecer el orgullo de pertenecer a una red que refleja nuestros valores y convicciones en su apoyo real, emocional y práctico, para enfrentar juntas los desafíos de migrar y vivir lejos de casa."
+  },
+
+  "quehacemos": {
+    "title": "¿Qué hacemos?",
+    "workshops": "Talleres",
+    "workshopsAlt": "Talleres",
+    "meetings": "Encuentros",
+    "meetingsAlt": "Encuentros"
+  },
+
+  "contact": {
+    "title": "Contacto",
+    "lead": "¿Tienes preguntas, propuestas o querés colaborar? Completá el formulario y te respondemos.",
+    "fields": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "message": "Mensaje",
+      "consent": "Acepto que La Grupa procese mis datos para responder a mi consulta.",
+      "required": "(obligatorio)"
+    },
+    "privacy": "Política de privacidad",
+    "submit": "Enviar",
+    "sending": "Enviando…",
+    "success": "¡Gracias! Recibimos tu mensaje.",
+    "failure": "Algo salió mal. Intentá de nuevo.",
+    "errors": {
+      "name": "Por favor, escribí tu nombre.",
+      "email": "Ingresá un correo válido.",
+      "message": "Contanos brevemente de qué se trata tu consulta.",
+      "consent": "Debes aceptar el tratamiento de datos para continuar."
+    },
+    "alt": {
+      "title": "Otras formas de contacto",
+      "text": "También podés escribir a"
+    },
+    "imageAlt": "Copenhague"
+  },
+
+  "footer": {
+    "desc": "Colectiva de mujeres migrantes en Dinamarca que se organiza para tejer comunidad, acompañarnos y compartir recursos, saberes y cuidados.",
+    "about": "Sobre nosotras",
+    "who": "Quiénes somos",
+    "privacy": "Privacidad",
+    "policy": "Política de privacidad",
+    "contact": "Contacto",
+    "social": "Redes sociales",
+    "credit": "Diseñado con 💜 y fuerza feminista por"
+  },
+
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "items": [
+      {
+        "q": "¿Qué es La Grupa?",
+        "a": "La Grupa es una colectiva de mujeres migrantes en Dinamarca que se organiza para crear comunidad, acompañarse mutuamente y compartir recursos, saberes y cuidados."
+      },
+      {
+        "q": "¿Quiénes pueden participar en La Grupa?",
+        "a": "Cualquier mujer migrante, en todas sus diversidades, que viva en Dinamarca y quiera formar parte de una red de apoyo feminista, horizontal y antirracista."
+      },
+      {
+        "q": "¿Qué tipo de actividades hacen?",
+        "a": "Organizamos talleres para mujeres (como costura, escritura, autocuidado), encuentros para conversar y compartir experiencias, y también acompañamientos personales o colectivos en situaciones de dificultad."
+      },
+      {
+        "q": "¿Cómo puedo sumarme?",
+        "a": "Si querés unirte a La Grupa como miembra, escribinos a lagrupa.dk@gmail.com"
+      }
+    ]
   }
 }
+
+
+
 
 

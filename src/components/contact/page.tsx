@@ -1,5 +1,4 @@
-import Contact from "../../../components/Contact";
+//import Contact from "../../../components/Contact";
 
-export default function ContactPage() {
-  return <Contact />;
-}
+//export default function ContactPage() {
+// return <Contact />;}

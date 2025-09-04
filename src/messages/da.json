@@ -13,13 +13,117 @@
     "alt": "Gruppe af kvinder til picnic",
     "lead": "er et trygt og politisk rum skabt af og for migrantkvinder og -minoriteter i Danmark. Vi organiserer os kollektivt for at modstå, hele og forandre vores virkeligheder."
   },
+
   "cta": {
     "title": "Styrk din migrantrejse\nsammen med La Grupa",
-    "b1": "Bliv medlem af vores feministiske fællesskab",
-    "b2": "Deltag i møder for at dele, hele og organisere",
-    "b3": "Vær med til at skabe et sikkert, kollektivt rum",
-    "button": "Kontakt os",
-    "imgAlt": "Medlemmer af La Grupa"
+    "lead": "Bliv en del af vores feministiske fællesskab i Danmark.",
+    "btn": { "label": "Jeg vil være med", "href": "contact" }
+  },
+
+  "home": {
+    "cards": {
+      "workshops": {
+        "title": "Workshops",
+        "body": "Vi arrangerer workshops for og med kvinder, hvor vi deler værktøjer, erfaringer og viden. Vi har bl.a. haft yoga, tegning, kvindecirkel, akvarel m.m.",
+        "btn": "Se vores workshops"
+      },
+      "meetups": {
+        "title": "Møder",
+        "body": "Vi holder også åbne møder for at tale sammen, hvile og tænke i fællesskab. Disse rum er vigtige – de hjælper os med ikke at føle os alene.",
+        "btn": "Dato for næste møde"
+      },
+      "support": {
+        "title": "Følgeskab",
+        "body": "Når en kvinde går gennem noget svært (fx vold, diskrimination eller en krise), følger vi hende, lytter, deler ressourcer og finder bæredygtige veje sammen.",
+        "btn": "Kontakt os"
+      }
+    }
+  },
+
+  "quienes": {
+    "title": "Hvem er vi",
+    "heroImgAlt": "La Grupa i demonstration i København",
+    "secondImgAlt": "Medlemmer af La Grupa",
+    "p1": "La Grupa blev født i februar 2020 som en måde at samles for at marchere sammen den 8. marts i København. Det var en enkel, men stærk gestus: en invitation til at genkende hinanden som spansktalende migrantkvinder med forskellige historier, lyst til at organisere os og et fælles behov for at føle os mindre alene.",
+    "p2": "Det første møde tændte noget. Med tiden holdt La Grupa op med kun at være et sted til enkeltstående aktiviteter og blev til et levende netværk: et sted hvor vi deler nyttig information, hjælper i nødsituationer, følger hinanden i hverdagen i Danmark og – frem for alt – passer på hinanden.",
+    "p3": "I juli 2023 besluttede vi at tage et skridt videre og blive en organiseret fællesskabsgruppe. Det gjorde vi med en klar overbevisning: La Grupa er ikke bare endnu en gruppe. Det er et trygt, feministisk rum, bygget i fællesskab, hvor respekt, lytning, empati og sororitet er grundlæggende principper.",
+    "p4": "Siden da har vi fungeret som et selvorganiseret fællesskab med et frivilligt admin-team, der støtter og passer på rummet. I dag er La Grupa et netværk, der ledsager og omfavner. Et sted hvor vi deler alt fra små spørgsmål til komplekse situationer; hvor man kan spørge efter produkter fra vores hjemlande, få hjælp til papirarbejde eller finde støtte i en krise. Det er også et rum, der har reageret på sager om vold, forskellige nødsituationer og mange andre ting, der præger vores liv som migrantkvinder.",
+    "p5": "Vi vil fortsætte med at vokse på en kollektiv, omsorgsfuld og forpligtende måde. Derfor er det vigtigt, at dem som kommer til, forstår vores historie, vores værdier og det sted, vi fortsat ønsker at bygge sammen.",
+    "missionTitle": "Vores mission",
+    "missionP1": "La Grupas mission er at opbygge et feministisk fællesskab af spansktalende migrantkvinder i Danmark. Det bygger på principper om sororitet, aktiv lytning, horisontalitet, netværk og kollektiv omsorg. Vi ledsager med empati i hverdagen, i presserende situationer og i nødstilfælde ved at dele ressourcer, nyttig viden og gensidig støtte.",
+    "missionStrong": "Vi ønsker at forandre migrationsoplevelsen til noget, der er ledsaget, værdigt og fælles.",
+    "visionTitle": "Vores vision",
+    "visionP1": "At være referencepunktet for spansktalende kvinder i Danmark, som søger et feministisk, engageret, varmt og solidarisk fællesskab. Vi vil styrke stoltheden over at tilhøre et netværk, der afspejler vores værdier og overbevisninger i sin reelle, følelsesmæssige og praktiske støtte, så vi sammen kan imødegå udfordringerne ved at migrere og leve langt hjemmefra."
+  },
+
+  "quehacemos": {
+    "title": "Hvad laver vi?",
+    "workshops": "Workshops",
+    "workshopsAlt": "Workshops",
+    "meetings": "Møder",
+    "meetingsAlt": "Møder"
+  },
+
+  "contact": {
+    "title": "Kontakt",
+    "lead": "Har du spørgsmål, forslag eller vil du samarbejde? Udfyld formularen, så vender vi tilbage.",
+    "fields": {
+      "name": "Navn",
+      "email": "E-mail",
+      "message": "Besked",
+      "consent": "Jeg accepterer, at La Grupa behandler mine oplysninger for at besvare min henvendelse.",
+      "required": "(obligatorisk)"
+    },
+    "privacy": "Privatlivspolitik",
+    "submit": "Send",
+    "sending": "Sender…",
+    "success": "Tak! Vi har modtaget din besked.",
+    "failure": "Noget gik galt. Prøv igen.",
+    "errors": {
+      "name": "Skriv venligst dit navn.",
+      "email": "Angiv en gyldig e-mail.",
+      "message": "Skriv kort, hvad din henvendelse drejer sig om.",
+      "consent": "Du skal acceptere databehandlingen for at fortsætte."
+    },
+    "alt": {
+      "title": "Andre kontaktmuligheder",
+      "text": "Du kan også skrive direkte til"
+    }
+  },
+
+  "footer": {
+    "desc": "Kollektiv af migrantkvinder i Danmark, der organiserer sig for at skabe fællesskab, støtte hinanden og dele ressourcer, viden og omsorg.",
+    "about": "Om os",
+    "who": "Hvem vi er",
+    "privacy": "Privatliv",
+    "policy": "Privatlivspolitik",
+    "contact": "Kontakt",
+    "social": "Sociale medier",
+    "credit": "Designet med 💜 og feministisk styrke af"
+  },
+
+  "faq": {
+    "title": "Ofte stillede spørgsmål",
+    "items": [
+      {
+        "q": "Hvad er La Grupa?",
+        "a": "La Grupa er et kollektiv af migrantkvinder i Danmark, der organiserer sig for at skabe fællesskab, støtte hinanden og dele ressourcer, viden og omsorg."
+      },
+      {
+        "q": "Hvem kan deltage i La Grupa?",
+        "a": "Alle migrantkvinder i deres forskelligheder, der bor i Danmark og ønsker at være en del af et feministisk, horisontalt og antiracistisk støttenetværk."
+      },
+      {
+        "q": "Hvilke aktiviteter laver I?",
+        "a": "Vi organiserer workshops for kvinder (som syning, skrivning, selvomsorg), møder til samtale og erfaringsdeling, samt personlige eller kollektive følgeskaber i svære situationer."
+      },
+      {
+        "q": "Hvordan kan jeg blive medlem?",
+        "a": "Hvis du vil være med i La Grupa, så skriv til os på lagrupa.dk@gmail.com"
+      }
+    ]
   }
 }
+
+
 

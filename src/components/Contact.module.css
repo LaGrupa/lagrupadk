@@ -164,3 +164,12 @@
   .button { transition: none; }
 }
 
+/* make footer stick to the bottom when content is short */
+.site {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.site > main {
+  flex: 1;
+}

@@ -1,44 +1,61 @@
-'use client';
+"use client";
 
-import {createContext, useContext} from 'react';
-import type {ReactNode} from 'react';
+import { createContext, useContext, useMemo, useCallback, ReactNode } from "react";
 
-type Locale = 'es' | 'da';
-type Dict = {
-  [key: string]: unknown;
-};
-type Ctx = {locale: Locale; dict: Dict};
+export type Locale = "es" | "da";
+export type Dict = Record<string, unknown>;
+type Ctx = { locale: Locale; dict: Dict };
 
 const I18nCtx = createContext<Ctx | null>(null);
 
 export function I18nProvider({
   locale,
   dict,
-  children
+  children,
 }: {
   locale: Locale;
   dict: Dict;
   children: ReactNode;
 }) {
-  return <I18nCtx.Provider value={{locale, dict}}>{children}</I18nCtx.Provider>;
+  return <I18nCtx.Provider value={{ locale, dict }}>{children}</I18nCtx.Provider>;
 }
 
+/** Dot-path getter: "a.b.c" → obj.a.b.c */
+function getPath<T = unknown>(obj: unknown, path: string): T | undefined {
+  if (!obj) return undefined;
+  return path.split(".").reduce<any>((acc, key) => (acc == null ? undefined : acc[key]), obj) as
+    | T
+    | undefined;
+}
+
+/**
+ * useT(ns?) returns:
+ *  - t<T>(key): T | undefined
+ *  - ts(key, fallback?): string
+ *  - locale
+ */
 export function useT(ns?: string) {
   const ctx = useContext(I18nCtx);
-  if (!ctx) throw new Error('I18nProvider missing');
+  if (!ctx) throw new Error("I18nProvider missing");
 
-  const base: unknown = ns ? (ctx.dict as Dict)[ns] ?? {} : (ctx.dict as Dict);
+  // ✅ resolve dotted namespaces like "home.cards"
+  const base = useMemo<Dict | undefined>(
+    () => (ns ? (getPath<Dict>(ctx.dict, ns) as Dict | undefined) : (ctx.dict as Dict)),
+    [ctx.dict, ns]
+  );
 
-  const t = (key: string) => {
-    const val = key
-      .split('.')
-      .reduce<unknown>(
-        (o, k) => (o == null ? undefined : (o as Record<string, unknown>)[k]),
-        base
-      );
-    return typeof val === 'string' ? val : '';
-  };
+  const t = useCallback(<T = unknown>(key: string) => getPath<T>(base, key), [base]);
 
-  return {t, locale: ctx.locale};
+  const ts = useCallback(
+    (key: string, fallback = ""): string => {
+      const val = getPath<unknown>(base, key);
+      return typeof val === "string" ? val : fallback;
+    },
+    [base]
+  );
+
+  return { t, ts, locale: ctx.locale };
 }
+
+
 

@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./QuienesSomos.module.css";
+import { useT } from "../../../i18n";
 
 export default function QuienesSomosPage() {
+  const { t } = useT("quienes");
+
   return (
     <>
       {/* FULL-WIDTH HERO (pastel background) */}
@@ -9,8 +14,8 @@ export default function QuienesSomosPage() {
         <div className={styles.heroContent}>
           <div className={styles.media}>
             <Image
-              src="/site/quienes1.jpg" 
-              alt="La Grupa en marcha en Copenhague"
+              src="/site/quienes1.jpg"
+              alt={t("heroImgAlt")}
               className={styles.image}
               width={550}
               height={366}
@@ -20,21 +25,9 @@ export default function QuienesSomosPage() {
           </div>
 
           <div className={styles.text}>
-            <h2>Quiénes Somos</h2>
-            <p>
-              <strong>La Grupa nació en febrero de 2020</strong>, como una forma de
-              encontrarnos para marchar juntas el 8 de marzo en Copenhague. Fue un
-              gesto simple, pero poderoso: una invitación a reconocernos entre mujeres
-              hispanohablantes migrantes, con historias diversas, ganas de organizarnos
-              y la necesidad compartida de sentirnos menos solas.
-            </p>
-            <p>
-              Ese primer encuentro encendió algo. Con el tiempo, La Grupa dejó de ser
-              solo un espacio para organizar actividades puntuales, y se transformó en
-              una red viva: un lugar donde compartimos información útil, acompañamos
-              emergencias, transitamos juntas la vida diaria en Dinamarca y, sobre todo,
-              <strong> nos cuidamos entre todas</strong>.
-            </p>
+            <h2>{t("title")}</h2>
+            <p>{t("p1")}</p>
+            <p>{t("p2")}</p>
           </div>
         </div>
       </section>
@@ -45,35 +38,15 @@ export default function QuienesSomosPage() {
           {/* Block 2 */}
           <div className={styles.block}>
             <div className={styles.text}>
-              <p>
-                En julio de 2023 decidimos dar un paso más y consolidarnos como una
-                comunidad organizada. Lo hicimos con una convicción firme:
-                <strong> La Grupa no es un grupo más</strong>. Es un espacio seguro y
-                feminista, construido colectivamente, donde el respeto, la escucha, la
-                empatía y la sororidad son principios fundamentales.
-              </p>
-              <p>
-                Desde entonces, funcionamos como una comunidad autogestiva con un
-                equipo de administradoras voluntarias que sostienen y cuidan el
-                espacio. <strong>Hoy La Grupa es una red que acompaña y abraza</strong>.
-                Un lugar donde compartimos desde dudas triviales hasta situaciones
-                complejas; donde se puede preguntar por productos de nuestros países,
-                pedir ayuda con un trámite o encontrar apoyo en una crisis. También es
-                un espacio que se ha movido frente a casos de violencia, emergencias
-                diversas y tantas otras situaciones que marcan nuestras vidas como
-                mujeres migrantes.
-              </p>
-              <p>
-                Queremos seguir creciendo de manera colectiva, cuidada y comprometida.
-                Por eso, es importante que quienes se suman comprendan nuestra historia,
-                nuestros valores y el lugar que queremos seguir construyendo juntas.
-              </p>
+              <p>{t("p3")}</p>
+              <p>{t("p4")}</p>
+              <p>{t("p5")}</p>
             </div>
 
             <div className={styles.media}>
               <Image
                 src="/site/quienes2.jpg"
-                alt="Integrantes de La Grupa"
+                alt={t("secondImgAlt")}
                 className={styles.image}
                 width={550}
                 height={366}
@@ -85,31 +58,14 @@ export default function QuienesSomosPage() {
           {/* Misión / Visión */}
           <div className={styles.missionVision}>
             <div>
-              <h3>Nuestra Misión</h3>
-              <p>
-                La misión de La Grupa es la edificación de una comunidad feminista de
-                mujeres hispanohablantes migrantes en Dinamarca. Se basa en principios
-                de sororidad, escucha activa, horizontalidad, red y cuidado colectivo.
-                Acompañamos con empatía en la vida cotidiana, en una urgencia o en
-                emergencias, compartiendo recursos, información útil y apoyo mutuo.
-              </p>
-              <p>
-                <strong>
-                  Buscamos transformar la experiencia migrante en una vivencia
-                  acompañada, digna y colectiva.
-                </strong>
-              </p>
+              <h3>{t("missionTitle")}</h3>
+              <p>{t("missionP1")}</p>
+              <p><strong>{t("missionStrong")}</strong></p>
             </div>
 
             <div>
-              <h3>Nuestra Visión</h3>
-              <p>
-                Ser el espacio de referencia para mujeres hispanohablantes en Dinamarca
-                que buscan una comunidad feminista, comprometida, cálida y solidaria.
-                Queremos fortalecer el orgullo de pertenecer a una red que refleja
-                nuestros valores y convicciones en su sostén real, emocional y práctico
-                para enfrentar juntas los desafíos de migrar y vivir lejos de casa.
-              </p>
+              <h3>{t("visionTitle")}</h3>
+              <p>{t("visionP1")}</p>
             </div>
           </div>
         </div>
@@ -117,4 +73,5 @@ export default function QuienesSomosPage() {
     </>
   );
 }
+
 

@@ -1,63 +1,60 @@
 .section {
-  background: #d3c5d6;
-  padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2rem);
+  background: #d9cfdb; /* lila */
+  padding: 48px 0;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1160px;
+  margin: 0 auto;   /* ✅ centered */
+  padding: 0 20px;
+}
+
+.inner {
   display: grid;
-  gap: clamp(1rem, 3vw, 2rem);
-  grid-template-columns: 1fr; /* mobile: stack */
-  align-items: start;         /* don't stretch rows to tallest column */
+  grid-template-columns: 1.1fr 1fr; /* text left, image right */
+  gap: 28px;
+  align-items: center;
 }
 
-@media (min-width: 900px) {
-  .container {
-    grid-template-columns: 1.1fr 0.9fr; /* text a bit wider */
-  }
+@media (max-width: 900px) {
+  .inner { grid-template-columns: 1fr; }
 }
 
-.text h3 {
-  font-size: clamp(1.4rem, 2.2vw + 0.6rem, 2rem);
+.text { padding-right: 8px; }
+
+.title {
+  font-family: var(--font-serif, Georgia, "Times New Roman", serif);
   font-weight: 700;
-  line-height: 1.25;
-  margin: 0 0 1rem;
+  font-size: clamp(1.8rem, 1.2rem + 1.6vw, 2.4rem);
+  line-height: 1.2;
+  margin: 0 0 12px 0;
 }
 
-.list {
-  margin: 0 0 1.5rem;
-  padding-left: 1.1rem;
+.lead {
+  margin: 0 0 18px 0;
   line-height: 1.6;
 }
 
-.list li { margin: 0.35rem 0; }
-
-.button {
+.btn {
   display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid #111;
+  text-decoration: none;
+  font-weight: 600;
   background: #111;
   color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  border-radius: 0.6rem;
-  padding: 0.65rem 1.1rem;
 }
-.button:hover { background: #333; }
 
-/* ✅ Proper wrapper for Image with `fill` */
-.imageWrap {
+.media {
   position: relative;
   width: 100%;
-  border-radius: 0.75rem;
+  aspect-ratio: 16 / 12;
+  border-radius: 18px;
   overflow: hidden;
-  aspect-ratio: 4 / 3;                 /* solid box on all breakpoints */
-  max-height: 420px;                    /* cap growth so it never fills the screen */
-  box-shadow: 0 8px 22px rgba(0,0,0,.08);
-  place-self: start;                    /* don't vertically center/stretch */
+  box-shadow: 0 20px 35px rgba(0,0,0,.18);
 }
 
-/* ✅ With `fill`, don't set width/height; just fit it */
-.image {
+.img {
   object-fit: cover;
-  object-position: 50% 50%;
 }

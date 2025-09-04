@@ -1,50 +1,54 @@
-import Link from "next/link";
+"use client";
+
+import { I18nLink as Link } from "@/i18nLink";
 import Image from "next/image";
+import { useT } from "@/i18n";
 import styles from "./Recursero.module.css";
 
+// Static imports from /public
+import emprendedorasImg from "/public/site/recursero-emprendedoras.jpg";
+import librosImg from "/public/site/recursero-libros.jpg";
+
 export default function RecurseroPage() {
+  const { t } = useT("recursero");
+
   return (
-    <section className={styles.section}>
-      <div className={styles.container}>
-        <h1 className={styles.title}>Recursero</h1>
+    <div className={styles.container}>
+      <h1 className={styles.title}>{t("title")}</h1>
 
-        <div className={styles.cards}>
-          {/* Card: Emprendedoras */}
-          <Link href="/emprendedoras" className={styles.card}>
-            <div className={styles.media}>
-              <Image
-                src="/site/recursero-emprendedoras.jpg"   // put in /public or swap for placeholder
-                alt="Emprendedoras de La Grupa"
-                width={480}
-                height={300}
-                className={styles.image}
-              />
-            </div>
-            <h2 className={styles.cardTitle}>Emprendedoras</h2>
-            <p className={styles.cardText}>
-              Catálogo de emprendimientos de mujeres de La Grupa.
-            </p>
-          </Link>
+      <div className={styles.cards}>
+        <Link href="/emprendedoras" className={styles.card}>
+          <div className={styles.media}>
+            <Image
+              src={emprendedorasImg}
+              alt={t("entrepreneursAlt")}
+              className={styles.bannerImg}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div className={styles.body}>
+            <h2 className={styles.cardTitle}>{t("entrepreneurs")}</h2>
+          </div>
+        </Link>
 
-          {/* Card: Libros */}
-          <Link href="/libros" className={styles.card}>
-            <div className={styles.media}>
-              <Image
-                src="/site/recursero-libros.jpg"          // put in /public or use placeholder
-                alt="Libros recomendados"
-                width={480}
-                height={300}
-                className={styles.image}
-              />
-            </div>
-            <h2 className={styles.cardTitle}>Libros</h2>
-            <p className={styles.cardText}>
-              Colección de lecturas y recomendaciones de la comunidad.
-            </p>
-          </Link>
-        </div>
+        <Link href="/libros" className={styles.card}>
+          <div className={styles.media}>
+            <Image
+              src={librosImg}
+              alt={t("booksAlt")}
+              className={styles.bannerImg}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div className={styles.body}>
+            <h2 className={styles.cardTitle}>{t("books")}</h2>
+          </div>
+        </Link>
       </div>
-    </section>
+    </div>
   );
 }
+
+
+
 

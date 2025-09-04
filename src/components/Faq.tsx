@@ -1,36 +1,19 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
 import styles from "./Faq.module.css";
+import { useT } from "@/i18n";
 
-const faqs = [
-  {
-    question: "¿Qué es La Grupa?",
-    answer:
-      "La Grupa es una colectiva de mujeres migrantes en Dinamarca que se organiza para crear comunidad, acompañarse mutuamente y compartir recursos, saberes y cuidados.",
-  },
-  {
-    question: "¿Quiénes pueden participar en La Grupa?",
-    answer:
-      "Cualquier mujer migrante, en todas sus diversidades, que viva en Dinamarca y quiera formar parte de una red de apoyo feminista, horizontal y antirracista.",
-  },
-  {
-    question: "¿Qué tipo de actividades hacen?",
-    answer:
-      "Organizamos talleres para mujeres (como costura, escritura, autocuidado), encuentros para conversar y compartir experiencias, y también acompañamientos personales o colectivos en situaciones de dificultad.",
-  },
-  {
-    question: "¿Cómo puedo sumarme?",
-    answer:
-      "Si querés unirte a La Grupa como miembra, escribinos a lagrupa.dk@gmail.com",
-  },
-];
+type FaqItem = { q: string; a: string };
 
 function Item({
+  id,
   q,
   a,
   open,
   onToggle,
 }: {
+  id: string;
   q: string;
   a: string;
   open: boolean;
@@ -39,13 +22,13 @@ function Item({
   const innerRef = useRef<HTMLDivElement | null>(null);
   const [h, setH] = useState(0);
 
-  // measure content height and keep it updated
+  // Measure content height and keep it updated
   useEffect(() => {
     const el = innerRef.current;
     if (!el) return;
-    const set = () => setH(el.scrollHeight);
-    set();
-    const ro = new ResizeObserver(set);
+    const update = () => setH(el.scrollHeight);
+    update();
+    const ro = new ResizeObserver(update);
     ro.observe(el);
     return () => ro.disconnect();
   }, [q, a]);
@@ -56,14 +39,14 @@ function Item({
         className={styles.question}
         onClick={onToggle}
         aria-expanded={open}
-        aria-controls={q}
+        aria-controls={id}
       >
         {q}
         <span className={styles.icon}>{open ? "−" : "+"}</span>
       </button>
 
       <div
-        id={q}
+        id={id}
         className={styles.panel}
         style={{ height: open ? h : 0 }}
         aria-hidden={!open}
@@ -77,29 +60,37 @@ function Item({
 }
 
 export default function Faq() {
+  const { t, ts } = useT("faq");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  // Get items from JSON; fallback to empty array
+  const items = t<FaqItem[]>("items") ?? [];
 
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Preguntas Frecuentes</h2>
+        <h2 className={styles.title}>{ts("title")}</h2>
 
         <div className={styles.list}>
-          {faqs.map((f, i) => (
-            <Item
-              key={i}
-              q={f.question}
-              a={f.answer}
-              open={openIndex === i}
-              onToggle={() =>
-                setOpenIndex((prev) => (prev === i ? null : i))
-              }
-            />
-          ))}
+          {Array.isArray(items) &&
+            items.map((f, i) => (
+              <Item
+                key={i}
+                id={`faq-item-${i}`} // stable, ID-safe
+                q={f.q}
+                a={f.a}
+                open={openIndex === i}
+                onToggle={() =>
+                  setOpenIndex((prev) => (prev === i ? null : i))
+                }
+              />
+            ))}
         </div>
       </div>
     </section>
   );
 }
+
+
 
 
