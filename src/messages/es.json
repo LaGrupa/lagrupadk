@@ -110,7 +110,7 @@
     "intro": "El principal objetivo de los talleres de La Grupa es que ninguna mujer de nuestra comunidad se quede aislada, sin referentes y afrontando en soledad situaciones machistas. Queremos que todas cuenten con un espacio donde puedan ser escuchadas y contenidas, donde tengan herramientas prácticas y una red que las entienda y acompañe.",
     "upcoming": "Próximos talleres",
     "past": "Talleres anteriores",
-    "empty": { "title": "No hay próximos talleres", "desc": "Vuelve pronto; anunciaremos nuevas fechas." },
+    "empty": { "title": "No hay próximos talleres", "desc": "Volvé pronto; anunciaremos nuevas fechas." },
     "items": {
       "hatha": { "title": "Hatha Yoga", "desc": "Yoga para dar paso a un post taller en el bar, compartiendo unas cervezas." },
       "acuarelas": { "title": "Acuarelas", "desc": "El segundo taller a cargo de Lucía. Nos llevó del día a la noche para poder frenar la magia de los pinceles." },
@@ -126,8 +126,32 @@
     "reject": "Rechazar",
     "manage": "Preferencias de cookies",
     "learnMore": "Política de privacidad"
-  }
+  },
+    "meetups": {
+    "title": "Encuentros",
+    "intro": "Nos reunimos para conversar, descansar y construir comunidad. Aquí anunciamos los próximos encuentros y registramos los anteriores.",
+    "upcoming": "Próximos encuentros",
+    "past": "Encuentros anteriores",
+    "empty": {
+      "title": "No hay próximos encuentros",
+      "desc": "Volvé pronto; anunciaremos nuevas fechas."
+    },
+    "items": {
+      "abril": { "title": "Encuentro abierto de abril", "desc": "Tarde de merienda y charla en comunidad." },
+      "mayo":  { "title": "Encuentro de mayo", "desc": "Ronda de presentación y espacio de escucha." },
+      "junio": { "title": "Encuentro de junio", "desc": "Café, lectura compartida y planes para el verano." }
+    }
+  },
+"recursero": {
+  "title": "Recursero",
+  "entrepreneurs": "Emprendedoras",
+  "books": "Libros",
+  "entrepreneursAlt": "Emprendedoras — productos creados por mujeres migrantes",
+  "booksAlt": "Libros recomendados y recursos"
 }
+}
+
+
 
 
 

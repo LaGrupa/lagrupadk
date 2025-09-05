@@ -1,35 +1,48 @@
-.section {
-  padding: 2.5rem 1rem;
-}
+.section { padding: 2.5rem 1rem 3rem; }
+.container { max-width: 1200px; margin: 0 auto; }
+.title { font-size: 2rem; margin: 0 0 .5rem; }
+.lead { margin: 0 0 1.25rem; color: #334155; }
+.sectionTitle { font-size: 1.25rem; margin: 1.75rem 0 .75rem; }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.title {
-  font-size: 2rem;
-  margin: 0 0 1.5rem;
-}
-
-
+/* Uniform card grid */
 .grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;   
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
 }
 
+/* Card */
 .card {
-  flex: 0 1 360px;           
-  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
   background: #fff;
+  border-radius: 14px;
   box-shadow: 0 6px 24px rgba(0,0,0,.08);
   overflow: hidden;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,.12); }
+
+/* Fixed image ratio so all cards align */
+.thumb { position: relative; aspect-ratio: 16 / 9; }
+.thumbImg { object-fit: cover; }
+
+.body { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .4rem; min-height: 150px; }
+.cardTitle { font-size: 1.1rem; margin: 0; }
+.date { color: #6b7280; }
+.desc {
+  margin: .2rem 0 0; color: #333; line-height: 1.45;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
 }
 
-.image {
-  display: block;
-  width: 100%;
-  height: auto;            
+/* Empty state */
+.empty {
+  background: #fff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
+  padding: 1.25rem;
+  text-align: center;
+  color: #475569;
 }
+.emptyTitle { margin: 0 0 .25rem; font-weight: 600; }
+.emptyDesc { margin: 0; }

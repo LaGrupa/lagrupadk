@@ -126,9 +126,33 @@
     "reject": "Afvis",
     "manage": "Cookieindstillinger",
     "learnMore": "Privatlivspolitik"
-  }
-
+  },
+    "meetups": {
+    "title": "Møder",
+    "intro": "Vi mødes for at tale sammen, hvile og bygge fællesskab. Her annoncerer vi kommende møder og viser de tidligere.",
+    "upcoming": "Kommende møder",
+    "past": "Tidligere møder",
+    "empty": {
+      "title": "Ingen kommende møder",
+      "desc": "Kig forbi igen – nye datoer annonceres snart."
+    },
+    "items": {
+      "abril": { "title": "Åbent møde i april", "desc": "Eftermiddag med kaffe og samtaler i fællesskab." },
+      "mayo":  { "title": "Maj-møde", "desc": "Præsentationsrunde og lyttende rum." },
+      "junio": { "title": "Juni-møde", "desc": "Kaffe, fælles læsning og planer for sommeren." }
+    }
+  },
+  "recursero": {
+  "title": "Ressourcebank",
+  "entrepreneurs": "Iværksættere",
+  "books": "Bøger",
+  "entrepreneursAlt": "Kvinde-iværksættere — produkter skabt af migrantkvinder",
+  "booksAlt": "Anbefalede bøger og ressourcer"
 }
+}
+
+
+
 
 
 
