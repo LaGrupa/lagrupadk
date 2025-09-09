@@ -61,7 +61,7 @@
   },
   "contact": {
     "title": "Contacto",
-    "lead": "¿Tienes preguntas, propuestas o querés colaborar? Completá el formulario y te respondemos.",
+    "lead": "¿Tenés preguntas, propuestas o querés colaborar? Completá el formulario y te respondemos.",
     "fields": {
       "name": "Nombre",
       "email": "Correo electrónico",
@@ -119,7 +119,7 @@
       "dibujar": { "title": "Dibujar para encontrarse", "desc": "El quinto taller nos encontró dibujando juntas. Un espacio para explorar y compartir procesos creativos." }
     }
   },
-   "cookies": {
+  "cookies": {
     "title": "Cookies",
     "text": "Usamos cookies para entender el uso del sitio y mejorar la experiencia. Las cookies esenciales se usan siempre.",
     "accept": "Aceptar todas",
@@ -127,7 +127,7 @@
     "manage": "Preferencias de cookies",
     "learnMore": "Política de privacidad"
   },
-    "meetups": {
+  "meetups": {
     "title": "Encuentros",
     "intro": "Nos reunimos para conversar, descansar y construir comunidad. Aquí anunciamos los próximos encuentros y registramos los anteriores.",
     "upcoming": "Próximos encuentros",
@@ -138,18 +138,109 @@
     },
     "items": {
       "abril": { "title": "Encuentro abierto de abril", "desc": "Tarde de merienda y charla en comunidad." },
-      "mayo":  { "title": "Encuentro de mayo", "desc": "Ronda de presentación y espacio de escucha." },
+      "mayo": { "title": "Encuentro de mayo", "desc": "Ronda de presentación y espacio de escucha." },
       "junio": { "title": "Encuentro de junio", "desc": "Café, lectura compartida y planes para el verano." }
     }
   },
-"recursero": {
-  "title": "Recursero",
-  "entrepreneurs": "Emprendedoras",
-  "books": "Libros",
-  "entrepreneursAlt": "Emprendedoras — productos creados por mujeres migrantes",
-  "booksAlt": "Libros recomendados y recursos"
+  "recursero": {
+    "title": "Recursero",
+    "entrepreneurs": "Emprendedoras",
+    "books": "Libros",
+    "entrepreneursAlt": "Emprendedoras — productos creados por mujeres migrantes",
+    "booksAlt": "Libros recomendados y recursos"
+  },
+  "emprendedoras": {
+    "bannerAlt": "Emprendedoras de La Grupa",
+    "title": "Emprendedoras de La Grupa",
+    "subtitle": "Explorá el catálogo y conocé a las grandes mujeres de La Grupa que se animaron a dedicarse a lo que les gusta y a compartirlo.",
+    "searchPlaceholder": "Buscar por nombre, categoría o tag…",
+    "searchAria": "Buscar emprendimientos",
+    "allTags": "Todos",
+    "aria": {
+      "openDetailsPrefix": "Abrir detalles de"
+    },
+    "card": {
+      "more": "Ver más"
+    },
+    "empty": "No se encontraron resultados.",
+    "modal": {
+      "description": "Descripción",
+      "owner": "Emprendedora",
+      "contact": "Contacto",
+      "socials": "Redes",
+      "location": "Ubicación",
+      "rating": "Valoración",
+      "of5": "de 5",
+      "visit": "Visitar",
+      "close": "Cerrar"
+    },
+    "tags": {
+      "moda": "Moda",
+      "custom": "Custom",
+      "alimentos": "Alimentos",
+      "arte": "Arte",
+      "tatuajes": "Tatuajes",
+      "bienestar": "Bienestar",
+      "estética": "Estética",
+      "lectura": "Lectura",
+      "salud": "Salud",
+      "sustentable": "Sustentable"
+    }
+  },
+    "ui": {
+    "back": "Volver",
+    "backAria": "Volver atrás"
+  },
+   "publicaciones": {
+    "title": "Publicaciones",
+    "searchPlaceholder": "Buscar por título o tag…",
+    "searchAria": "Buscar publicaciones",
+    "allTags": "Todos",
+    "empty": "No se encontraron resultados.",
+    "aria": { "openDetailsPrefix": "Abrir detalles de" },
+    "modal": {
+      "summary": "Resumen",
+      "tags": "Tags",
+      "downloadPdf": "Descargar PDF",
+      "close": "Cerrar"
+    },
+    "tags": {
+      "entrevista": "Entrevista",
+      "comunidad": "Comunidad",
+      "lecturas": "Lecturas",
+      "recomendaciones": "Recomendaciones"
+    }
+  },
+  "libros": {
+    "bannerAlt": "Nuestra biblioteca",
+    "searchPlaceholder": "Buscar por título, autora…",
+    "searchAria": "Buscar libros",
+    "empty": "No se encontraron resultados.",
+    "aria": { "openDetailsPrefix": "Abrir detalles de" },
+    "cats": {
+      "Todos": "Todos",
+      "novela": "Novela",
+      "cuento": "Cuento",
+      "ensayo": "Ensayo",
+      "poesía": "Poesía",
+      "historia": "Historia",
+      "biografía": "Biografía",
+      "infantil": "Infantil",
+      "ficción": "Ficción"
+    },
+    "modal": {
+      "category": "Categoría",
+      "year": "Año",
+      "rating": "Valoración",
+      "of5": "de 5",
+      "description": "Descripción",
+      "links": "Enlaces",
+      "visit": "Visitar",
+      "close": "Cerrar"
+    }
+  }
 }
-}
+
 
 
 

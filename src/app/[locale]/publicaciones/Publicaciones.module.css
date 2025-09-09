@@ -1,8 +1,8 @@
+/* ===== Section & container ===== */
 .section {
   padding: 2.5rem 1rem 3rem;
   background: #fff;
 }
-
 .container { max-width: 1200px; margin: 0 auto; }
 
 .title {
@@ -12,7 +12,57 @@
   font-weight: 800;
 }
 
-/* Cards grid */
+/* ===== Filters (search + tags) ===== */
+.filters { margin: 0 0 1.25rem; }
+.filtersInner {
+  display: grid;
+  gap: .75rem;
+}
+
+/* Search input */
+.search {
+  width: 100%;
+  padding: .75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: #fff;
+  font: inherit;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.03);
+}
+.search::placeholder { color: #94a3b8; }
+.search:focus {
+  outline: none;
+  border-color: #8ab4ff;
+  box-shadow: 0 0 0 3px rgba(138,180,255,.25);
+}
+
+/* Tag pills */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.tag {
+  appearance: none;
+  border: 1px solid rgba(0,0,0,.08);
+  background: #f8fafc;                 /* slate-50 */
+  color: #1f2937;                       /* gray-800 */
+  font: inherit;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: .4rem .75rem;
+  cursor: pointer;
+  transition: background .15s ease, box-shadow .15s ease, transform .05s ease;
+}
+.tag:hover { background: #f1f5f9; }     /* slate-100 */
+.tag:active { transform: translateY(1px); }
+.tagActive {
+  background: #1f2937;                  /* gray-800 */
+  color: #fff;
+  border-color: #1f2937;
+}
+
+/* ===== Cards grid ===== */
 .cards {
   display: grid;
   gap: 1.5rem;
@@ -22,7 +72,7 @@
   .cards { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Card as button (so it can open modal) */
+/* Card as button (opens modal) */
 .card {
   display: flex;
   flex-direction: column;
@@ -49,12 +99,35 @@
   margin: 0.75rem 1rem 0.25rem;
 }
 .cardText {
-  margin: 0 1rem 1rem;
+  margin: 0 1rem .5rem;
   color: #444;
   line-height: 1.4;
 }
 
-/* ===== Modal (same look & feel as the others) ===== */
+/* Tag chips inside card */
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin: 0 .95rem .9rem;
+}
+.cardTag {
+  background: #eef2ff;                  /* indigo-50 */
+  color: #3730a3;                       /* indigo-800 */
+  padding: .2rem .5rem;
+  border-radius: 6px;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  color: #6b7280;
+  margin-top: 1rem;
+}
+
+/* ===== Modal ===== */
 .modalBackdrop {
   position: fixed;
   inset: 0;
@@ -134,3 +207,4 @@
   background: transparent; color: #c7c9d1; font-size: 1.1rem;
 }
 .modalClose:hover { color: #fff; }
+

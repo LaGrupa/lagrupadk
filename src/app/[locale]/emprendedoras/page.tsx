@@ -5,7 +5,7 @@ import Image from "next/image";
 import { createPortal } from "react-dom";
 import styles from "./Emprendedoras.module.css";
 import GoBackRow from "@/components/GoBackRow";
-
+import { useT } from "@/i18n";
 
 type Biz = {
   name: string;
@@ -56,14 +56,21 @@ function initials(text: string) {
   return words.map(w => w[0]?.toUpperCase()).join("");
 }
 
+// tiny helper to ensure we always return a non-empty string
+function tx(get: unknown, fallback: string) {
+  const v = typeof get === "string" ? get : "";
+  return v.trim() || fallback;
+}
+
 export default function EmprendedorasPage() {
+  const { t } = useT();
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [selected, setSelected] = useState<Biz | null>(null);
 
   const allTags = useMemo(() => {
     const set = new Set<string>();
-    businesses.forEach(b => b.tags?.forEach(t => set.add(t)));
+    businesses.forEach(b => b.tags?.forEach(tag => set.add(tag)));
     return Array.from(set).sort((a, b) => a.localeCompare(b));
   }, []);
 
@@ -74,7 +81,7 @@ export default function EmprendedorasPage() {
         !q ||
         b.name.toLowerCase().includes(q) ||
         b.tagline.toLowerCase().includes(q) ||
-        (b.tags && b.tags.some(t => t.toLowerCase().includes(q)));
+        (b.tags && b.tags.some(tag => tag.toLowerCase().includes(q)));
       const matchesTag = !activeTag || (b.tags && b.tags.includes(activeTag));
       return matchesQuery && matchesTag;
     });
@@ -86,7 +93,7 @@ export default function EmprendedorasPage() {
         <div className={styles.bannerInner}>
           <Image
             src="/site/recursero-emprendedoras.jpg"
-            alt="Emprendedoras de La Grupa"
+            alt={tx(t("emprendedoras.bannerAlt"), "Emprendedoras de La Grupa")}
             width={1600}
             height={360}
             className={styles.banner}
@@ -97,10 +104,9 @@ export default function EmprendedorasPage() {
 
       <section className={styles.header}>
         <div className={styles.headerInner}>
-          <h1 className={styles.title}>Emprendedoras de La Grupa</h1>
+          <h1 className={styles.title}>{t("emprendedoras.title") as string}</h1>
           <p className={styles.subtitle}>
-            Explorá el catálogo y conocé a las grandes mujeres de La Grupa que se animaron
-            a dedicarse a lo que les gusta y a compartirlo.
+            {t("emprendedoras.subtitle") as string}
           </p>
         </div>
       </section>
@@ -110,11 +116,11 @@ export default function EmprendedorasPage() {
         <div className={styles.filtersInner}>
           <input
             type="search"
-            placeholder="Buscar por nombre, categoría o tag…"
+            placeholder={t("emprendedoras.searchPlaceholder") as string}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className={styles.search}
-            aria-label="Buscar emprendimientos"
+            aria-label={t("emprendedoras.searchAria") as string}
           />
 
           <div className={styles.tags}>
@@ -122,7 +128,7 @@ export default function EmprendedorasPage() {
               className={`${styles.tag} ${!activeTag ? styles.tagActive : ""}`}
               onClick={() => setActiveTag(null)}
             >
-              Todos
+              {t("emprendedoras.allTags") as string}
             </button>
             {allTags.map(tag => (
               <button
@@ -130,7 +136,7 @@ export default function EmprendedorasPage() {
                 className={`${styles.tag} ${activeTag === tag ? styles.tagActive : ""}`}
                 onClick={() => setActiveTag(tag === activeTag ? null : tag)}
               >
-                {tag}
+                {t(`emprendedoras.tags.${tag}`) as string}
               </button>
             ))}
           </div>
@@ -147,7 +153,7 @@ export default function EmprendedorasPage() {
               className={styles.card}
               onClick={() => setSelected(biz)}
               aria-haspopup="dialog"
-              aria-label={`Abrir detalles de ${biz.name}`}
+              aria-label={`${t("emprendedoras.aria.openDetailsPrefix") as string} ${biz.name}`}
             >
               <div className={styles.media}>
                 {biz.image ? (
@@ -170,33 +176,36 @@ export default function EmprendedorasPage() {
                 <p className={styles.cardTagline}>{biz.tagline}</p>
                 {biz.tags && (
                   <div className={styles.cardTags}>
-                    {biz.tags.map(t => (
-                      <span key={t} className={styles.cardTag}>{t}</span>
+                    {biz.tags.map(tag => (
+                      <span key={tag} className={styles.cardTag}>
+                        {t(`emprendedoras.tags.${tag}`) as string}
+                      </span>
                     ))}
                   </div>
                 )}
-                <span className={styles.cardLinkHint}>Ver más</span>
+                <span className={styles.cardLinkHint}>
+                  {t("emprendedoras.card.more") as string}
+                </span>
               </div>
             </button>
           ))}
           {filtered.length === 0 && (
-            <p className={styles.empty}>No se encontraron resultados.</p>
+            <p className={styles.empty}>{t("emprendedoras.empty") as string}</p>
           )}
         </div>
       </section>
 
       {selected && <BizModal biz={selected} onClose={() => setSelected(null)} />}
-        
-     <GoBackRow />
 
+      <GoBackRow />
     </main>
-    
   );
 }
 
 /* ============ Modal ============ */
 
 function BizModal({ biz, onClose }: { biz: Biz; onClose: () => void }) {
+  const { t } = useT();
   const [mounted, setMounted] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
 
@@ -224,28 +233,28 @@ function BizModal({ biz, onClose }: { biz: Biz; onClose: () => void }) {
         onMouseDown={(e) => e.stopPropagation()}
         ref={dialogRef}
       >
-        <button className={styles.modalClose} onClick={onClose} aria-label="Cerrar">✕</button>
+        <button className={styles.modalClose} onClick={onClose} aria-label={t("emprendedoras.modal.close") as string}>✕</button>
 
         <header className={styles.modalHeader}>
           <h2 id="biz-title" className={styles.modalTitle}>{biz.name}</h2>
         </header>
 
         <div className={styles.modalBody}>
-          <ModalRow label="Descripción">
+          <ModalRow label={t("emprendedoras.modal.description") as string}>
             {biz.description ?? biz.tagline}
           </ModalRow>
 
-          {biz.owner && <ModalRow label="Emprendedora">{biz.owner}</ModalRow>}
+          {biz.owner && <ModalRow label={t("emprendedoras.modal.owner") as string}>{biz.owner}</ModalRow>}
 
           {biz.contact && (
-            <ModalRow label="Contacto">
+            <ModalRow label={t("emprendedoras.modal.contact") as string}>
               <a className={styles.modalLink}
                  href={`tel:${biz.contact.replace(/\s+/g, "")}`}>{biz.contact}</a>
             </ModalRow>
           )}
 
           {!!biz.socials?.length && (
-            <ModalRow label="Redes">
+            <ModalRow label={t("emprendedoras.modal.socials") as string}>
               <div className={styles.modalList}>
                 {biz.socials.map(s => (
                   <a key={s.href} className={styles.modalLink} href={s.href} target="_blank" rel="noreferrer noopener">
@@ -256,20 +265,24 @@ function BizModal({ biz, onClose }: { biz: Biz; onClose: () => void }) {
             </ModalRow>
           )}
 
-          {biz.location && <ModalRow label="Ubicación">{biz.location}</ModalRow>}
+          {biz.location && <ModalRow label={t("emprendedoras.modal.location") as string}>{biz.location}</ModalRow>}
 
           {typeof biz.rating === "number" && (
-            <ModalRow label="Valoración" aria-label={`${biz.rating} de 5`}>
-              {"★".repeat(biz.rating)}{"☆".repeat(5 - biz.rating)}
+            <ModalRow
+              label={t("emprendedoras.modal.rating") as string}
+              aria-label={`${biz.rating} ${t("emprendedoras.modal.of5") as string}`}
+            >
+              {"★".repeat(biz.rating)}
+              {"☆".repeat(5 - biz.rating)}
             </ModalRow>
           )}
         </div>
 
         <footer className={styles.modalFooter}>
           <a href={biz.url} target="_blank" rel="noreferrer noopener" className={styles.primaryBtn}>
-            Visitar
+            {t("emprendedoras.modal.visit") as string}
           </a>
-          <button className={styles.secondaryBtn} onClick={onClose}>Cerrar</button>
+          <button className={styles.secondaryBtn} onClick={onClose}>{t("emprendedoras.modal.close") as string}</button>
         </footer>
       </div>
     </div>
@@ -290,4 +303,5 @@ function ModalRow({
     </div>
   );
 }
+
 

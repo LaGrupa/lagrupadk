@@ -118,7 +118,6 @@
       "dibujar": { "title": "Tegn for at finde sig selv", "desc": "Den femte workshop samlede os om at tegne sammen – et sted at udforske og dele kreative processer." }
     }
   },
-  
   "cookies": {
     "title": "Cookies",
     "text": "Vi bruger cookies for at forstå brugen af sitet og forbedre oplevelsen. Nødvendige cookies bruges altid.",
@@ -127,7 +126,7 @@
     "manage": "Cookieindstillinger",
     "learnMore": "Privatlivspolitik"
   },
-    "meetups": {
+  "meetups": {
     "title": "Møder",
     "intro": "Vi mødes for at tale sammen, hvile og bygge fællesskab. Her annoncerer vi kommende møder og viser de tidligere.",
     "upcoming": "Kommende møder",
@@ -138,18 +137,109 @@
     },
     "items": {
       "abril": { "title": "Åbent møde i april", "desc": "Eftermiddag med kaffe og samtaler i fællesskab." },
-      "mayo":  { "title": "Maj-møde", "desc": "Præsentationsrunde og lyttende rum." },
+      "mayo": { "title": "Maj-møde", "desc": "Præsentationsrunde og lyttende rum." },
       "junio": { "title": "Juni-møde", "desc": "Kaffe, fælles læsning og planer for sommeren." }
     }
   },
   "recursero": {
-  "title": "Ressourcebank",
-  "entrepreneurs": "Iværksættere",
-  "books": "Bøger",
-  "entrepreneursAlt": "Kvinde-iværksættere — produkter skabt af migrantkvinder",
-  "booksAlt": "Anbefalede bøger og ressourcer"
+    "title": "Ressourcebank",
+    "entrepreneurs": "Iværksættere",
+    "books": "Bøger",
+    "entrepreneursAlt": "Kvinde-iværksættere — produkter skabt af migrantkvinder",
+    "booksAlt": "Anbefalede bøger og ressourcer"
+  },
+  "emprendedoras": {
+    "bannerAlt": "La Grupas iværksættere",
+    "title": "La Grupas iværksættere",
+    "subtitle": "Udforsk kataloget og mød de stærke kvinder i La Grupa, som satser på det, de elsker, og deler det med andre.",
+    "searchPlaceholder": "Søg efter navn, kategori eller tag…",
+    "searchAria": "Søg i virksomheder",
+    "allTags": "Alle",
+    "aria": {
+      "openDetailsPrefix": "Åbn detaljer for"
+    },
+    "card": {
+      "more": "Se mere"
+    },
+    "empty": "Ingen resultater fundet.",
+    "modal": {
+      "description": "Beskrivelse",
+      "owner": "Iværksætter",
+      "contact": "Kontakt",
+      "socials": "Sociale medier",
+      "location": "Placering",
+      "rating": "Bedømmelse",
+      "of5": "ud af 5",
+      "visit": "Besøg",
+      "close": "Luk"
+    },
+    "tags": {
+      "moda": "Mode",
+      "custom": "Tilpasning",
+      "alimentos": "Mad",
+      "arte": "Kunst",
+      "tatuajes": "Tatoveringer",
+      "bienestar": "Velvære",
+      "estética": "Æstetik",
+      "lectura": "Læsekunst",
+      "salud": "Sundhed",
+      "sustentable": "Bæredygtig"
+    }
+  },
+    "ui": {
+    "back": "Tilbage",
+    "backAria": "Gå tilbage"
+  },
+ "publicaciones": {
+    "title": "Publikationer",
+    "searchPlaceholder": "Søg efter titel eller tag…",
+    "searchAria": "Søg i publikationer",
+    "allTags": "Alle",
+    "empty": "Ingen resultater fundet.",
+    "aria": { "openDetailsPrefix": "Åbn detaljer for" },
+    "modal": {
+      "summary": "Resumé",
+      "tags": "Tags",
+      "downloadPdf": "Download PDF",
+      "close": "Luk"
+    },
+    "tags": {
+      "entrevista": "Interview",
+      "comunidad": "Fællesskab",
+      "lecturas": "Læsninger",
+      "recomendaciones": "Anbefalinger"
+    }
+  },
+   "libros": {
+    "bannerAlt": "Vores bibliotek",
+    "searchPlaceholder": "Søg efter titel eller forfatter…",
+    "searchAria": "Søg i bøger",
+    "empty": "Ingen resultater fundet.",
+    "aria": { "openDetailsPrefix": "Åbn detaljer for" },
+    "cats": {
+      "Todos": "Alle",
+      "novela": "Roman",
+      "cuento": "Novelle",
+      "ensayo": "Essay",
+      "poesía": "Poesi",
+      "historia": "Historie",
+      "biografía": "Biografi",
+      "infantil": "Børnebøger",
+      "ficción": "Fiktion"
+    },
+    "modal": {
+      "category": "Kategori",
+      "year": "År",
+      "rating": "Bedømmelse",
+      "of5": "ud af 5",
+      "description": "Beskrivelse",
+      "links": "Links",
+      "visit": "Besøg",
+      "close": "Luk"
+    }
+  }
 }
-}
+
 
 
 

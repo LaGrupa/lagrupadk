@@ -26,6 +26,9 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  // run on everything except the ignored paths above
-  matcher: ["/:path*"],
+  matcher: [
+    // run middleware on pages only; skip API, Next internals, and static files
+    '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\..*).*)',
+  ],
 };
+
