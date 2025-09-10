@@ -7,6 +7,10 @@ import { useT } from "../../../i18n";
 export default function QuienesSomosPage() {
   const { t } = useT("quienes");
 
+  // Ensure alt texts are strings
+  const heroAlt = (t("heroImgAlt") as string | undefined) ?? "";
+  const secondAlt = (t("secondImgAlt") as string | undefined) ?? "";
+
   return (
     <>
       {/* FULL-WIDTH HERO (pastel background) */}
@@ -15,7 +19,7 @@ export default function QuienesSomosPage() {
           <div className={styles.media}>
             <Image
               src="/site/quienes1.jpg"
-              alt={t("heroImgAlt")}
+              alt={heroAlt}
               className={styles.image}
               width={550}
               height={366}
@@ -25,9 +29,9 @@ export default function QuienesSomosPage() {
           </div>
 
           <div className={styles.text}>
-            <h2>{t("title")}</h2>
-            <p>{t("p1")}</p>
-            <p>{t("p2")}</p>
+            <h2>{t("title") as string}</h2>
+            <p>{t("p1") as string}</p>
+            <p>{t("p2") as string}</p>
           </div>
         </div>
       </section>
@@ -38,15 +42,15 @@ export default function QuienesSomosPage() {
           {/* Block 2 */}
           <div className={styles.block}>
             <div className={styles.text}>
-              <p>{t("p3")}</p>
-              <p>{t("p4")}</p>
-              <p>{t("p5")}</p>
+              <p>{t("p3") as string}</p>
+              <p>{t("p4") as string}</p>
+              <p>{t("p5") as string}</p>
             </div>
 
             <div className={styles.media}>
               <Image
                 src="/site/quienes2.jpg"
-                alt={t("secondImgAlt")}
+                alt={secondAlt}
                 className={styles.image}
                 width={550}
                 height={366}
@@ -58,14 +62,16 @@ export default function QuienesSomosPage() {
           {/* Misión / Visión */}
           <div className={styles.missionVision}>
             <div>
-              <h3>{t("missionTitle")}</h3>
-              <p>{t("missionP1")}</p>
-              <p><strong>{t("missionStrong")}</strong></p>
+              <h3>{t("missionTitle") as string}</h3>
+              <p>{t("missionP1") as string}</p>
+              <p>
+                <strong>{t("missionStrong") as string}</strong>
+              </p>
             </div>
 
             <div>
-              <h3>{t("visionTitle")}</h3>
-              <p>{t("visionP1")}</p>
+              <h3>{t("visionTitle") as string}</h3>
+              <p>{t("visionP1") as string}</p>
             </div>
           </div>
         </div>
@@ -73,5 +79,6 @@ export default function QuienesSomosPage() {
     </>
   );
 }
+
 
 

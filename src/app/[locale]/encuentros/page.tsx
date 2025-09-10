@@ -39,13 +39,15 @@ export default function EncuentrosPage() {
   const title = (id: string) => t(`meetups.items.${id}.title`) as string;
   const desc  = (id: string) => t(`meetups.items.${id}.desc`) as string;
 
+  // Safely coerce intro to string for JSX
+  const intro = (t("meetups.intro") as string | undefined) ?? "";
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         <h1 className={styles.title}>{t("meetups.title") as string}</h1>
-        {t("meetups.intro") && (
-          <p className={styles.lead}>{t("meetups.intro") as string}</p>
-        )}
+
+        {intro ? <p className={styles.lead}>{intro}</p> : null}
 
         {/* Upcoming */}
         <h2 className={styles.sectionTitle}>{t("meetups.upcoming") as string}</h2>

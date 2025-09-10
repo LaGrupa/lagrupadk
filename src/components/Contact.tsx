@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";   // ⬅ add useEffect
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Contact.module.css";
 import { useT } from "@/i18n";
@@ -8,9 +8,12 @@ import { useT } from "@/i18n";
 export default function Contact() {
   const { t } = useT("contact");
 
+  // Helper: always return a string
+  const s = (key: string) => (t(key) as string | undefined) ?? "";
+
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [mounted, setMounted] = useState(false);          // ⬅ add
-  useEffect(() => setMounted(true), []);                  // ⬅ add
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -18,26 +21,28 @@ export default function Contact() {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(t("success"));
+    alert(s("success"));
     setForm({ name: "", email: "", message: "" });
   };
+
+  const requiredText = s("fields.required");
 
   return (
     <section className={styles.section} aria-labelledby="contact-title">
       <div className={styles.container}>
         <div className={styles.left}>
           <div className={styles.leftInner}>
-            <h2 id="contact-title" className={styles.title}>{t("title")}</h2>
-            <p className={styles.lead}>{t("lead")}</p>
+            <h2 id="contact-title" className={styles.title}>{s("title")}</h2>
+            <p className={styles.lead}>{s("lead")}</p>
 
             {/* Render form only on client to avoid extension-injected attrs at SSR */}
             {mounted && (
               <form className={styles.form} onSubmit={onSubmit}>
                 <label className={styles.label} htmlFor="name">
-                  {t("fields.name")}
-                  {t("fields.required") && (
-                    <> <span className={styles.req}>{t("fields.required")}</span></>
-                  )}
+                  {s("fields.name")}
+                  {requiredText ? (
+                    <span className={styles.req}> {requiredText}</span>
+                  ) : null}
                 </label>
                 <input
                   id="name"
@@ -51,10 +56,10 @@ export default function Contact() {
                 />
 
                 <label className={styles.label} htmlFor="email">
-                  {t("fields.email")}
-                  {t("fields.required") && (
-                    <> <span className={styles.req}>{t("fields.required")}</span></>
-                  )}
+                  {s("fields.email")}
+                  {requiredText ? (
+                    <span className={styles.req}> {requiredText}</span>
+                  ) : null}
                 </label>
                 <input
                   id="email"
@@ -69,7 +74,7 @@ export default function Contact() {
                 />
 
                 <label className={styles.label} htmlFor="message">
-                  {t("fields.message")}
+                  {s("fields.message")}
                 </label>
                 <textarea
                   id="message"
@@ -82,7 +87,7 @@ export default function Contact() {
                 />
 
                 <button type="submit" className={styles.button}>
-                  {t("submit")}
+                  {s("submit")}
                 </button>
               </form>
             )}
@@ -93,7 +98,7 @@ export default function Contact() {
           <div className={styles.imageWrap}>
             <Image
               src="/site/contact.jpg"
-              alt={t("imageAlt") || t("title")}
+              alt={s("imageAlt") || s("title")}
               fill
               priority
               sizes="(max-width: 899px) 100vw, 48vw"

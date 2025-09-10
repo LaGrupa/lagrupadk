@@ -2,11 +2,17 @@
 
 import Image from 'next/image';
 import styles from './Hero.module.css';
-import {I18nLink as Link} from '../i18nLink';
-import {useT} from '../i18n';
+import { I18nLink as Link } from '../i18nLink';
+import { useT } from '../i18n';
 
 export default function Hero() {
-  const {t} = useT('hero');
+  const { t } = useT('hero');
+
+  // Ensure alt and other strings are definite strings
+  const alt = (t('alt') as string | undefined) ?? '';
+  const title = (t('title') as string | undefined) ?? '';
+  const lead = (t('lead') as string | undefined) ?? '';
+  const cta = (t('cta') as string | undefined) ?? '';
 
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
@@ -14,27 +20,28 @@ export default function Hero() {
         <div className={styles.media}>
           <Image
             src="/site/hero.jpg"
-            alt={t('alt')}
+            alt={alt}
             fill
             priority
             sizes="(max-width: 599px) 100vw, (max-width: 1023px) 50vw, 640px"
-            className={styles.img}
           />
         </div>
 
         <div className={styles.content}>
-          <h2 id="hero-title" className={styles.title}>{t('title')}</h2>
+          <h2 id="hero-title" className={styles.title}>{title}</h2>
           <p className={styles.lead}>
-            <strong>La Grupa</strong> {t('lead')}
+            <strong>La Grupa</strong> {lead}
           </p>
-          <Link href="/quienes-somos" className={styles.button} aria-label={t('cta')}>
-            {t('cta')}
+          <Link href="/quienes-somos" className={styles.button} aria-label={cta}>
+            {cta}
           </Link>
         </div>
       </div>
     </section>
   );
 }
+
+
 
 
 
