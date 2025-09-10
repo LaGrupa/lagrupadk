@@ -4,8 +4,8 @@
   --pad-y: clamp(1.25rem, 3.5vw, 3rem);
   --max-w: 1200px;
 
-  background: #c5d2b3;               /* keep your green */
-  color: #0b0b0b;                     /* stronger contrast on green */
+  background: #c5d2b3;
+  color: #0b0b0b;
   padding: var(--pad-y) var(--pad-x);
   display: block;
 }
@@ -17,7 +17,7 @@
   display: grid;
   gap: clamp(1rem, 3vw, 2.5rem);
   align-items: center;
-  grid-template-columns: 1fr;         /* mobile first */
+  grid-template-columns: 1fr; /* mobile first */
 }
 
 @media (min-width: 600px) {
@@ -31,7 +31,7 @@
 .media {
   position: relative;
   width: 100%;
-  aspect-ratio: 5 / 4;                /* keeps a pleasant horizontal frame */
+  aspect-ratio: 5 / 4;        /* adjust to your photo’s ratio if needed */
   max-width: 720px;
   border-radius: 18px;
   overflow: hidden;
@@ -40,9 +40,9 @@
 
 /* next/image fills parent */
 .img {
-  object-fit: cover;
+  object-fit: cover;          /* prevent stretch; crop edges if needed */
   object-position: 50% 44%;
-  transform: scale(1.001);            /* avoid sub‑pixel seams in some browsers */
+  transform: scale(1.001);    /* avoid sub-pixel seams in some browsers */
 }
 
 /* Text column with readable line-length */
@@ -82,11 +82,9 @@
 .button:active { transform: translateY(1px); }
 
 @media (max-width: 480px) {
-  /* Slightly shorter on very small screens so content isn't pushed off */
   .hero { padding-top: clamp(1rem, 3vw, 1.5rem); }
 }
 
-/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .button { transition: none; }
 }
@@ -94,13 +92,14 @@
 @media (max-width: 599px) {
   .button {
     display: block;
-    width: 90%;              /* almost full width */
-    max-width: 20rem;        /* optional: prevent huge button on very wide phones */
+    width: 90%;
+    max-width: 20rem;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
   }
 }
+
 
 
 
