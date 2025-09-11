@@ -11,10 +11,10 @@ type Workshop = {
 };
 
 const workshops: Workshop[] = [
-  { id: "hatha",        dateISO: "2025-04-19", img: "/site/taller-hatha.jpg" },
+  { id: "hatha",        dateISO: "2025-04-19", img: "/site/encuentros.jpg" },
   { id: "acuarelas",    dateISO: "2025-05-25", img: "/site/taller-acuarelas.jpg" },
   { id: "circulo",      dateISO: "2025-06-22", img: "/site/taller-circulo.jpg" },
-  { id: "yoga_facial",  dateISO: "2025-07-13", img: "/site/taller-yoga-facial.jpg" },
+  { id: "yoga_facial",  dateISO: "2025-07-13", img: "/site/taller-hatha.jpg" },
   { id: "dibujar",      dateISO: "2025-08-19", img: "/site/taller-dibujar.jpg" },
 ];
 
