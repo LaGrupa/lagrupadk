@@ -5,6 +5,7 @@
     "pubs": "Publikationer",
     "resources": "Ressourcebank",
     "faq": "Ofte stillede spørgsmål",
+    "asociate": "Bliv medlem",
     "contact": "Kontakt os"
   },
   "hero": {
@@ -237,8 +238,18 @@
       "visit": "Besøg",
       "close": "Luk"
     }
+  },
+  "members": {
+  "become a member": "Bliv medleme"
+  },
+    "asociate": {
+    "title": "Medlemsområde",
+    "intro": "Log ind for at få adgang til formularen og betalingsmuligheder."
   }
 }
+
+
+
 
 
 

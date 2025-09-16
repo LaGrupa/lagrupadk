@@ -15,8 +15,7 @@ export default function Navbar() {
   const otherLocale = locale === "es" ? "da" : "es";
 
   // Strip leading locale from current path (e.g. /es/faq -> /faq, /da -> /)
-  const switchPath =
-    pathname.replace(/^\/(es|da)(?=\/|$)/, "") || "/";
+  const switchPath = pathname.replace(/^\/(es|da)(?=\/|$)/, "") || "/";
 
   // Close on ESC
   useEffect(() => {
@@ -29,14 +28,21 @@ export default function Navbar() {
   useEffect(() => {
     const prev = document.body.style.overflow;
     document.body.style.overflow = open ? "hidden" : prev;
-    return () => { document.body.style.overflow = prev; };
+    return () => {
+      document.body.style.overflow = prev;
+    };
   }, [open]);
 
   return (
     <header className={styles.header}>
       <nav className={styles.navbar} aria-label="Principal">
         {/* Logo -> locale home */}
-        <Link href="/" locale={locale} className={styles.logo} onClick={() => setOpen(false)}>
+        <Link
+          href="/"
+          locale={locale}
+          className={styles.logo}
+          onClick={() => setOpen(false)}
+        >
           <Image
             src="/logo.png"
             alt="La Grupa DK"
@@ -49,12 +55,41 @@ export default function Navbar() {
 
         {/* Desktop menu */}
         <ul className={styles.menu}>
-          <li><Link href="/quienes-somos" locale={locale}>{t("who")}</Link></li>
-          <li className={styles.hasSub}><Link href="/que-hacemos" locale={locale}>{t("what")}</Link></li>
-          <li><Link href="/publicaciones" locale={locale}>{t("pubs")}</Link></li>
-          <li><Link href="/recursero" locale={locale}>{t("resources")}</Link></li>
-          <li><Link href="/faq" locale={locale}>{t("faq")}</Link></li>
-          <li><Link href="/contact" locale={locale}>{t("contact")}</Link></li>
+          <li>
+            <Link href="/quienes-somos" locale={locale}>
+              {t("who")}
+            </Link>
+          </li>
+          <li className={styles.hasSub}>
+            <Link href="/que-hacemos" locale={locale}>
+              {t("what")}
+            </Link>
+          </li>
+          <li>
+            <Link href="/publicaciones" locale={locale}>
+              {t("pubs")}
+            </Link>
+          </li>
+          <li>
+            <Link href="/recursero" locale={locale}>
+              {t("resources")}
+            </Link>
+          </li>
+          <li>
+            <Link href="/faq" locale={locale}>
+              {t("faq")}
+            </Link>
+          </li>
+          <li>
+            <Link href="/asociate" locale={locale}>
+              {t("asociate") as string}
+            </Link>
+          </li>
+          <li>
+            <Link href="/contact" locale={locale}>
+              {t("contact")}
+            </Link>
+          </li>
 
           {/* Locale switcher (preserves path via I18nLink) */}
           <li style={{ marginLeft: 12 }}>
@@ -85,14 +120,44 @@ export default function Navbar() {
       />
 
       {/* Mobile menu */}
-      <div id="mobile-menu" className={`${styles.mobile} ${open ? styles.open : ""}`}>
+      <div
+        id="mobile-menu"
+        className={`${styles.mobile} ${open ? styles.open : ""}`}
+      >
         <ul className={styles.mobileList} onClick={() => setOpen(false)}>
-          <li><Link href="/quienes-somos" locale={locale}>{t("who")}</Link></li>
-          <li><Link href="/que-hacemos" locale={locale}>{t("what")}</Link></li>
-          <li><Link href="/publicaciones" locale={locale}>{t("pubs")}</Link></li>
-          <li><Link href="/recursero" locale={locale}>{t("resources")}</Link></li>
-          <li><Link href="/faq" locale={locale}>{t("faq")}</Link></li>
-          <li><Link href="/contact" locale={locale}>{t("contact")}</Link></li>
+          <li>
+            <Link href="/quienes-somos" locale={locale}>
+              {t("who")}
+            </Link>
+          </li>
+          <li>
+            <Link href="/que-hacemos" locale={locale}>
+              {t("what")}
+            </Link>
+          </li>
+          <li>
+            <Link href="/publicaciones" locale={locale}>
+              {t("pubs")}
+            </Link>
+          </li>
+          <li>
+            <Link href="/recursero" locale={locale}>
+              {t("resources")}
+            </Link>
+          </li>
+          <li>
+            <Link href="/faq" locale={locale}>
+              {t("faq")}
+            </Link>
+          </li>
+          <li>
+            <Link href="/asociate" locale={locale}>
+              {t("asociate") as string}
+            </Link>
+          </li>
+          <Link href="/contact" locale={locale}>
+            {t("contact")}
+          </Link>
           <li style={{ marginTop: 8 }}>
             <Link href={switchPath} locale={otherLocale}>
               {otherLocale.toUpperCase()}
@@ -103,4 +168,3 @@ export default function Navbar() {
     </header>
   );
 }
-
