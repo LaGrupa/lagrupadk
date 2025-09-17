@@ -5,7 +5,7 @@
     "pubs": "Publicaciones",
     "resources": "Recursero",
     "faq": "Preguntas frecuentes",
-    "asociate": "Asociate",
+    "asociate": "Miembras",
     "contact": "Contacto"
   },
   "hero": {
@@ -241,10 +241,10 @@
     }
   },
   "members": {
-    "become a member": "Asociate"
+    "become a member": "Miembras"
 },
 
-  "title": "Área de Miembros",
+  "title": "Área de Miembras",
   "intro": "Inicia sesión para acceder al formulario y opciones de pago."
 }
 

@@ -13,16 +13,40 @@ export default function Contact() {
 
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [mounted, setMounted] = useState(false);
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+
   useEffect(() => setMounted(true), []);
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert(s("success"));
-    setForm({ name: "", email: "", message: "" });
+    setStatus("loading");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          hp: "", // honeypot field
+        }),
+      });
+
+      if (!res.ok) throw new Error("Network error");
+
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+    }
   };
 
   const requiredText = s("fields.required");
@@ -32,7 +56,9 @@ export default function Contact() {
       <div className={styles.container}>
         <div className={styles.left}>
           <div className={styles.leftInner}>
-            <h2 id="contact-title" className={styles.title}>{s("title")}</h2>
+            <h2 id="contact-title" className={styles.title}>
+              {s("title")}
+            </h2>
             <p className={styles.lead}>{s("lead")}</p>
 
             {/* Render form only on client to avoid extension-injected attrs at SSR */}
@@ -86,9 +112,27 @@ export default function Contact() {
                   required
                 />
 
-                <button type="submit" className={styles.button}>
-                  {s("submit")}
+                <button
+                  type="submit"
+                  className={styles.button}
+                  disabled={status === "loading"}
+                >
+                  {status === "loading"
+                    ? s("sending") || "Sending..."
+                    : s("submit")}
                 </button>
+
+                {/* Feedback messages */}
+                {status === "success" && (
+                  <p className={styles.success}>
+                    {s("success") || "✅ Message sent!"}
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className={styles.error}>
+                    {s("error") || "❌ Error sending message"}
+                  </p>
+                )}
               </form>
             )}
           </div>
@@ -110,6 +154,3 @@ export default function Contact() {
     </section>
   );
 }
-
-
-

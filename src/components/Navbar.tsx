@@ -81,7 +81,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="/asociate" locale={locale}>
+            <Link href="/miembras" locale={locale}>
               {t("asociate") as string}
             </Link>
           </li>
@@ -151,8 +151,8 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="/asociate" locale={locale}>
-              {t("asociate") as string}
+            <Link href="/miembras" locale={locale}>
+              {t("miembras") as string}
             </Link>
           </li>
           <Link href="/contact" locale={locale}>
