@@ -15,7 +15,6 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
 }
-
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -46,10 +45,14 @@
 .body {
   margin: 0 0 14px 0;
   color: #222;
-  line-height: 1.8; /* más espacio */
+  line-height: 1.8; /* more comfortable spacing */
   letter-spacing: 0.01em;
   max-width: 52ch;
-  text-align: justify; /* ✅ justificar texto */
+  text-align: justify; /* justify text */
+  text-wrap: pretty; /* reduce “rivers” in supported browsers */
+  hyphens: auto; /* auto hyphenation keeps lines tight */
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
 }
 
 .link {

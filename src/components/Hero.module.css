@@ -19,7 +19,6 @@
   align-items: center;
   grid-template-columns: 1fr; /* mobile first */
 }
-
 @media (min-width: 600px) {
   .inner {
     grid-template-columns: 1.1fr 1fr;
@@ -35,7 +34,7 @@
 .media {
   position: relative;
   width: 100%;
-  aspect-ratio: 5 / 4; /* adjust to your photo’s ratio if needed */
+  aspect-ratio: 5 / 4;
   max-width: 720px;
   border-radius: 18px;
   overflow: hidden;
@@ -62,33 +61,17 @@
   font-size: clamp(1.75rem, 2.6vw + 1rem, 2.6rem);
 }
 
-/* Comfortable body */
-/* Párrafos del hero */
+/* Hero paragraph — justified with hyphenation to prevent gaps */
 .lead {
-  text-align: justify;
+  margin: 0 0 1.25rem;
+  color: #202020;
+  font-size: clamp(1rem, 0.35vw + 0.95rem, 1.1rem);
   line-height: 1.8;
-  text-wrap: pretty; /* mejora la distribución en navegadores nuevos */
-  hyphens: auto; /* guionado automático */
+  text-align: justify;
+  text-wrap: pretty; /* smoother line breaks where supported */
+  hyphens: auto; /* requires correct <html lang="…"> */
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
-}
-
-/* Texto de las tarjetas */
-.body {
-  text-align: justify;
-  line-height: 1.8;
-  text-wrap: pretty;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-}
-
-/* En tarjetas muy angostas, evitar “ríos” */
-@media (max-width: 380px) {
-  .lead,
-  .body {
-    text-align: left; /* o 'start' si prefieres */
-  }
 }
 
 /* Primary CTA */
@@ -117,13 +100,11 @@
     padding-top: clamp(1rem, 3vw, 1.5rem);
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .button {
     transition: none;
   }
 }
-
 @media (max-width: 599px) {
   .button {
     display: block;

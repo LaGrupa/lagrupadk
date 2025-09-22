@@ -6,13 +6,15 @@ export const metadata: Metadata = {
   description: "Colectiva de mujeres migrantes en Dinamarca",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html suppressHydrationWarning>
+    // Default language for the whole site (overridden per-locale below)
+    <html lang="es" suppressHydrationWarning>
       <body className="site">{children}</body>
     </html>
   );
 }
-
-
-

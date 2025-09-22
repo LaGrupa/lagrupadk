@@ -45,14 +45,14 @@
   }
 }
 
-/* Shared media wrapper so images don't overflow and get rounded nicely */
+/* Shared media wrapper */
 .media {
   align-self: start;
 }
 .image {
   display: block;
   width: 100%;
-  height: auto; /* let Next/Image size intrinsically */
+  height: auto;
   border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
@@ -60,8 +60,11 @@
 
 /* Text */
 .text {
-  max-width: 72ch; /* readable line length */
+  max-width: 72ch;
   line-height: 1.65;
+  min-width: 0;
+  overflow-wrap: anywhere; /* keep long URLs from overflowing */
+  word-break: normal;
 }
 .text h2 {
   font-size: clamp(1.8rem, 2.6vw + 0.6rem, 2.4rem);
@@ -70,17 +73,22 @@
 }
 .text p {
   margin: 0 0 1rem;
-  text-align: justify; /* ✅ justify paragraphs */
+  text-align: justify;
+  line-height: 1.75;
+  text-wrap: pretty;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
 }
 
-/* Mission / Vision (contained green block) */
+/* Mission / Vision */
 .missionVision {
   background: #c5d2b3;
   padding: clamp(1.25rem, 3vw, 2rem);
   border-radius: 12px;
   display: grid;
   gap: clamp(1rem, 3vw, 2rem);
-  grid-template-columns: 1fr; /* stack */
+  grid-template-columns: 1fr;
 }
 .missionVision h3 {
   font-size: clamp(1.2rem, 1.2vw + 0.9rem, 1.5rem);
@@ -89,28 +97,27 @@
 }
 .missionVision p {
   text-align: justify;
-  line-height: 1.7; /* ✅ justify mission/vision paragraphs */
+  line-height: 1.8;
+  text-wrap: pretty;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
 }
+
 @media (min-width: 900px) {
   .missionVision {
     grid-template-columns: 1fr 1fr;
   }
 }
-/* Ensure grid items can actually shrink inside the viewport */
+
+/* Ensure grid items can actually shrink */
 .heroContent > *,
 .block > * {
-  min-width: 0; /* <-- key for Grid/Flex overflow */
-}
-
-/* Make text wrap instead of forcing the grid wider */
-.text {
   min-width: 0;
-  overflow-wrap: anywhere; /* break very long words/links if needed */
-  word-break: normal;
 }
 
-/* Belt-and-suspenders: clip any accidental horizontal overflow per section */
+/* Clip any accidental horizontal overflow */
 .heroSection,
 .section {
-  overflow-x: clip; /* behaves like hidden for the x-axis */
+  overflow-x: clip;
 }

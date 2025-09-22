@@ -120,6 +120,7 @@ export default function Navbar() {
       />
 
       {/* Mobile menu */}
+      {/* Mobile menu */}
       <div
         id="mobile-menu"
         className={`${styles.mobile} ${open ? styles.open : ""}`}
@@ -152,12 +153,14 @@ export default function Navbar() {
           </li>
           <li>
             <Link href="/miembras" locale={locale}>
-              {t("miembras") as string}
+              {t("asociate") /* <-- use the same key as desktop */}
             </Link>
           </li>
-          <Link href="/contact" locale={locale}>
-            {t("contact")}
-          </Link>
+          <li>
+            <Link href="/contact" locale={locale}>
+              {t("contact")}
+            </Link>
+          </li>
           <li style={{ marginTop: 8 }}>
             <Link href={switchPath} locale={otherLocale}>
               {otherLocale.toUpperCase()}

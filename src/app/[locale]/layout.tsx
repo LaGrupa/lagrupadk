@@ -34,34 +34,19 @@ export default async function LocaleLayout({
     | undefined;
 
   return (
-    <I18nProvider locale={locale} dict={dict}>
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
+    // Set per-locale language to enable correct hyphenation/justification
+    <div lang={locale}>
+      <I18nProvider locale={locale} dict={dict}>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
 
-      {/* Load analytics only if user accepted */}
-      <AnalyticsScripts enabled={consent === "accepted"} />
+        {/* Load analytics only if user accepted */}
+        <AnalyticsScripts enabled={consent === "accepted"} />
 
-      {/* Show bilingual cookie banner when no choice yet */}
-      <CookieConsent initialValue={consent ?? null} />
-    </I18nProvider>
+        {/* Show bilingual cookie banner when no choice yet */}
+        <CookieConsent initialValue={consent ?? null} />
+      </I18nProvider>
+    </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
