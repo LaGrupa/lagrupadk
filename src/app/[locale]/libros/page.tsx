@@ -112,10 +112,10 @@ const books: Book[] = [
   },
   {
     title: "Marrón",
-    category: "ensayo",
+    category: "memorias",
     author: "Varios",
     year: 2021,
-    description: "Miradas sobre racialización y pertenencia.",
+    description: "Miradas sobre racialización y pertenencia. Memorias de la autora",
     rating: 4,
     image: marron,
   },

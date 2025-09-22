@@ -117,7 +117,9 @@
       "acuarelas": { "title": "Acuarelas", "desc": "El segundo taller a cargo de Lucía. Nos llevó del día a la noche para poder frenar la magia de los pinceles." },
       "circulo": { "title": "Círculo de mujeres", "desc": "El tercer taller fue un Círculo de Mujeres: espacios íntimos para la escucha, reflexión y red." },
       "yoga_facial": { "title": "Yoga Facial", "desc": "En el último taller antes del verano, practicamos Yoga Facial y meditación facial." },
-      "dibujar": { "title": "Dibujar para encontrarse", "desc": "El quinto taller nos encontró dibujando juntas. Un espacio para explorar y compartir procesos creativos." }
+      "dibujar": { "title": "Dibujar para encontrarse", "desc": "El quinto taller nos encontró dibujando juntas. Un espacio para explorar y compartir procesos creativos." },
+      "feminista": {"title": "Taller de pensamiento feminista", "desc": "En agosto tuvimos nuestro sexto taller, esta vez, un taller de pensamiento feminista a cargo de Javiera Aguirre (@filosofiaklub), bajo la consigna \"Comunidades rotas: el costo político y social del discurso de odio\". Una invitación a la reflexión filosófica sobre el presente del feminismo y el colectivismo en el marco del auge de los discursos misóginos y fascistas. Un encuentro para recuperar nuestros roles de actoras sociales, superar las visiones apocalípticas y empezar a organizar futuros posibles con Nosotras como motor de cambio."
+      }
     }
   },
   "cookies": {
@@ -140,7 +142,8 @@
     "items": {
       "abril": { "title": "Encuentro abierto de abril", "desc": "Tarde de merienda y charla en comunidad." },
       "mayo": { "title": "Encuentro de mayo", "desc": "Ronda de presentación y espacio de escucha." },
-      "junio": { "title": "Encuentro de junio", "desc": "Café, lectura compartida y planes para el verano." }
+      "junio": { "title": "Encuentro de junio", "desc": "Café, lectura compartida y planes para el verano." },
+      "agosto": { "title": "Encuentro de agosto", "desc": "En agosto nos reunimos para compartir experiencias, reflexionar juntas y seguir construyendo comunidad en torno al feminismo y el colectivismo." }
     }
   },
   "recursero": {

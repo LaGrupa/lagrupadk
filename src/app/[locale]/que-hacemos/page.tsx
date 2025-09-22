@@ -5,8 +5,8 @@ import Image from "next/image";
 import styles from "./QueHacemos.module.css";
 import { useT } from "../../../i18n";
 
-const encuentrosImg = "/site/encuentros.jpg";
-const talleresImg = "/site/talleres.jpg";
+const encuentrosImg = "/site/quienes2.jpg";
+const talleresImg = "/site/talleres-port.jpg";
 
 export default function QueHacemosPage() {
   const { t, locale } = useT("quehacemos");
@@ -53,8 +53,3 @@ export default function QueHacemosPage() {
     </div>
   );
 }
-
-
-
-
-

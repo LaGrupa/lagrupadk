@@ -13,7 +13,7 @@
   margin: 0 auto;
   display: grid;
   gap: clamp(1rem, 3vw, 2rem);
-  grid-template-columns: 1fr;        /* mobile */
+  grid-template-columns: 1fr; /* mobile */
   align-items: center;
 }
 @media (min-width: 900px) {
@@ -37,7 +37,7 @@
   gap: clamp(1rem, 3vw, 2rem);
   align-items: center;
   margin: 0 0 clamp(2rem, 5vw, 3rem);
-  grid-template-columns: 1fr;  /* stack on mobile */
+  grid-template-columns: 1fr; /* stack on mobile */
 }
 @media (min-width: 900px) {
   .block {
@@ -52,15 +52,15 @@
 .image {
   display: block;
   width: 100%;
-  height: auto;                 /* let Next/Image size intrinsically */
+  height: auto; /* let Next/Image size intrinsically */
   border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
 }
 
 /* Text */
 .text {
-  max-width: 72ch;              /* readable line length */
+  max-width: 72ch; /* readable line length */
   line-height: 1.65;
 }
 .text h2 {
@@ -68,7 +68,10 @@
   font-weight: 800;
   margin: 0 0 0.75rem;
 }
-.text p { margin: 0 0 1rem; }
+.text p {
+  margin: 0 0 1rem;
+  text-align: justify; /* ✅ justify paragraphs */
+}
 
 /* Mission / Vision (contained green block) */
 .missionVision {
@@ -77,32 +80,37 @@
   border-radius: 12px;
   display: grid;
   gap: clamp(1rem, 3vw, 2rem);
-  grid-template-columns: 1fr;   /* stack */
+  grid-template-columns: 1fr; /* stack */
 }
 .missionVision h3 {
   font-size: clamp(1.2rem, 1.2vw + 0.9rem, 1.5rem);
   font-weight: 800;
   margin: 0 0 0.75rem;
 }
+.missionVision p {
+  text-align: justify;
+  line-height: 1.7; /* ✅ justify mission/vision paragraphs */
+}
 @media (min-width: 900px) {
-  .missionVision { grid-template-columns: 1fr 1fr; }
+  .missionVision {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 /* Ensure grid items can actually shrink inside the viewport */
 .heroContent > *,
 .block > * {
-  min-width: 0;                 /* <-- key for Grid/Flex overflow */
+  min-width: 0; /* <-- key for Grid/Flex overflow */
 }
 
 /* Make text wrap instead of forcing the grid wider */
 .text {
   min-width: 0;
-  overflow-wrap: anywhere;      /* break very long words/links if needed */
+  overflow-wrap: anywhere; /* break very long words/links if needed */
   word-break: normal;
 }
 
 /* Belt-and-suspenders: clip any accidental horizontal overflow per section */
 .heroSection,
 .section {
-  overflow-x: clip;             /* behaves like hidden for the x-axis */
+  overflow-x: clip; /* behaves like hidden for the x-axis */
 }
-

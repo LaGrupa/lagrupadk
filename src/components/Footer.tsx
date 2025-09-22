@@ -106,7 +106,7 @@ export default function Footer() {
           >
             Nia
           </a>{" "}
-          — Powered by Next.js
+          — Powered by Next.js - CVR: 54871096
         </p>
       </div>
     </footer>

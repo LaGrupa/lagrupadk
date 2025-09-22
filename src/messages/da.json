@@ -116,7 +116,9 @@
       "acuarelas": { "title": "Akvarel", "desc": "Den anden workshop ved Lucía. Vi malede fra dag til nat og lod penslernes magi tale." },
       "circulo": { "title": "Kvinde-cirkel", "desc": "Den tredje workshop var en kvindecirkel: intime rum for lytning, refleksion og netværk." },
       "yoga_facial": { "title": "Ansigtsyoga", "desc": "Den sidste workshop før sommeren – ansigtsyoga og mindful ansigtsmeditation." },
-      "dibujar": { "title": "Tegn for at finde sig selv", "desc": "Den femte workshop samlede os om at tegne sammen – et sted at udforske og dele kreative processer." }
+      "dibujar": { "title": "Tegn for at finde sig selv", "desc": "Den femte workshop samlede os om at tegne sammen – et sted at udforske og dele kreative processer." },
+       "feminista": { "title": "Feministisk tænkning workshop", "desc": "I august havde vi vores sjette workshop, denne gang en feministisk tænkningsworkshop med Javiera Aguirre (@filosofiaklub), under mottoet \"Brudte fællesskaber: de politiske og sociale omkostninger ved hadefuld tale\"..."
+      }
     }
   },
   "cookies": {
@@ -139,7 +141,8 @@
     "items": {
       "abril": { "title": "Åbent møde i april", "desc": "Eftermiddag med kaffe og samtaler i fællesskab." },
       "mayo": { "title": "Maj-møde", "desc": "Præsentationsrunde og lyttende rum." },
-      "junio": { "title": "Juni-møde", "desc": "Kaffe, fælles læsning og planer for sommeren." }
+      "junio": { "title": "Juni-møde", "desc": "Kaffe, fælles læsning og planer for sommeren." },
+      "agosto": { "title": "August møde", "desc": "I august mødtes vi for at dele erfaringer, reflektere sammen og fortsætte med at opbygge fællesskab omkring feminisme og kollektivisme." }
     }
   },
   "recursero": {

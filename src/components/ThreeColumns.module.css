@@ -5,7 +5,7 @@
 
 .container {
   max-width: 1160px;
-  margin: 0 auto;  /* centered */
+  margin: 0 auto; /* centered */
   padding: 0 20px;
 }
 
@@ -17,15 +17,19 @@
 }
 
 @media (max-width: 1024px) {
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 @media (max-width: 680px) {
-  .grid { grid-template-columns: 1fr; }
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card {
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.10);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   padding: 22px 22px 18px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
@@ -42,9 +46,10 @@
 .body {
   margin: 0 0 14px 0;
   color: #222;
-  line-height: 1.6;
+  line-height: 1.8; /* más espacio */
   letter-spacing: 0.01em;
   max-width: 52ch;
+  text-align: justify; /* ✅ justificar texto */
 }
 
 .link {
@@ -52,4 +57,3 @@
   font-weight: 600;
   color: inherit;
 }
-

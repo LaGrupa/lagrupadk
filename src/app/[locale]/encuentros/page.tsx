@@ -5,15 +5,16 @@ import styles from "./Encuentros.module.css";
 import { useT } from "@/i18n";
 
 type Meetup = {
-  id: string;        // i18n key
-  dateISO: string;   // sortable date (YYYY-MM-DD)
-  img: string;       // /public path
+  id: string; // i18n key
+  dateISO: string; // sortable date (YYYY-MM-DD)
+  img: string; // /public path
 };
 
 const meetups: Meetup[] = [
-  { id: "abril",   dateISO: "2025-04-15", img: "/site/enc-1.jpg" },
-  { id: "mayo",    dateISO: "2025-05-20", img: "/site/enc-2.jpg" },
-  { id: "junio",   dateISO: "2025-06-18", img: "/site/enc-3.jpg" },
+  { id: "abril", dateISO: "2025-04-15", img: "/site/enc-1.jpg" },
+  { id: "mayo", dateISO: "2025-05-20", img: "/site/enc-2.jpg" },
+  { id: "junio", dateISO: "2025-06-18", img: "/site/enc-3.jpg" },
+  { id: "agosto", dateISO: "2025-08-20", img: "/site/enc-4.jpg" },
   // add more as needed
 ];
 
@@ -22,11 +23,11 @@ export default function EncuentrosPage() {
   const now = new Date();
 
   const upcoming = meetups
-    .filter(m => new Date(m.dateISO) >= new Date(now.toDateString()))
+    .filter((m) => new Date(m.dateISO) >= new Date(now.toDateString()))
     .sort((a, b) => +new Date(a.dateISO) - +new Date(b.dateISO));
 
   const past = meetups
-    .filter(m => new Date(m.dateISO) < new Date(now.toDateString()))
+    .filter((m) => new Date(m.dateISO) < new Date(now.toDateString()))
     .sort((a, b) => +new Date(b.dateISO) - +new Date(a.dateISO));
 
   const fmt = (iso: string) =>
@@ -37,7 +38,7 @@ export default function EncuentrosPage() {
     }).format(new Date(iso));
 
   const title = (id: string) => t(`meetups.items.${id}.title`) as string;
-  const desc  = (id: string) => t(`meetups.items.${id}.desc`) as string;
+  const desc = (id: string) => t(`meetups.items.${id}.desc`) as string;
 
   // Safely coerce intro to string for JSX
   const intro = (t("meetups.intro") as string | undefined) ?? "";
@@ -50,11 +51,17 @@ export default function EncuentrosPage() {
         {intro ? <p className={styles.lead}>{intro}</p> : null}
 
         {/* Upcoming */}
-        <h2 className={styles.sectionTitle}>{t("meetups.upcoming") as string}</h2>
+        <h2 className={styles.sectionTitle}>
+          {t("meetups.upcoming") as string}
+        </h2>
         {upcoming.length === 0 ? (
           <div className={styles.empty}>
-            <h3 className={styles.emptyTitle}>{t("meetups.empty.title") as string}</h3>
-            <p className={styles.emptyDesc}>{t("meetups.empty.desc") as string}</p>
+            <h3 className={styles.emptyTitle}>
+              {t("meetups.empty.title") as string}
+            </h3>
+            <p className={styles.emptyDesc}>
+              {t("meetups.empty.desc") as string}
+            </p>
           </div>
         ) : (
           <div className={styles.grid}>

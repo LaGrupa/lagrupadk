@@ -21,28 +21,32 @@
 }
 
 @media (min-width: 600px) {
-  .inner { grid-template-columns: 1.1fr 1fr; }
+  .inner {
+    grid-template-columns: 1.1fr 1fr;
+  }
 }
 @media (min-width: 1024px) {
-  .inner { grid-template-columns: 1.2fr 1fr; }
+  .inner {
+    grid-template-columns: 1.2fr 1fr;
+  }
 }
 
 /* Media box with intrinsic ratio to avoid CLS; image fills and crops nicely */
 .media {
   position: relative;
   width: 100%;
-  aspect-ratio: 5 / 4;        /* adjust to your photo’s ratio if needed */
+  aspect-ratio: 5 / 4; /* adjust to your photo’s ratio if needed */
   max-width: 720px;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 6px 24px rgba(0,0,0,.12);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
 }
 
 /* next/image fills parent */
 .img {
-  object-fit: cover;          /* prevent stretch; crop edges if needed */
+  object-fit: cover; /* prevent stretch; crop edges if needed */
   object-position: 50% 44%;
-  transform: scale(1.001);    /* avoid sub-pixel seams in some browsers */
+  transform: scale(1.001); /* avoid sub-pixel seams in some browsers */
 }
 
 /* Text column with readable line-length */
@@ -59,11 +63,32 @@
 }
 
 /* Comfortable body */
+/* Párrafos del hero */
 .lead {
-  margin: 0 0 1.25rem;
-  line-height: 1.6;
-  font-size: clamp(1rem, 0.35vw + 0.95rem, 1.1rem);
-  color: #202020;
+  text-align: justify;
+  line-height: 1.8;
+  text-wrap: pretty; /* mejora la distribución en navegadores nuevos */
+  hyphens: auto; /* guionado automático */
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+}
+
+/* Texto de las tarjetas */
+.body {
+  text-align: justify;
+  line-height: 1.8;
+  text-wrap: pretty;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+}
+
+/* En tarjetas muy angostas, evitar “ríos” */
+@media (max-width: 380px) {
+  .lead,
+  .body {
+    text-align: left; /* o 'start' si prefieres */
+  }
 }
 
 /* Primary CTA */
@@ -75,18 +100,28 @@
   border-radius: 10px;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 4px 14px rgba(0,0,0,.12);
-  transition: background-color .18s ease, transform .18s ease, box-shadow .18s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transition: background-color 0.18s ease, transform 0.18s ease,
+    box-shadow 0.18s ease;
 }
-.button:hover { background: #1a1a1a; box-shadow: 0 6px 20px rgba(0,0,0,.18); }
-.button:active { transform: translateY(1px); }
+.button:hover {
+  background: #1a1a1a;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+.button:active {
+  transform: translateY(1px);
+}
 
 @media (max-width: 480px) {
-  .hero { padding-top: clamp(1rem, 3vw, 1.5rem); }
+  .hero {
+    padding-top: clamp(1rem, 3vw, 1.5rem);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .button { transition: none; }
+  .button {
+    transition: none;
+  }
 }
 
 @media (max-width: 599px) {
@@ -99,9 +134,3 @@
     text-align: center;
   }
 }
-
-
-
-
-
-
