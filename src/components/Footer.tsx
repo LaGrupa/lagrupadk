@@ -23,6 +23,10 @@ export default function Footer() {
           <Link href={`/${locale}/quienes-somos`}>
             {t("footer.who") as string}
           </Link>
+          <Link href={`/${locale}/que-hacemos`}>
+            {t("footer.what") as string}
+          </Link>
+          <p>CVR: 45871096 </p>
         </nav>
 
         {/* Privacy + Cookie settings */}
@@ -106,7 +110,7 @@ export default function Footer() {
           >
             Nia
           </a>{" "}
-          — Powered by Next.js - CVR: 54871096
+          — Powered by Next.js
         </p>
       </div>
     </footer>
