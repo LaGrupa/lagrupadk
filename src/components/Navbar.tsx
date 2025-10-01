@@ -44,10 +44,10 @@ export default function Navbar() {
           onClick={() => setOpen(false)}
         >
           <Image
-            src="/logo.png"
+            src="/site/logo.png"
             alt="La Grupa DK"
-            width={60}
-            height={60}
+            width={100}
+            height={50}
             className={styles.logoImage}
             priority
           />
