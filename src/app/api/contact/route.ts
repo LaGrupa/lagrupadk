@@ -77,3 +77,12 @@ export async function POST(req: Request) {
     return jsonError(`Email send failed: ${detail}`, 500);
   }
 }
+
+export async function GET() {
+  return NextResponse.json({
+    runtime: "nodejs",
+    hasApiKey: Boolean(process.env.SENDGRID_API_KEY),
+    hasMailFrom: Boolean(process.env.MAIL_FROM),
+    hasMailTo: Boolean(process.env.MAIL_TO),
+  });
+}
