@@ -54,12 +54,41 @@ export async function POST(req: Request) {
       return jsonError("Server not configured (MAIL_FROM/MAIL_TO)", 500);
     }
 
+    // small utility to safely render HTML
+    const escapeHtml = (s: string) =>
+      s.replace(
+        /[&<>"']/g,
+        (c) =>
+          ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+          }[c] as string)
+      );
+
     const msg: MailDataRequired = {
       to,
-      from, // must be a verified sender/domain in SendGrid
-      subject: `📩 New contact form message from ${name}`,
-      text: `From: ${name} <${email}>\n\n${message}`,
-      replyTo: email,
+      from: { email: from, name: "La Grupa Website" }, // consistent, recognizable sender name
+      subject: `New contact form message from ${name}`, // simpler subject can help deliverability
+      text: `From: ${name} <${email}>\n\n${message}`, // keep plain text (important)
+      html: `
+    <p><strong>From:</strong> ${escapeHtml(name)} &lt;${escapeHtml(
+        email
+      )}&gt;</p>
+    <pre style="font-family:system-ui, -apple-system, Segoe UI, Roboto, sans-serif; white-space:pre-wrap;">${escapeHtml(
+      message
+    )}</pre>
+  `.trim(), // minimal HTML version (no trackers, no styling bloat)
+      replyTo: { email }, // keep reply-to
+      trackingSettings: {
+        clickTracking: { enable: false, enableText: false },
+        openTracking: { enable: false },
+      },
+      categories: ["contact-form"], // mild hint for ESPs, and useful in SendGrid UI
+      // customArgs can help thread grouping on your side without affecting spam:
+      customArgs: { app: "lagrupa", route: "contact" },
     };
 
     await sgMail.send(msg);
