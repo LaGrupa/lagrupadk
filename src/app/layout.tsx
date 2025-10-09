@@ -14,7 +14,10 @@ export default function RootLayout({
   return (
     // Default language for the whole site (overridden per-locale below)
     <html lang="es" suppressHydrationWarning>
-      <body className="site">{children}</body>
+      <body className="site">
+        {children}
+        <div id="emprendedoras-portal" />
+      </body>
     </html>
   );
 }

@@ -530,21 +530,38 @@ export default function EmprendedorasPage() {
 function BizModal({ biz, onClose }: { biz: Biz; onClose: () => void }) {
   const { t } = useT();
   const [mounted, setMounted] = useState(false);
-  const dialogRef = useRef<HTMLDivElement>(null);
+  const portalEl = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     setMounted(true);
+
+    // Find or create a stable portal root (survives HMR)
+    let root = document.getElementById("emprendedoras-portal");
+    if (!root) {
+      root = document.createElement("div");
+      root.id = "emprendedoras-portal";
+      document.body.appendChild(root);
+    }
+    portalEl.current = root;
+
+    // esc to close
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", onKey);
+
+    // lock scroll
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
+      // NOTE: do NOT remove the portal root; keep it around to avoid
+      // React trying to remove from a parent that got replaced by HMR.
+      portalEl.current = null;
     };
   }, [onClose]);
 
-  if (!mounted) return null;
+  if (!mounted || !portalEl.current) return null;
 
   const node = (
     <div className={styles.modalBackdrop} onMouseDown={onClose}>
@@ -554,7 +571,6 @@ function BizModal({ biz, onClose }: { biz: Biz; onClose: () => void }) {
         aria-modal="true"
         aria-labelledby="biz-title"
         onMouseDown={(e) => e.stopPropagation()}
-        ref={dialogRef}
       >
         <button
           className={styles.modalClose}
@@ -646,7 +662,7 @@ function BizModal({ biz, onClose }: { biz: Biz; onClose: () => void }) {
     </div>
   );
 
-  return createPortal(node, document.body);
+  return createPortal(node, portalEl.current);
 }
 
 function ModalRow({

@@ -178,17 +178,29 @@
       "visit": "Besøg",
       "close": "Luk"
     },
-    "tags": {
+   "tags": {
       "moda": "Mode",
       "custom": "Tilpasning",
       "alimentos": "Mad",
       "arte": "Kunst",
       "tatuajes": "Tatoveringer",
       "bienestar": "Velvære",
-      "estética": "Æstetik",
-      "lectura": "Læsekunst",
+      "estética": "Skønhed",
+      "lectura": "Læsning",
+      "administración": "Administration",
+      "contratos": "Kontrakter",
+      "masajes": "Massage",
+      "reiki": "Reiki",
+      "danza": "Dans",
+      "folklore": "Folkedans",
+      "tango": "Tango",
+      "zumba": "Zumba",
+      "fitness": "Fitness",
+      "pilates": "Pilates",
       "salud": "Sundhed",
-      "sustentable": "Bæredygtig"
+      "fisioterapia": "Fysioterapi",
+      "gluten-free": "Glutenfri",
+      "sustentable": "Bæredygtigt"
     }
   },
     "ui": {

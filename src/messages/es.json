@@ -160,7 +160,7 @@
     "subtitle": "Explorá el catálogo y conocé a las grandes mujeres de La Grupa que se animaron a dedicarse a lo que les gusta y a compartirlo.",
     "searchPlaceholder": "Buscar por nombre, categoría o tag…",
     "searchAria": "Buscar emprendimientos",
-    "allTags": "Todos",
+    "allTags": "Todas",
     "aria": {
       "openDetailsPrefix": "Abrir detalles de"
     },
@@ -179,16 +179,28 @@
       "visit": "Visitar",
       "close": "Cerrar"
     },
-    "tags": {
+   "tags": {
       "moda": "Moda",
-      "custom": "Custom",
+      "custom": "Customización",
       "alimentos": "Alimentos",
       "arte": "Arte",
       "tatuajes": "Tatuajes",
       "bienestar": "Bienestar",
       "estética": "Estética",
       "lectura": "Lectura",
+      "administración": "Administración",
+      "contratos": "Contratos",
+      "masajes": "Masajes",
+      "reiki": "Reiki",
+      "danza": "Danza",
+      "folklore": "Folklore",
+      "tango": "Tango",
+      "zumba": "Zumba",
+      "fitness": "Fitness",
+      "pilates": "Pilates",
       "salud": "Salud",
+      "fisioterapia": "Fisioterapia",
+      "gluten-free": "Sin gluten",
       "sustentable": "Sustentable"
     }
   },
