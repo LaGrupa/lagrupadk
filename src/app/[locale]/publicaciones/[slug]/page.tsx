@@ -75,17 +75,22 @@ export default async function PublicacionPage({
           })}
           {post.tags?.length ? ` • ${post.tags.join(", ")}` : ""}
         </p>
-        <img
-          src={post.cover}
-          alt={post.title}
-          className={styles.articleCover}
-        />
+        {post.cover && (
+          <img
+            src={post.cover}
+            alt={post.title}
+            className={styles.articleCover}
+          />
+        )}
       </header>
 
-      <section
-        className={styles.articleBody}
-        dangerouslySetInnerHTML={{ __html: post.body || "" }}
-      />
+      {/* ⬇️ BODY RENDER (HTML string from posts.ts) */}
+      {post.body && (
+        <section
+          className={styles.articleBody}
+          dangerouslySetInnerHTML={{ __html: post.body }}
+        />
+      )}
 
       <footer className={styles.articleFooter}>
         {post.pdfUrl && (
@@ -94,7 +99,6 @@ export default async function PublicacionPage({
             className={styles.primaryBtn}
             target="_blank"
             rel="noreferrer noopener"
-            download
           >
             Descargar PDF
           </a>
