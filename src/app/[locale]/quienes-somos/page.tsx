@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import styles from "./QuienesSomos.module.css";
@@ -79,6 +79,3 @@ export default function QuienesSomosPage() {
     </>
   );
 }
-
-
-
