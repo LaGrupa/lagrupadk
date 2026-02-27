@@ -3,6 +3,7 @@
 import Image from "next/image";
 import styles from "./QuienesSomos.module.css";
 import { useT } from "../../../i18n";
+import HeroSanity from "@/components/HeroSanity";
 
 export default function QuienesSomosPage() {
   const { t } = useT("quienes");
