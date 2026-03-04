@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+﻿import { defineField, defineType } from "sanity";
 
 export const book = defineType({
   name: "book",
@@ -26,24 +26,42 @@ export const book = defineType({
     }),
 
     defineField({
+      name: "subtitle",
+      title: "Subtitle (optional)",
+      type: "string",
+    }),
+
+    defineField({
       name: "author",
-      title: "Author",
+      title: "Author (optional)",
       type: "string",
     }),
 
     defineField({
-      name: "genre",
-      title: "Genre",
+      name: "category",
+      title: "Category (for filter chips)",
       type: "string",
-      description: "Used for filter chips (e.g. Biografía, Cuento...)",
+      description: "Examples: ensayo, cuento, biografía, historia, infantil…",
     }),
 
     defineField({
-      name: "tags",
-      title: "Tags",
-      type: "array",
-      of: [{ type: "string" }],
-      options: { layout: "tags" },
+      name: "year",
+      title: "Year (optional)",
+      type: "string",
+    }),
+
+    defineField({
+      name: "rating",
+      title: "Rating (0–5, optional)",
+      type: "number",
+      validation: (Rule) => Rule.min(0).max(5),
+    }),
+
+    defineField({
+      name: "description",
+      title: "Description (optional)",
+      type: "text",
+      rows: 4,
     }),
 
     defineField({
@@ -60,16 +78,25 @@ export const book = defineType({
     }),
 
     defineField({
-      name: "excerpt",
-      title: "Short description",
-      type: "text",
-      rows: 3,
+      name: "url",
+      title: "External link (optional)",
+      type: "url",
     }),
 
     defineField({
-      name: "link",
-      title: "External link (optional)",
-      type: "url",
+      name: "links",
+      title: "Extra links (optional)",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "bookLink",
+          fields: [
+            { name: "label", type: "string", title: "Label" },
+            { name: "href", type: "url", title: "URL" },
+          ],
+        },
+      ],
     }),
   ],
 });

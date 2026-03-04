@@ -83,8 +83,21 @@ export const post = defineType({
       name: "tags",
       title: "Tags",
       type: "array",
-      of: [{ type: "string" }],
+      of: [
+        {
+          type: "string",
+          options: {
+            list: [
+              { title: "Archivo", value: "archivo" },
+              { title: "Entrevista", value: "entrevista" },
+              { title: "Lecturas", value: "lecturas" },
+              { title: "Recomendaciones", value: "recomendaciones" },
+            ],
+          },
+        },
+      ],
       options: { layout: "tags" },
     }),
   ],
 });
+

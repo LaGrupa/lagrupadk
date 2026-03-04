@@ -1,10 +1,23 @@
-.page { background: #fff; }
+﻿.page {
+  background: #fff;
+}
 
 /* --- Banner (supports both variants) --- */
 /* Emprendedoras-style image banner */
-.bannerWrap { background: #e9e6ee; }
-.bannerInner { max-width: 1400px; margin: 0 auto; padding: 0.75rem 1rem; }
-.banner { width: 100%; height: auto; border-radius: 8px; display: block; }
+.bannerWrap {
+  background: #e9e6ee;
+}
+.bannerInner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+}
+.banner {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
 
 /* Optional gradient placeholder (use className={styles.bannerPlaceholder}) */
 .bannerPlaceholder {
@@ -19,13 +32,15 @@
   font-size: 2.2rem;
   font-weight: 800;
   color: #fff;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* --- Filters (match Emprendedoras) --- */
-.filters { padding: 1rem; }
+.filters {
+  padding: 1rem;
+}
 .filtersInner {
-  max-width: 900px;                 /* same as Emprendedoras */
+  max-width: 900px; /* same as Emprendedoras */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -33,10 +48,10 @@
   gap: 0.75rem;
 }
 
-/* Search bar — identical look & feel */
+/* Search bar â€” identical look & feel */
 .search {
   width: 100%;
-  max-width: 640px;                 /* same cap */
+  max-width: 640px; /* same cap */
   margin: 0 auto;
   padding: 0.65rem 0.9rem;
   border: 1px solid #cfcfd4;
@@ -47,7 +62,7 @@
 .search:focus {
   outline: none;
   border-color: #98a0ac;
-  box-shadow: 0 0 0 3px rgba(10,102,194,.12);
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.12);
 }
 
 .tags {
@@ -65,15 +80,28 @@
   cursor: pointer;
   transition: background 0.2s ease;
 }
-.tag:hover { background: #f3f6fb; }
+.tag:hover {
+  background: #1f2937;
+  border-color: #1f2937;
+  color: #fff;
+}
+
 .activeTag {
-  background: #0a66c2;
-  border-color: #0a66c2;
-  color: #905fbc;
+  background: #1f2937;
+  border-color: #1f2937;
+  color: #fff;
+}
+
+.activeTag:hover {
+  background: #1f2937;
+  border-color: #1f2937;
+  color: #fff;
 }
 
 /* --- Gallery (fixed-size grid) --- */
-.gallery { padding: 1.25rem 1rem 3rem; }
+.gallery {
+  padding: 1.25rem 1rem 3rem;
+}
 .galleryInner {
   max-width: 1200px;
   margin: 0 auto;
@@ -89,29 +117,43 @@
   height: 380px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 6px 22px rgba(0,0,0,.08);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  transition: transform .15s ease, box-shadow .15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
   display: flex;
   flex-direction: column;
   border: none;
   cursor: pointer;
 }
-.card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,.12); }
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
 
 .media {
   background: #f3f3f6;
-  height: 200px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4; /* consistent “book cover” shape */
+  height: auto; /* let aspect-ratio drive height */
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* crop instead of squish */
+  display: block;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.cardImg { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-.placeholder {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  padding: 1rem; text-align: center;
+  padding: 1rem;
+  text-align: center;
   background: linear-gradient(135deg, #b9a9d2, #8db697);
   color: #fff;
 }
@@ -126,37 +168,45 @@
 }
 
 .meta {
-  padding: .85rem .9rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  flex: 1;
-  min-height: 0;
+  padding: 0.6rem 0.8rem 0.9rem;
+  text-align: center;
+  min-height: 70px;
 }
 .cardTitle {
-  margin: 0;
-  font-size: 1.05rem;
-  font-weight: 800;
-  white-space: nowrap;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.25;
+  margin: 0.4rem 0 0.2rem 0;
+
+  white-space: normal;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 .cardSubtitle {
   margin: 0;
   color: #555;
-  font-size: .95rem;
+  font-size: 0.95rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.cardCategory { margin: 0; font-size: 0.8rem; color: #777; margin-top: auto; }
+.cardCategory {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: auto;
+}
 
 /* --- Modal --- */
 .modalBackdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.55);
+  background: rgba(0, 0, 0, 0.55);
   display: grid;
   place-items: center;
   z-index: 1000;
@@ -168,15 +218,24 @@
   background: #1b1b1f;
   color: #e9e9ee;
   border-radius: 14px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
   overflow: hidden;
   display: grid;
   grid-template-rows: auto 1fr auto;
   position: relative;
 }
-.modalHeader { padding: 1.1rem 1.4rem 0.4rem; }
-.modalTitle { margin: 0; font-size: 1.8rem; font-weight: 800; }
-.modalSubtitle { margin: 0.2rem 0 0.6rem; color: #c7c9d1; }
+.modalHeader {
+  padding: 1.1rem 1.4rem 0.4rem;
+}
+.modalTitle {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+.modalSubtitle {
+  margin: 0.2rem 0 0.6rem;
+  color: #c7c9d1;
+}
 
 .modalBody {
   display: grid;
@@ -185,45 +244,120 @@
   padding: 0.2rem 1.4rem 1rem;
   overflow: auto;
 }
-@media (max-width: 720px) { .modalBody { grid-template-columns: 1fr; } }
+@media (max-width: 720px) {
+  .modalBody {
+    grid-template-columns: 1fr;
+  }
+}
 
-.modalCover { background: #111; border-radius: 8px; overflow: hidden; }
-.modalCoverImg { width: 100%; height: auto; display: block; }
-.modalInfo { min-width: 0; }
+.modalCover {
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.modalCoverImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.modalInfo {
+  min-width: 0;
+}
 
 .modalRow {
   display: grid;
   grid-template-columns: 140px 1fr;
   gap: 1rem;
   padding: 0.55rem 0;
-  border-bottom: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
-.modalLabel { color: #9aa0a6; }
-.modalValue { color: #e9e9ee; }
-.modalLinks { display: flex; gap: .6rem; flex-wrap: wrap; }
-.modalLink { color: #8ab4ff; text-decoration: none; }
-.modalLink:hover { text-decoration: underline; }
+.modalLabel {
+  color: #9aa0a6;
+}
+.modalValue {
+  color: #e9e9ee;
+}
+.modalLinks {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.modalLink {
+  color: #8ab4ff;
+  text-decoration: none;
+}
+.modalLink:hover {
+  text-decoration: underline;
+}
 
 .modalFooter {
   padding: 1rem 1.4rem 1.2rem;
-  display: flex; gap: .6rem; justify-content: flex-end;
-  background: rgba(0,0,0,.12);
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  background: rgba(0, 0, 0, 0.12);
 }
 
-.primaryBtn, .secondaryBtn, .modalClose {
-  appearance: none; border: 0; border-radius: 10px;
-  padding: .6rem .85rem; font-weight: 700; cursor: pointer;
+.primaryBtn,
+.secondaryBtn,
+.modalClose {
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  padding: 0.6rem 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
 }
-.primaryBtn { background: #8ab4ff; color: #111; text-decoration: none; }
-.primaryBtn:hover { filter: brightness(1.05); }
-.secondaryBtn { background: #2a2d35; color: #e9e9ee; }
+.primaryBtn {
+  background: #8ab4ff;
+  color: #111;
+  text-decoration: none;
+}
+.primaryBtn:hover {
+  filter: brightness(1.05);
+}
+.secondaryBtn {
+  background: #2a2d35;
+  color: #e9e9ee;
+}
 
 .modalClose {
-  position: absolute; right: 14px; top: 12px;
-  background: transparent; color: #c7c9d1; font-size: 1.1rem;
+  position: absolute;
+  right: 14px;
+  top: 12px;
+  background: transparent;
+  color: #c7c9d1;
+  font-size: 1.1rem;
 }
-.modalClose:hover { color: #fff; }
+.modalClose:hover {
+  color: #fff;
+}
 
+/* --- Sanity migration: tag hover/active fixes --- */
+.tag {
+  cursor: pointer;
+  transition:
+    background 120ms ease,
+    color 120ms ease,
+    border-color 120ms ease;
+}
 
+.tag:hover {
+  background: #1f2937;
+  border-color: #1f2937;
+  color: #fff;
+}
 
+/* Active tag keeps the selected look */
+.activeTag {
+  background: #1f2937;
+  border-color: #1f2937;
+  color: #fff;
+}
 
+/* Active hover stays the same (no weird flip) */
+.activeTag:hover {
+  background: #111827;
+  border-color: #111827;
+  color: #fff;
+}

@@ -15,6 +15,7 @@ import { entrepreneur } from "./entrepreneur";
 import { entrepreneursPage } from "./entrepreneursPage";
 import { book } from "./book";
 import { booksPage } from "./booksPage";
+import { encuentro } from "./encuentro";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -34,5 +35,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     entrepreneursPage,
     book,
     booksPage,
+    encuentro,
   ],
 };
