@@ -1,73 +1,54 @@
-"use client";
+import { client } from "@/sanity/lib/client";
+import RecurseroSanity from "./RecurseroSanity";
+import RecurseroI18n from "./RecurseroI18n";
 
-import { I18nLink as Link } from "@/i18nLink";
-import Image from "next/image";
-import { useT } from "@/i18n";
-import styles from "./Recursero.module.css";
+const QUERY = `
+*[_type == "recurseroPage" && locale == $locale][0]{
+  title,
+  cards[]{
+    title,
+    href,
+    imageAlt,
+    "imageUrl": image.asset->url
+  }
+}
+`;
 
-// Static imports from /public (auto width/height metadata)
-import emprendedorasImg from "/public/site/recursero-emprendedoras.jpg";
-import librosImg from "/public/site/recursero-libros.jpg";
+type Data = {
+  title: string;
+  cards: {
+    title?: string | null;
+    href?: string | null;
+    imageAlt?: string | null;
+    imageUrl?: string | null;
+  }[];
+};
 
-export default function RecurseroPage() {
-  const { t, locale } = useT("recursero");
+export default async function Page({ params }: { params: { locale: string } }) {
+  const useSanity = process.env.NEXT_PUBLIC_USE_SANITY_RECURSERO === "true";
 
-  // safe translator helper -> always returns a non-empty string
-  const tx = (k: string, fb: string) => {
-    const v = t(k) as unknown;
-    return typeof v === "string" && v.trim() ? v : fb;
-  };
+  if (!useSanity) {
+    return <RecurseroI18n />;
+  }
+
+  const data: Data | null = await client.fetch(QUERY, {
+    locale: params.locale,
+  });
+
+  if (!data) {
+    return (
+      <main style={{ padding: 24 }}>
+        <h1>No recurseroPage found</h1>
+        <p>Locale: {params.locale}</p>
+      </main>
+    );
+  }
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>{t("title") as string}</h1>
-
-      <div className={styles.cards}>
-        <Link href="/emprendedoras" className={styles.card}>
-          <div className={styles.media}>
-            <Image
-              src={emprendedorasImg}
-              alt={tx(
-                "entrepreneursAlt",
-                locale === "da"
-                  ? "Kvinde-iværksættere — produkter skabt af migrantkvinder"
-                  : "Emprendedoras — productos creados por mujeres migrantes"
-              )}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className={styles.bannerImg}
-              priority
-            />
-          </div>
-          <div className={styles.body}>
-            <h2 className={styles.cardTitle}>{t("entrepreneurs") as string}</h2>
-          </div>
-        </Link>
-
-        <Link href="/libros" className={styles.card}>
-          <div className={styles.media}>
-            <Image
-              src={librosImg}
-              alt={tx(
-                "booksAlt",
-                locale === "da"
-                  ? "Anbefalede bøger og ressourcer"
-                  : "Libros recomendados y recursos"
-              )}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className={styles.bannerImg}
-            />
-          </div>
-          <div className={styles.body}>
-            <h2 className={styles.cardTitle}>{t("books") as string}</h2>
-          </div>
-        </Link>
-      </div>
-    </div>
+    <RecurseroSanity
+      title={data.title}
+      locale={params.locale}
+      cards={data.cards ?? []}
+    />
   );
 }
-
-
-
-

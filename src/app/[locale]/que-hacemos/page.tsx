@@ -1,55 +1,56 @@
-"use client";
+import { client } from "@/sanity/lib/client";
+import QueHacemosSanity from "./QueHacemosSanity";
+import QueHacemosI18n from "./QueHacemosI18n";
 
-import { I18nLink as Link } from "@/i18nLink";
-import Image from "next/image";
-import styles from "./QueHacemos.module.css";
-import { useT } from "../../../i18n";
+const QUERY = `
+*[_type == "whatWeDoPage" && locale == $locale][0]{
+  title,
+  cards[]{
+    title,
+    href,
+    imageAlt,
+    "imageUrl": image.asset->url
+  }
+}
+`;
 
-const encuentrosImg = "/site/quienes2.jpg";
-const talleresImg = "/site/talleres-port.jpg";
+type Data = {
+  title: string;
+  cards: {
+    title?: string | null;
+    href?: string | null;
+    imageAlt?: string | null;
+    imageUrl?: string | null;
+  }[];
+};
 
-export default function QueHacemosPage() {
-  const { t, locale } = useT("quehacemos");
+export default async function Page({ params }: { params: { locale: string } }) {
+  const useSanity = process.env.NEXT_PUBLIC_USE_SANITY_QUE_HACEMOS === "true";
 
-  // Coerce translations to string for alt attributes
-  const workshopsAlt = (t("workshopsAlt") as string | undefined) ?? "";
-  const meetingsAlt = (t("meetingsAlt") as string | undefined) ?? "";
+  // If feature flag OFF → render existing i18n page
+  if (!useSanity) {
+    return <QueHacemosI18n />;
+  }
+
+  // If feature flag ON → render Sanity version
+  const data: Data | null = await client.fetch(QUERY, {
+    locale: params.locale,
+  });
+
+  if (!data) {
+    return (
+      <main style={{ padding: 24 }}>
+        <h1>No whatWeDoPage found</h1>
+        <p>Locale: {params.locale}</p>
+      </main>
+    );
+  }
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>{t("title") as string}</h1>
-
-      <div className={styles.cards}>
-        <Link href={`/${locale}/talleres`} className={styles.card}>
-          <div className={styles.media}>
-            <Image
-              src={talleresImg}
-              alt={workshopsAlt}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className={styles.img}
-            />
-          </div>
-          <div className={styles.body}>
-            <h2 className={styles.cardTitle}>{t("workshops") as string}</h2>
-          </div>
-        </Link>
-
-        <Link href={`/${locale}/encuentros`} className={styles.card}>
-          <div className={styles.media}>
-            <Image
-              src={encuentrosImg}
-              alt={meetingsAlt}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className={styles.img}
-            />
-          </div>
-          <div className={styles.body}>
-            <h2 className={styles.cardTitle}>{t("meetings") as string}</h2>
-          </div>
-        </Link>
-      </div>
-    </div>
+    <QueHacemosSanity
+      title={data.title}
+      locale={params.locale}
+      cards={data.cards ?? []}
+    />
   );
 }

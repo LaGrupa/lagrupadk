@@ -1,5 +1,11 @@
-import Contact from "@/components/Contact"; // simpler and robust with baseUrl=src
+import Contact from "@/components/Contact";
+import ContactSanity from "./ContactSanity";
 
-export default function ContactPage() {
-  return <Contact />;
+export default function Page({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const useSanity = process.env.NEXT_PUBLIC_USE_SANITY_CONTACT === "true";
+  return useSanity ? <ContactSanity locale={params.locale} /> : <Contact />;
 }
