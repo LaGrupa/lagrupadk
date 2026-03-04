@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+﻿import { defineField, defineType } from "sanity";
 
 export const post = defineType({
   name: "post",
@@ -50,6 +50,19 @@ export const post = defineType({
     defineField({
       name: "coverImageAlt",
       title: "Cover image alt",
+      type: "string",
+    }),
+
+    defineField({
+      name: "pdfFile",
+      title: "PDF file (optional)",
+      type: "file",
+      options: { storeOriginalFilename: true },
+    }),
+
+    defineField({
+      name: "pdfLabel",
+      title: "PDF button label (optional)",
       type: "string",
     }),
 

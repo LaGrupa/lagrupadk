@@ -223,3 +223,16 @@
 .primaryBtn:hover {
   filter: brightness(1.05);
 }
+
+/* --- Tag hover invert behavior --- */
+.tag:hover {
+  background: #1f2937;
+  color: #fff;
+  border-color: #1f2937;
+}
+
+.tagActive:hover {
+  background: #f8fafc;
+  color: #000;
+  border-color: rgba(0, 0, 0, 0.08);
+}
