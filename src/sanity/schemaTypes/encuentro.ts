@@ -22,6 +22,7 @@ export const encuentro = defineType({
       name: "title",
       title: "Title",
       type: "string",
+      initialValue: "es",
       validation: (Rule) => Rule.required(),
     }),
 

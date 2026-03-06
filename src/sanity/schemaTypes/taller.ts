@@ -9,6 +9,7 @@ export const taller = defineType({
       name: "locale",
       title: "Locale",
       type: "string",
+
       validation: (Rule) => Rule.required(),
       options: {
         list: [
@@ -22,6 +23,7 @@ export const taller = defineType({
       name: "title",
       title: "Title",
       type: "string",
+      initialValue: "es",
       validation: (Rule) => Rule.required(),
     }),
 
