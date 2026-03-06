@@ -1,11 +1,13 @@
-import MiembrasI18n from "./MiembrasI18n";
+﻿import MiembrasI18n from "./MiembrasI18n";
 import MiembrasSanity from "./MiembrasSanity";
 
-export default function Page({
+export default async function Page({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: "es" | "da" }>;
 }) {
+  const { locale } = await params;
+
   const useSanity = process.env.NEXT_PUBLIC_USE_SANITY_MIEMBRAS === "true";
-  return useSanity ? <MiembrasSanity locale={params.locale} /> : <MiembrasI18n />;
+  return useSanity ? <MiembrasSanity locale={locale} /> : <MiembrasI18n />;
 }

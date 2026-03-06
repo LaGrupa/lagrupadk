@@ -1,4 +1,4 @@
-import HeroSanity from "@/components/HeroSanity";
+﻿import HeroSanity from "@/components/HeroSanity";
 import ThreeColumnsSanity from "@/components/ThreeColumnsSanity";
 import CtaSanity from "@/components/CtaSanity";
 import { client } from "@/sanity/lib/client";
@@ -34,23 +34,14 @@ type HomePageData = {
   };
 };
 
-export default async function HomeSanityPreviewPage(props: {
-  params?: { locale?: string };
+export default async function HomeSanityPreviewPage({
+  params,
+}: {
+  params: Promise<{ locale: "es" | "da" }>;
 }) {
-  const locale = props.params?.locale;
+  const { locale } = await params;
 
-  if (!locale) {
-    return (
-      <main style={{ padding: 24 }}>
-        <h1>Missing locale param</h1>
-        <p>Open /es/sanity or /da/sanity</p>
-      </main>
-    );
-  }
-
-  const data: HomePageData | null = await client.fetch(HOME_QUERY, {
-    locale,
-  });
+  const data: HomePageData | null = await client.fetch(HOME_QUERY, { locale });
 
   if (!data) {
     return (
@@ -63,7 +54,6 @@ export default async function HomeSanityPreviewPage(props: {
 
   return (
     <main style={{ display: "grid", gap: 24 }}>
-      {/* Styled Hero */}
       <HeroSanity
         title={data.hero?.title ?? ""}
         lead={data.hero?.lead ?? null}
@@ -71,7 +61,6 @@ export default async function HomeSanityPreviewPage(props: {
         ctaHref={data.hero?.ctaHref ?? null}
       />
 
-      {/* Styled Cards */}
       <ThreeColumnsSanity cards={data.cards ?? []} />
 
       <CtaSanity

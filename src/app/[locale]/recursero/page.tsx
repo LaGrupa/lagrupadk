@@ -1,4 +1,4 @@
-import { client } from "@/sanity/lib/client";
+﻿import { client } from "@/sanity/lib/client";
 import RecurseroSanity from "./RecurseroSanity";
 import RecurseroI18n from "./RecurseroI18n";
 
@@ -24,31 +24,29 @@ type Data = {
   }[];
 };
 
-export default async function Page({ params }: { params: { locale: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: "es" | "da" }>;
+}) {
+  const { locale } = await params;
+
   const useSanity = process.env.NEXT_PUBLIC_USE_SANITY_RECURSERO === "true";
 
   if (!useSanity) {
     return <RecurseroI18n />;
   }
 
-  const data: Data | null = await client.fetch(QUERY, {
-    locale: params.locale,
-  });
+  const data: Data | null = await client.fetch(QUERY, { locale });
 
   if (!data) {
     return (
       <main style={{ padding: 24 }}>
         <h1>No recurseroPage found</h1>
-        <p>Locale: {params.locale}</p>
+        <p>Locale: {locale}</p>
       </main>
     );
   }
 
-  return (
-    <RecurseroSanity
-      title={data.title}
-      locale={params.locale}
-      cards={data.cards ?? []}
-    />
-  );
+  return <RecurseroSanity title={data.title} locale={locale} cards={data.cards ?? []} />;
 }

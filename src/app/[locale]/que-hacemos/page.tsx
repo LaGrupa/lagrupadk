@@ -1,4 +1,4 @@
-import { client } from "@/sanity/lib/client";
+﻿import { client } from "@/sanity/lib/client";
 import QueHacemosSanity from "./QueHacemosSanity";
 import QueHacemosI18n from "./QueHacemosI18n";
 
@@ -24,7 +24,13 @@ type Data = {
   }[];
 };
 
-export default async function Page({ params }: { params: { locale: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: "es" | "da" }>;
+}) {
+  const { locale } = await params;
+
   const useSanity = process.env.NEXT_PUBLIC_USE_SANITY_QUE_HACEMOS === "true";
 
   // If feature flag OFF → render existing i18n page
@@ -33,24 +39,16 @@ export default async function Page({ params }: { params: { locale: string } }) {
   }
 
   // If feature flag ON → render Sanity version
-  const data: Data | null = await client.fetch(QUERY, {
-    locale: params.locale,
-  });
+  const data: Data | null = await client.fetch(QUERY, { locale });
 
   if (!data) {
     return (
       <main style={{ padding: 24 }}>
         <h1>No whatWeDoPage found</h1>
-        <p>Locale: {params.locale}</p>
+        <p>Locale: {locale}</p>
       </main>
     );
   }
 
-  return (
-    <QueHacemosSanity
-      title={data.title}
-      locale={params.locale}
-      cards={data.cards ?? []}
-    />
-  );
+  return <QueHacemosSanity title={data.title} locale={locale} cards={data.cards ?? []} />;
 }

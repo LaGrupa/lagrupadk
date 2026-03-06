@@ -1,12 +1,13 @@
-import FaqI18n from "./FaqI18n";
+﻿import FaqI18n from "./FaqI18n";
 import FaqSanity from "./FaqSanity";
 
-export default function Page({
+export default async function Page({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: "es" | "da" }>;
 }) {
-  const useSanity = process.env.NEXT_PUBLIC_USE_SANITY_FAQ === "true";
+  const { locale } = await params;
 
-  return useSanity ? <FaqSanity locale={params.locale} /> : <FaqI18n />;
+  const useSanity = process.env.NEXT_PUBLIC_USE_SANITY_FAQ === "true";
+  return useSanity ? <FaqSanity locale={locale} /> : <FaqI18n />;
 }

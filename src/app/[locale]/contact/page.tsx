@@ -1,11 +1,13 @@
-import Contact from "@/components/Contact";
+﻿import Contact from "@/components/Contact";
 import ContactSanity from "./ContactSanity";
 
-export default function Page({
+export default async function Page({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: "es" | "da" }>;
 }) {
+  const { locale } = await params;
+
   const useSanity = process.env.NEXT_PUBLIC_USE_SANITY_CONTACT === "true";
-  return useSanity ? <ContactSanity locale={params.locale} /> : <Contact />;
+  return useSanity ? <ContactSanity locale={locale} /> : <Contact />;
 }

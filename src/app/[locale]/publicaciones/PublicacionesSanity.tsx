@@ -20,7 +20,7 @@ type ArchivePost = {
   blurb: string;
   date: string;
   tags?: string[];
-  cover?: string;
+  cover: string;
 };
 
 const query = `
@@ -47,8 +47,10 @@ export default async function PublicacionesSanity({
     title: p.title,
     blurb: p.excerpt ?? "",
     date: (p.publishedAt ?? p._createdAt ?? new Date().toISOString()) as string,
-    tags: ((p.tags ?? []).map((t) => t.trim().toLowerCase()).filter(Boolean)),
-    cover: p.coverImage ? urlFor(p.coverImage).width(1200).url() : "",
+    tags: (p.tags ?? []).map((t) => t.trim().toLowerCase()).filter(Boolean),
+    cover: p.coverImage
+      ? urlFor(p.coverImage).width(1200).url()
+      : "/images/placeholder.jpg",
   }));
 
   const latest = posts.slice(0, 2);
@@ -85,5 +87,3 @@ export default async function PublicacionesSanity({
     </section>
   );
 }
-
-
