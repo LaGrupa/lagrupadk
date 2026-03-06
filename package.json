@@ -17,6 +17,7 @@
     "@sanity/vision": "^4.22.0",
     "@sendgrid/mail": "^8.1.6",
     "next": "15.4.10",
+    "next-sanity": "^11.6.12",
     "node": "^20.19.5",
     "nodemailer": "^7.0.6",
     "react": "19.1.0",

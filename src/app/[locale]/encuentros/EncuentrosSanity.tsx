@@ -6,7 +6,7 @@ export default async function EncuentrosSanity({
   locale: "es" | "da";
 }) {
   return (
-    <><div style={{padding:"8px 16px",background:"#fff3cd",border:"1px solid #ffe69c",margin:"12px 0"}}>SANITY ENCUENTROS ACTIVE</div><SanityEventPage
+    <SanityEventPage
       locale={locale}
       type="encuentro"
       labels={{
