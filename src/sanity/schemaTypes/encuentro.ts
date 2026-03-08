@@ -8,6 +8,7 @@ export const encuentro = defineType({
     defineField({
       name: "locale",
       title: "Locale",
+
       type: "string",
       validation: (Rule) => Rule.required(),
       options: {
@@ -16,6 +17,17 @@ export const encuentro = defineType({
           { title: "Danish (da)", value: "da" },
         ],
       },
+    }),
+
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "title",
+        maxLength: 96,
+      },
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
@@ -38,6 +50,13 @@ export const encuentro = defineType({
       title: "Description",
       type: "text",
       rows: 3,
+    }),
+    defineField({
+      name: "signupUrl",
+      title: "Signup URL",
+      type: "url",
+      description:
+        "Link to the registration form (Google Form, Typeform, etc.)",
     }),
 
     defineField({

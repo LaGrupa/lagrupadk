@@ -1,4 +1,5 @@
 ﻿import Image from "next/image";
+import Link from "next/link";
 import styles from "@/components/EventGrid.module.css";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -6,6 +7,7 @@ import { urlFor } from "@/sanity/lib/image";
 type BaseEvent = {
   _id: string;
   title: string;
+  slug: { current: string };
   date: string;
   excerpt?: string | null;
   image?: any;
@@ -26,6 +28,7 @@ const buildQuery = (type: string) => `
 *[_type=="${type}" && locale==$locale] | order(date desc){
   _id,
   title,
+  slug,
   date,
   excerpt,
   image,
@@ -76,32 +79,46 @@ export default async function SanityEventPage({
 
         {upcoming.length === 0 ? (
           <div className={styles.empty}>
-            <h3 className={styles.emptyTitle}>{t(labels.emptyUpcomingTitle)}</h3>
+            <h3 className={styles.emptyTitle}>
+              {t(labels.emptyUpcomingTitle)}
+            </h3>
             <p className={styles.emptyDesc}>{t(labels.emptyUpcomingDesc)}</p>
           </div>
         ) : (
           <div className={styles.grid}>
             {upcoming.map((e, i) => (
-              <article key={e._id} className={styles.card}>
-                <div className={styles.thumb}>
-                  {e.image ? (
-                    <Image
-                      src={urlFor(e.image).width(1200).height(800).fit("crop").url()}
-                      alt={e.imageAlt ?? e.title}
-                      fill
-                      sizes="(max-width: 420px) 100vw, 420px"
-                      className={styles.thumbImg}
-                      priority={i === 0}
-                    />
-                  ) : null}
-                </div>
+              <Link
+                key={e._id}
+                href={`/${locale}/${type === "encuentro" ? "encuentros" : "talleres"}/${e.slug.current}`}
+                style={{ color: "inherit", textDecoration: "none" }}
+              >
+                <article className={styles.card}>
+                  <div className={styles.thumb}>
+                    {e.image ? (
+                      <Image
+                        src={urlFor(e.image)
+                          .width(1200)
+                          .height(800)
+                          .fit("crop")
+                          .url()}
+                        alt={e.imageAlt ?? e.title}
+                        fill
+                        sizes="(max-width: 420px) 100vw, 420px"
+                        className={styles.thumbImg}
+                        priority={i === 0}
+                      />
+                    ) : null}
+                  </div>
 
-                <div className={styles.body}>
-                  <h3 className={styles.cardTitle}>{e.title}</h3>
-                  <small className={styles.date}>{fmt(e.date)}</small>
-                  {e.excerpt ? <p className={styles.desc}>{e.excerpt}</p> : null}
-                </div>
-              </article>
+                  <div className={styles.body}>
+                    <h3 className={styles.cardTitle}>{e.title}</h3>
+                    <small className={styles.date}>{fmt(e.date)}</small>
+                    {e.excerpt ? (
+                      <p className={styles.desc}>{e.excerpt}</p>
+                    ) : null}
+                  </div>
+                </article>
+              </Link>
             ))}
           </div>
         )}
@@ -113,25 +130,37 @@ export default async function SanityEventPage({
           <>
             <div className={styles.grid}>
               {pastCards.map((e) => (
-                <article key={e._id} className={styles.card}>
-                  <div className={styles.thumb}>
-                    {e.image ? (
-                      <Image
-                        src={urlFor(e.image).width(1200).height(800).fit("crop").url()}
-                        alt={e.imageAlt ?? e.title}
-                        fill
-                        sizes="(max-width: 420px) 100vw, 420px"
-                        className={styles.thumbImg}
-                      />
-                    ) : null}
-                  </div>
+                <Link
+                  key={e._id}
+                  href={`/${locale}/${type === "encuentro" ? "encuentros" : "talleres"}/${e.slug.current}`}
+                  style={{ color: "inherit", textDecoration: "none" }}
+                >
+                  <article className={styles.card}>
+                    <div className={styles.thumb}>
+                      {e.image ? (
+                        <Image
+                          src={urlFor(e.image)
+                            .width(1200)
+                            .height(800)
+                            .fit("crop")
+                            .url()}
+                          alt={e.imageAlt ?? e.title}
+                          fill
+                          sizes="(max-width: 420px) 100vw, 420px"
+                          className={styles.thumbImg}
+                        />
+                      ) : null}
+                    </div>
 
-                  <div className={styles.body}>
-                    <h3 className={styles.cardTitle}>{e.title}</h3>
-                    <small className={styles.date}>{fmt(e.date)}</small>
-                    {e.excerpt ? <p className={styles.desc}>{e.excerpt}</p> : null}
-                  </div>
-                </article>
+                    <div className={styles.body}>
+                      <h3 className={styles.cardTitle}>{e.title}</h3>
+                      <small className={styles.date}>{fmt(e.date)}</small>
+                      {e.excerpt ? (
+                        <p className={styles.desc}>{e.excerpt}</p>
+                      ) : null}
+                    </div>
+                  </article>
+                </Link>
               ))}
             </div>
 
