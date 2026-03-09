@@ -8,12 +8,11 @@ export default async function Page({
 }) {
   const { locale, slug } = await params;
 
-  const useSanity =
-    process.env.NEXT_PUBLIC_USE_SANITY_PUBLICACIONES === "true";
+  const useSanity = process.env.NEXT_PUBLIC_USE_SANITY_PUBLICACIONES === "true";
 
   return useSanity ? (
     <PublicacionSanity locale={locale} slug={slug} />
   ) : (
-    <PublicacionFs params={Promise.resolve({ locale, slug })} />
+    <PublicacionFs locale={locale} slug={slug} />
   );
 }
