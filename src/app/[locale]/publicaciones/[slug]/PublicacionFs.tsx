@@ -1,47 +1,45 @@
-﻿import type { Metadata } from "next";
-import styles from "@/components/Blog.module.css";
-import { getPostBySlug } from "@/content/posts";
+﻿import styles from "@/components/Blog.module.css";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 import { I18nLink as Link } from "@/i18nLink";
+import { PortableText } from "@portabletext/react";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+type SanityPost = {
+  title: string;
+  excerpt?: string | null;
+  tags?: string[] | null;
+  publishedAt?: string | null;
+  _createdAt?: string;
+  coverImage?: any;
+  coverImageAlt?: string | null;
+  body?: any[] | null;
+  pdfFile?: { asset?: { url?: string } } | null;
+  pdfLabel?: string | null;
+};
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: "es" | "da"; slug: string }>;
-}): Promise<Metadata> {
-  const { locale, slug } = await params;
-  const post = getPostBySlug(locale, slug);
-
-  const title = post ? post.title : "Publicación";
-  const description = post?.blurb ?? "Publicación";
-  const url = `${siteUrl}/${locale}/publicaciones/${slug}`;
-  const ogImage = post?.cover
-    ? `${siteUrl}${post.cover}`
-    : `${siteUrl}/site/og-default.jpg`;
-
-  return {
-    title,
-    description,
-    alternates: { canonical: url },
-    openGraph: {
-      type: "article",
-      url,
-      title,
-      description,
-      locale,
-      images: [{ url: ogImage }],
-    },
-  };
+const query = `
+*[_type=="post" && locale==$locale && slug.current==$slug][0]{
+  title,
+  excerpt,
+  tags,
+  publishedAt,
+  _createdAt,
+  coverImage,
+  coverImageAlt,
+  body,
+  pdfLabel,
+  "pdfFile": pdfFile{asset->{url}}
 }
+`;
 
-export default async function PublicacionFs({
-  params,
+export default async function PublicacionSanity({
+  locale,
+  slug,
 }: {
-  params: Promise<{ locale: "es" | "da"; slug: string }>;
+  locale: "es" | "da";
+  slug: string;
 }) {
-  const { locale, slug } = await params;
-  const post = getPostBySlug(locale, slug);
+  const post: SanityPost | null = await client.fetch(query, { locale, slug });
 
   if (!post) {
     return (
@@ -49,12 +47,17 @@ export default async function PublicacionFs({
         <div className={styles.container}>
           <p className={styles.empty}>No encontrada.</p>
           <p>
-            <Link href={`/${locale}/publicaciones`}>← Volver a Publicaciones</Link>
+            <Link href={`/${locale}/publicaciones`}>
+              ← Volver a Publicaciones
+            </Link>
           </p>
         </div>
       </section>
     );
   }
+
+  const dateStr =
+    post.publishedAt ?? post._createdAt ?? new Date().toISOString();
 
   return (
     <article className={styles.article}>
@@ -62,36 +65,46 @@ export default async function PublicacionFs({
         <p style={{ margin: 0 }}>
           <Link href={`/${locale}/publicaciones`}>← Publicaciones</Link>
         </p>
+
         <h1 className={styles.articleTitle}>{post.title}</h1>
+
         <p className={styles.articleMeta}>
-          {new Date(post.date).toLocaleDateString(locale, {
+          {new Date(dateStr).toLocaleDateString(locale, {
             year: "numeric",
             month: "long",
             day: "2-digit",
           })}
           {post.tags?.length ? ` • ${post.tags.join(", ")}` : ""}
         </p>
-        {post.cover && (
-          <img src={post.cover} alt={post.title} className={styles.articleCover} />
+
+        {post.coverImage && (
+          <img
+            src={urlFor(post.coverImage)
+              .width(1100)
+              .height(680)
+              .fit("crop")
+              .url()}
+            alt={post.coverImageAlt ?? post.title}
+            className={styles.articleCover}
+          />
         )}
       </header>
 
-      {post.body && (
-        <section
-          className={styles.articleBody}
-          dangerouslySetInnerHTML={{ __html: post.body }}
-        />
-      )}
+      {post.body?.length ? (
+        <section className={styles.articleBody}>
+          <PortableText value={post.body} />
+        </section>
+      ) : null}
 
       <footer className={styles.articleFooter}>
-        {post.pdfUrl && (
+        {post.pdfFile?.asset?.url && (
           <a
-            href={post.pdfUrl}
+            href={post.pdfFile.asset.url}
             className={styles.primaryBtn}
             target="_blank"
             rel="noreferrer noopener"
           >
-            Descargar PDF
+            {post.pdfLabel ?? "Descargar PDF"}
           </a>
         )}
       </footer>

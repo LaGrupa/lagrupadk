@@ -49,13 +49,12 @@ export default async function PublicacionesSanity({
     date: (p.publishedAt ?? p._createdAt ?? new Date().toISOString()) as string,
     tags: (p.tags ?? []).map((t) => t.trim().toLowerCase()).filter(Boolean),
     cover: p.coverImage
-      ? urlFor(p.coverImage).width(1200).url()
+      ? urlFor(p.coverImage).width(900).height(560).fit("crop").url()
       : "/images/placeholder.jpg",
   }));
 
   const latest = posts.slice(0, 2);
 
-  // derive tags from posts
   const tagSet = new Set<string>();
   posts.forEach((p) => p.tags?.forEach((t) => tagSet.add(t)));
   const tags = ["archivo", "entrevista", "lecturas", "recomendaciones"];

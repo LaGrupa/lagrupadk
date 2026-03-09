@@ -24,8 +24,10 @@ export default function BlogCard({ href, title, blurb, cover, tags }: Props) {
           className={styles.image}
         />
       </div>
+
       <h2 className={styles.cardTitle}>{title}</h2>
       <p className={styles.cardText}>{blurb}</p>
+
       {!!tags?.length && (
         <div className={styles.cardTags}>
           {tags.map((tag) => (

@@ -1,12 +1,13 @@
-/* Section & container */
 .section {
   padding: 2.5rem 1rem 3rem;
   background: #fff;
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .title {
   text-align: center;
   font-size: 2rem;
@@ -14,16 +15,18 @@
   font-weight: 800;
 }
 
-/* Featured (last 2 posts) */
+/* Featured */
 .featured {
   display: grid;
   gap: 1.5rem;
   margin: 0 auto 1.5rem;
   justify-content: center;
 }
+
 @media (min-width: 700px) {
   .featured {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 520px));
+    align-items: start;
   }
 }
 
@@ -31,10 +34,12 @@
 .filters {
   margin: 0 0 1.25rem;
 }
+
 .filtersInner {
   display: grid;
   gap: 0.75rem;
 }
+
 .search {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -44,19 +49,23 @@
   font: inherit;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
 }
+
 .search::placeholder {
   color: #94a3b8;
 }
+
 .search:focus {
   outline: none;
   border-color: #8ab4ff;
   box-shadow: 0 0 0 3px rgba(138, 180, 255, 0.25);
 }
+
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
 .tag {
   appearance: none;
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -67,18 +76,32 @@
   border-radius: 9999px;
   padding: 0.4rem 0.75rem;
   cursor: pointer;
-  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.05s ease;
 }
+
 .tag:hover {
-  background: #f1f5f9;
+  background: #1f2937;
+  color: #fff;
+  border-color: #1f2937;
 }
+
 .tag:active {
   transform: translateY(1px);
 }
+
 .tagActive {
   background: #1f2937;
   color: #fff;
   border-color: #1f2937;
+}
+
+.tagActive:hover {
+  background: #f8fafc;
+  color: #000;
+  border-color: rgba(0, 0, 0, 0.08);
 }
 
 /* Card */
@@ -91,39 +114,56 @@
   border-radius: 12px;
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+  width: 100%;
   max-width: 520px;
   border: 0;
   padding: 0;
+  text-decoration: none;
+  justify-self: center;
 }
+
 .card:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
 }
+
 .media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
   background: #f3f3f6;
 }
+
 .image {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
+
 .cardTitle {
   font-size: 1.25rem;
   font-weight: 800;
   margin: 0.75rem 1rem 0.25rem;
 }
+
 .cardText {
   margin: 0 1rem 0.5rem;
   color: #444;
   line-height: 1.4;
 }
+
 .cardTags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
   margin: 0 0.95rem 0.9rem;
 }
+
 .cardTag {
   background: #eef2ff;
   color: #3730a3;
@@ -139,14 +179,17 @@
   font-weight: 800;
   margin: 1.25rem 0 0.5rem;
 }
+
 .archiveList {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .archiveItem {
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
+
 .archiveLink {
   display: flex;
   align-items: baseline;
@@ -156,16 +199,20 @@
   text-decoration: none;
   color: inherit;
 }
+
 .archiveLink:hover {
   background: #f9fafb;
 }
+
 .archiveTitle {
   font-weight: 700;
 }
+
 .archiveMeta {
   color: #64748b;
   font-size: 0.9rem;
 }
+
 .empty {
   text-align: center;
   color: #6b7280;
@@ -178,37 +225,50 @@
   margin: 0 auto;
   padding: 2rem 1rem 3rem;
 }
+
 .articleHeader {
   margin-bottom: 1rem;
 }
+
 .articleTitle {
   font-size: 2rem;
   font-weight: 900;
   margin: 0 0 0.35rem;
 }
+
 .articleMeta {
   color: #6b7280;
   margin-bottom: 0.75rem;
 }
+
 .articleCover {
+  display: block;
   width: 100%;
+  max-width: 900px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
 }
+
 .articleBody {
   margin-top: 1.25rem;
   color: #1f2937;
   line-height: 1.7;
+  max-width: 760px;
 }
+
 .articleBody :is(h2, h3) {
   margin-top: 1.25rem;
 }
+
 .articleFooter {
   margin-top: 1.5rem;
   display: flex;
   gap: 0.6rem;
 }
+
 .primaryBtn {
   appearance: none;
   border: 0;
@@ -220,19 +280,7 @@
   color: #111;
   text-decoration: none;
 }
+
 .primaryBtn:hover {
   filter: brightness(1.05);
-}
-
-/* --- Tag hover invert behavior --- */
-.tag:hover {
-  background: #1f2937;
-  color: #fff;
-  border-color: #1f2937;
-}
-
-.tagActive:hover {
-  background: #f8fafc;
-  color: #000;
-  border-color: rgba(0, 0, 0, 0.08);
 }
