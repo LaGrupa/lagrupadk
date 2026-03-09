@@ -13,14 +13,12 @@ type Biz = {
   url: string;
   image?: string;
   tags?: string[];
-
-  // extra (optional) fields for the modal
-  contact?: string; // phone/email
-  description?: string; // long description
-  owner?: string; // emprendedora
+  contact?: string;
+  description?: string;
+  owner?: string;
   socials?: { label: string; href: string }[];
   location?: string;
-  rating?: number; // 0–5
+  rating?: number;
 };
 
 const defaultBusinesses: Biz[] = [
@@ -68,7 +66,6 @@ const defaultBusinesses: Biz[] = [
     url: "http://instagram.com/nebula.ttt",
     image: "/biz/nebula.jpg",
     tags: ["arte", "tatuajes"],
-    //contact: ,
     owner: "Carolina",
     description:
       "Hago tatuajes de línea fina y diseños delicados. Tengo diseños propios pero siempre puedo trabajar en algo nuevo adaptado a tu cuerpo. :) Trabajo en un hermoso estudio femenino en el centro de Copenhague.",
@@ -87,7 +84,6 @@ const defaultBusinesses: Biz[] = [
     url: "https://www.instagram.com/menkauraskin/",
     image: "/biz/menkaura.jpg",
     tags: ["bienestar", "estética"],
-    //contact: "+45 71415119",
     owner: "Julieta",
     description:
       "Soy Julieta, Cosmetóloga y Cosmiatra Holística. Mi enfoque en el cuidado de la piel se basa en la conexión entre el bienestar interior y la belleza exterior, priorizando la relajación profunda del cuerpo y la mente. Trabajo con productos elaborados en Argentina, de origen consciente, y diseño cada protocolo de forma personalizada, adaptándome a las necesidades únicas de cada piel.",
@@ -160,7 +156,7 @@ const defaultBusinesses: Biz[] = [
     contact: "+45 52110132",
     owner: "Pamela",
     description:
-      "Ofrezco clases de danzas Folklóricas Argentinas para principiantes e intermedios. A través de talleres semanales e intensivos de fin de semana, en eventos culturales, público y privados. ",
+      "Ofrezco clases de danzas Folklóricas Argentinas para principiantes e intermedios. A través de talleres semanales e intensivos de fin de semana, en eventos culturales, público y privados.",
     socials: [
       {
         label: "Facebook",
@@ -202,7 +198,7 @@ const defaultBusinesses: Biz[] = [
     contact: "+45 52110132",
     owner: "Camila",
     description:
-      "Ofrezco clase semanales de Zumba. Durante Agosto, al aire libre los días sábados a las 11 am. en Dansekapellet (gratis). Entre Septiembre y Diciembre, los sábados a las 10 en Bellahøj, Copenhague (pagas). Las clases son para todos los niveles, basadas en diferentes estilos de baile Latino.  ",
+      "Ofrezco clase semanales de Zumba. Durante Agosto, al aire libre los días sábados a las 11 am. en Dansekapellet (gratis). Entre Septiembre y Diciembre, los sábados a las 10 en Bellahøj, Copenhague (pagas). Las clases son para todos los niveles, basadas en diferentes estilos de baile Latino.",
     socials: [
       {
         label: "Instagram",
@@ -225,7 +221,7 @@ const defaultBusinesses: Biz[] = [
     contact: "+45 52110132",
     owner: "Pamela",
     description:
-      "Ofrezco clases de Mat Pilates en Español y a precios accesibles. Las clases son para grupos reducidos, lo que garantiza que cada participante pueda trabajar los ejercicios adaptados a su nivel, con buena supervisión de la técnica y el alineamiento para prevenir lesiones. ",
+      "Ofrezco clases de Mat Pilates en Español y a precios accesibles. Las clases son para grupos reducidos, lo que garantiza que cada participante pueda trabajar los ejercicios adaptados a su nivel, con buena supervisión de la técnica y el alineamiento para prevenir lesiones.",
     socials: [
       {
         label: "Instagram",
@@ -267,7 +263,7 @@ const defaultBusinesses: Biz[] = [
     contact: "+45 50300276",
     owner: "Florencia Cinquemani",
     description:
-      "Psicoterapia en Copenhague 🏳️‍🌈 , en español e inglés. Hola, soy psicóloga clínica argentina y vivo en la zona de Copenhague desde hace más de cuatro años. Trabajo acompañando a personas que quieren iniciar un proceso terapéutico o de autoconocimiento, ya sea desde un enfoque psicoanalítico, a través del arte o con herramientas centradas en la emoción y el trauma.  Me formé en psicoanálisis lacaniano, y también en Arte Terapia y Sexología . Actualmente me estoy especializando en terapia de pareja (EFT) y trauma (EMDR). Atiendo en un consultorio internacional en Copenhague y también ofrezco sesiones online (a un valor más accesible). Además, coordino un taller de lectura en inglés en la Nueva Escuela Lacaniana CPH.  Si querés saber más sobre cómo trabajo, podés encontrarme en Instagram o en LinkedIn, o escribirme directamente para charlar y definir cómo podemos trabajar juntxs.",
+      "Psicoterapia en Copenhague 🏳️‍🌈 , en español e inglés. Hola, soy psicóloga clínica argentina y vivo en la zona de Copenhague desde hace más de cuatro años. Trabajo acompañando a personas que quieren iniciar un proceso terapéutico o de autoconocimiento, ya sea desde un enfoque psicoanalítico, a través del arte o con herramientas centradas en la emoción y el trauma. Me formé en psicoanálisis lacaniano, y también en Arte Terapia y Sexología. Actualmente me estoy especializando en terapia de pareja (EFT) y trauma (EMDR). Atiendo en un consultorio internacional en Copenhague y también ofrezco sesiones online (a un valor más accesible). Además, coordino un taller de lectura en inglés en la Nueva Escuela Lacaniana CPH. Si querés saber más sobre cómo trabajo, podés encontrarme en Instagram o en LinkedIn, o escribirme directamente para charlar y definir cómo podemos trabajar juntxs.",
     socials: [
       {
         label: "LinkedIn",
@@ -284,7 +280,7 @@ const defaultBusinesses: Biz[] = [
     contact: "+45 752732833",
     owner: "vanesa",
     description:
-      "Pastelería Gluten Free con opciones baby friendly, veganas y sin lactosa. Tortas, Tartas y Box Desayuno! ",
+      "Pastelería Gluten Free con opciones baby friendly, veganas y sin lactosa. Tortas, Tartas y Box Desayuno!",
     socials: [
       {
         label: "Instagram",
@@ -310,7 +306,6 @@ const defaultBusinesses: Biz[] = [
         href: "https://www.instagram.com/portrayal.design/",
       },
     ],
-
     rating: 5,
   },
   {
@@ -319,7 +314,6 @@ const defaultBusinesses: Biz[] = [
     url: "https://www.instagram.com/praga.dk?igsh=MWt6aGZsMDJ0czdnOA==",
     image: "/biz/praga.jpg",
     tags: ["alimentos"],
-    //contact: "+45 71415119",
     owner: "Belén",
     description:
       "Tortas para eventos/personalizadas y otros productos de cocina pasteleria",
@@ -338,7 +332,6 @@ const defaultBusinesses: Biz[] = [
     url: "https://www.instagram.com/chokichokilab",
     image: "/biz/chokichokilab.jpg",
     tags: ["arte"],
-    //contact: "+45 71415119",
     owner: "Nicole",
     description:
       "Hago distintos tipos de collage para tener de decoración y otros articulos como cartas e imanes.",
@@ -371,23 +364,27 @@ function initials(text: string) {
   return words.map((w) => w[0]?.toUpperCase()).join("");
 }
 
-// tiny helper to ensure we always return a non-empty string
 function tx(get: unknown, fallback: string) {
   const v = typeof get === "string" ? get : "";
   return v.trim() || fallback;
 }
 
-export default function EmprendedorasI18n({ businesses = defaultBusinesses }: { businesses?: Biz[] } = {}) {
+export default function EmprendedorasI18n({
+  businesses = defaultBusinesses,
+}: {
+  businesses?: Biz[];
+} = {}) {
   const { t } = useT();
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [selected, setSelected] = useState<Biz | null>(null);
+  const galleryRef = useRef<HTMLElement | null>(null);
 
   const allTags = useMemo(() => {
     const set = new Set<string>();
     businesses.forEach((b) => b.tags?.forEach((tag) => set.add(tag)));
     return Array.from(set).sort((a, b) => a.localeCompare(b));
-  }, []);
+  }, [businesses]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -400,7 +397,18 @@ export default function EmprendedorasI18n({ businesses = defaultBusinesses }: { 
       const matchesTag = !activeTag || (b.tags && b.tags.includes(activeTag));
       return matchesQuery && matchesTag;
     });
-  }, [query, activeTag]);
+  }, [businesses, query, activeTag]);
+
+  const applyTagFilter = (tag: string) => {
+    setSelected(null);
+    setActiveTag(tag);
+    requestAnimationFrame(() => {
+      galleryRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  };
 
   return (
     <main className={styles.page}>
@@ -426,7 +434,6 @@ export default function EmprendedorasI18n({ businesses = defaultBusinesses }: { 
         </div>
       </section>
 
-      {/* Filters */}
       <section className={styles.filters}>
         <div className={styles.filtersInner}>
           <input
@@ -440,14 +447,17 @@ export default function EmprendedorasI18n({ businesses = defaultBusinesses }: { 
 
           <div className={styles.tags}>
             <button
+              type="button"
               className={`${styles.tag} ${!activeTag ? styles.tagActive : ""}`}
               onClick={() => setActiveTag(null)}
             >
               {t("emprendedoras.allTags") as string}
             </button>
+
             {allTags.map((tag) => (
               <button
                 key={tag}
+                type="button"
                 className={`${styles.tag} ${
                   activeTag === tag ? styles.tagActive : ""
                 }`}
@@ -460,8 +470,7 @@ export default function EmprendedorasI18n({ businesses = defaultBusinesses }: { 
         </div>
       </section>
 
-      {/* Gallery */}
-      <section className={styles.gallery}>
+      <section className={styles.gallery} ref={galleryRef}>
         <div className={styles.galleryInner}>
           {filtered.map((biz, idx) => (
             <button
@@ -495,21 +504,35 @@ export default function EmprendedorasI18n({ businesses = defaultBusinesses }: { 
               <div className={styles.meta}>
                 <h3 className={styles.cardTitle}>{biz.name}</h3>
                 <p className={styles.cardTagline}>{biz.tagline}</p>
-                {biz.tags && (
+
+                {biz.tags && biz.tags.length > 0 ? (
                   <div className={styles.cardTags}>
                     {biz.tags.map((tag) => (
-                      <span key={tag} className={styles.cardTag}>
+                      <button
+                        key={tag}
+                        type="button"
+                        className={styles.cardTag}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          applyTagFilter(tag);
+                        }}
+                        aria-label={`${
+                          t("emprendedoras.card.more") as string
+                        }: ${t(`emprendedoras.tags.${tag}`) as string}`}
+                      >
                         {t(`emprendedoras.tags.${tag}`) as string}
-                      </span>
+                      </button>
                     ))}
                   </div>
-                )}
+                ) : null}
+
                 <span className={styles.cardLinkHint}>
                   {t("emprendedoras.card.more") as string}
                 </span>
               </div>
             </button>
           ))}
+
           {filtered.length === 0 && (
             <p className={styles.empty}>{t("emprendedoras.empty") as string}</p>
           )}
@@ -525,8 +548,6 @@ export default function EmprendedorasI18n({ businesses = defaultBusinesses }: { 
   );
 }
 
-/* ============ Modal ============ */
-
 function BizModal({ biz, onClose }: { biz: Biz; onClose: () => void }) {
   const { t } = useT();
   const [mounted, setMounted] = useState(false);
@@ -535,7 +556,6 @@ function BizModal({ biz, onClose }: { biz: Biz; onClose: () => void }) {
   useEffect(() => {
     setMounted(true);
 
-    // Find or create a stable portal root (survives HMR)
     let root = document.getElementById("emprendedoras-portal");
     if (!root) {
       root = document.createElement("div");
@@ -544,19 +564,15 @@ function BizModal({ biz, onClose }: { biz: Biz; onClose: () => void }) {
     }
     portalEl.current = root;
 
-    // esc to close
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", onKey);
 
-    // lock scroll
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
-      // NOTE: do NOT remove the portal root; keep it around to avoid
-      // React trying to remove from a parent that got replaced by HMR.
       portalEl.current = null;
     };
   }, [onClose]);
@@ -646,21 +662,21 @@ function BizModal({ biz, onClose }: { biz: Biz; onClose: () => void }) {
         </div>
 
         <footer className={styles.modalFooter}>
-  {biz.url?.trim() ? (
-    <a
-      href={biz.url}
-      target="_blank"
-      rel="noreferrer noopener"
-      className={styles.primaryBtn}
-    >
-      {t("emprendedoras.modal.visit") as string}
-    </a>
-  ) : null}
+          {biz.url?.trim() ? (
+            <a
+              href={biz.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              className={styles.primaryBtn}
+            >
+              {t("emprendedoras.modal.visit") as string}
+            </a>
+          ) : null}
 
-  <button className={styles.secondaryBtn} onClick={onClose}>
-    {t("emprendedoras.modal.close") as string}
-  </button>
-</footer>
+          <button className={styles.secondaryBtn} onClick={onClose}>
+            {t("emprendedoras.modal.close") as string}
+          </button>
+        </footer>
       </div>
     </div>
   );
@@ -682,4 +698,3 @@ function ModalRow({
     </div>
   );
 }
-
