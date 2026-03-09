@@ -69,12 +69,13 @@ export default async function SanityEventPage({
 
   const t = <T,>(obj: { es: T; da: T }) => (locale === "da" ? obj.da : obj.es);
 
+  const basePath = type === "encuentro" ? "encuentros" : "talleres";
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         <h1 className={styles.title}>{t(labels.pageTitle)}</h1>
 
-        {/* Upcoming */}
         <h2 className={styles.sectionTitle}>{t(labels.upcomingTitle)}</h2>
 
         {upcoming.length === 0 ? (
@@ -85,15 +86,15 @@ export default async function SanityEventPage({
             <p className={styles.emptyDesc}>{t(labels.emptyUpcomingDesc)}</p>
           </div>
         ) : (
-          <div className={styles.grid}>
+          <div className={styles.featuredList}>
             {upcoming.map((e, i) => (
               <Link
                 key={e._id}
-                href={`/${locale}/${type === "encuentro" ? "encuentros" : "talleres"}/${e.slug.current}`}
+                href={`/${locale}/${basePath}/${e.slug.current}`}
                 style={{ color: "inherit", textDecoration: "none" }}
               >
-                <article className={styles.card}>
-                  <div className={styles.thumb}>
+                <article className={styles.featuredCard}>
+                  <div className={styles.featuredThumb}>
                     {e.image ? (
                       <Image
                         src={urlFor(e.image)
@@ -103,16 +104,16 @@ export default async function SanityEventPage({
                           .url()}
                         alt={e.imageAlt ?? e.title}
                         fill
-                        sizes="(max-width: 420px) 100vw, 420px"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className={styles.thumbImg}
                         priority={i === 0}
                       />
                     ) : null}
                   </div>
 
-                  <div className={styles.body}>
-                    <h3 className={styles.cardTitle}>{e.title}</h3>
+                  <div className={styles.featuredBody}>
                     <small className={styles.date}>{fmt(e.date)}</small>
+                    <h3 className={styles.cardTitle}>{e.title}</h3>
                     {e.excerpt ? (
                       <p className={styles.desc}>{e.excerpt}</p>
                     ) : null}
@@ -123,7 +124,6 @@ export default async function SanityEventPage({
           </div>
         )}
 
-        {/* Past */}
         <h2 className={styles.sectionTitle}>{t(labels.pastTitle)}</h2>
 
         {past.length === 0 ? null : (
@@ -132,7 +132,7 @@ export default async function SanityEventPage({
               {pastCards.map((e) => (
                 <Link
                   key={e._id}
-                  href={`/${locale}/${type === "encuentro" ? "encuentros" : "talleres"}/${e.slug.current}`}
+                  href={`/${locale}/${basePath}/${e.slug.current}`}
                   style={{ color: "inherit", textDecoration: "none" }}
                 >
                   <article className={styles.card}>
