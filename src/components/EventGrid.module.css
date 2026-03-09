@@ -51,7 +51,7 @@
 
 .featuredThumb {
   position: relative;
-  min-height: 260px;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
 }
 
@@ -61,6 +61,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 0.45rem;
+  max-width: 520px;
 }
 
 /* Uniform past card grid */
@@ -202,11 +203,12 @@
   }
 
   .featuredThumb {
-    min-height: 220px;
+    aspect-ratio: 16 / 9;
   }
 
   .featuredBody {
     padding: 1rem 1.1rem 1.2rem;
+    max-width: none;
   }
 
   .container {
