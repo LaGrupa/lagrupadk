@@ -62,7 +62,9 @@ export default async function PublicacionesSanity({
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Publicaciones</h1>
+        <h1 className={styles.title}>
+          {locale === "da" ? "Publikationer" : "Publicaciones"}
+        </h1>
 
         <div className={styles.featured}>
           {latest.map((p) => (
