@@ -39,7 +39,7 @@ export default async function LocaleLayout({
       <I18nProvider locale={locale} dict={dict}>
         <Navbar />
         <main>{children}</main>
-        <Footer />
+        <Footer locale={locale} />
 
         {/* Load analytics only if user accepted */}
         <AnalyticsScripts enabled={consent === "accepted"} />

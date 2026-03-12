@@ -17,6 +17,7 @@ import { book } from "./book";
 import { booksPage } from "./booksPage";
 import { encuentro } from "./encuentro";
 import { taller } from "./taller";
+import { footerSettings } from "./footerSettings";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -38,5 +39,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     booksPage,
     encuentro,
     taller,
+    footerSettings,
   ],
 };
