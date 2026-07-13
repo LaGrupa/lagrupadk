@@ -4,9 +4,7 @@ import Footer from "../../components/Footer";
 import { I18nProvider } from "../../i18n";
 import es from "../../messages/es.json";
 import da from "../../messages/da.json";
-import { cookies } from "next/headers";
-import AnalyticsScripts from "@/components/AnalyticsScripts";
-import CookieConsent from "@/components/CookieConsent";
+import CloudflareAnalytics from "@/components/CloudflareAnalytics";
 
 const dictionaries = { es, da } as const;
 
@@ -26,13 +24,6 @@ export default async function LocaleLayout({
   const { locale } = await params;
   const dict = dictionaries[locale];
 
-  // await cookies() before reading values
-  const cookieStore = await cookies();
-  const consent = cookieStore.get("lg_consent")?.value as
-    | "accepted"
-    | "rejected"
-    | undefined;
-
   return (
     // Set per-locale language to enable correct hyphenation/justification
     <div lang={locale}>
@@ -41,11 +32,7 @@ export default async function LocaleLayout({
         <main>{children}</main>
         <Footer locale={locale} />
 
-        {/* Load analytics only if user accepted */}
-        <AnalyticsScripts enabled={consent === "accepted"} />
-
-        {/* Show bilingual cookie banner when no choice yet */}
-        <CookieConsent initialValue={consent ?? null} />
+        <CloudflareAnalytics />
       </I18nProvider>
     </div>
   );

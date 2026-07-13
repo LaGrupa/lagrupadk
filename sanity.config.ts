@@ -6,6 +6,7 @@ import { deskTool } from "sanity/desk";
 
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schema } from "./src/sanity/schemaTypes";
+import { AnalyticsTool } from "./src/sanity/components/AnalyticsTool";
 
 export default defineConfig({
   basePath: "/studio",
@@ -16,5 +17,14 @@ export default defineConfig({
   plugins: [
     deskTool(), // restores document editor
     visionTool({ defaultApiVersion: apiVersion }),
+  ],
+
+  tools: (prev) => [
+    ...prev,
+    {
+      name: "analytics",
+      title: "Analytics",
+      component: AnalyticsTool,
+    },
   ],
 });

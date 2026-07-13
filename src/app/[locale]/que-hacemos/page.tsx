@@ -9,7 +9,8 @@ const QUERY = `
     title,
     href,
     imageAlt,
-    "imageUrl": image.asset->url
+    "imageUrl": image.asset->url,
+    "fileUrl": file.asset->url
   }
 }
 `;
@@ -21,6 +22,7 @@ type Data = {
     href?: string | null;
     imageAlt?: string | null;
     imageUrl?: string | null;
+    fileUrl?: string | null;
   }[];
 };
 

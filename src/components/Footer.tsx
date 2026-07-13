@@ -7,7 +7,6 @@ import {
   FaFacebook,
 } from "react-icons/fa";
 import { I18nLink as Link } from "@/i18nLink";
-import { CookieSettingsLink } from "@/components/CookieSettingsLink";
 import { client } from "@/sanity/lib/client";
 
 type SocialPlatform =
@@ -174,7 +173,6 @@ export default async function Footer({ locale }: { locale: "es" | "da" }) {
           <h4 className={styles.h4}>{t.privacy}</h4>
           <Link href={`/${locale}/privacy`}>{t.policy}</Link>
           <Link href={`/${locale}/contact`}>{t.contact}</Link>
-          <CookieSettingsLink className={styles.textButton} />
         </nav>
 
         <div className={styles.links} aria-label={t.social}>

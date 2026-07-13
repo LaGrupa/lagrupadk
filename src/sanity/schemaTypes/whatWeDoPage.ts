@@ -27,7 +27,7 @@ export const whatWeDoPage = defineType({
 
     defineField({
       name: "cards",
-      title: "Cards (2–3)",
+      title: "Cards (2–4)",
       type: "array",
       of: [
         {
@@ -44,7 +44,15 @@ export const whatWeDoPage = defineType({
               name: "href",
               title: "Link",
               type: "string",
-              validation: (Rule) => Rule.required(),
+              description: "Leave empty for a PDF-download card (use the PDF file field instead).",
+              validation: (Rule) =>
+                Rule.custom((value, context) => {
+                  const parent = context.parent as { file?: unknown } | undefined;
+                  if (!value && !parent?.file) {
+                    return "Provide a Link or a PDF file";
+                  }
+                  return true;
+                }),
             }),
             defineField({
               name: "image",
@@ -57,10 +65,17 @@ export const whatWeDoPage = defineType({
               title: "Image alt",
               type: "string",
             }),
+            defineField({
+              name: "file",
+              title: "PDF file (optional)",
+              type: "file",
+              description: "If set, the card shows a download button for this PDF instead of linking to a page.",
+              options: { accept: "application/pdf" },
+            }),
           ],
         },
       ],
-      validation: (Rule) => Rule.required().min(2).max(3),
+      validation: (Rule) => Rule.required().min(2).max(4),
     }),
   ],
 });

@@ -125,14 +125,6 @@
       }
     }
   },
-  "cookies": {
-    "title": "Cookies",
-    "text": "Usamos cookies para entender el uso del sitio y mejorar la experiencia. Las cookies esenciales se usan siempre.",
-    "accept": "Aceptar todas",
-    "reject": "Rechazar",
-    "manage": "Preferencias de cookies",
-    "learnMore": "Política de privacidad"
-  },
   "meetups": {
     "title": "Encuentros",
     "intro": "Nos reunimos para conversar, descansar y construir comunidad. Aquí anunciamos los próximos encuentros y registramos los anteriores.",

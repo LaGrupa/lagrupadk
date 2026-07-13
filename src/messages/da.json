@@ -124,14 +124,6 @@
       }
     }
   },
-  "cookies": {
-    "title": "Cookies",
-    "text": "Vi bruger cookies for at forstå brugen af sitet og forbedre oplevelsen. Nødvendige cookies bruges altid.",
-    "accept": "Accepter alle",
-    "reject": "Afvis",
-    "manage": "Cookieindstillinger",
-    "learnMore": "Privatlivspolitik"
-  },
   "meetups": {
     "title": "Møder",
     "intro": "Vi mødes for at tale sammen, hvile og bygge fællesskab. Her annoncerer vi kommende møder og viser de tidligere.",
