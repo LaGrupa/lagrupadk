@@ -53,6 +53,7 @@
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
+  background: #f1f5f9;
 }
 
 .featuredBody {
@@ -93,10 +94,11 @@
 .thumb {
   position: relative;
   aspect-ratio: 16 / 9;
+  background: #f1f5f9;
 }
 
 .thumbImg {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .body {

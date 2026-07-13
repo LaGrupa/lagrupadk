@@ -58,13 +58,13 @@ export default async function Page({
         {data.image ? (
           <div
             className={styles.thumb}
-            style={{ aspectRatio: "14 / 9", marginBottom: "1.5rem" }}
+            style={{ maxWidth: "760px", marginBottom: "1.5rem" }}
           >
             <Image
-              src={urlFor(data.image).width(1600).height(1029).fit("crop").url()}
+              src={urlFor(data.image).width(1400).fit("max").url()}
               alt={data.imageAlt ?? data.title}
               fill
-              sizes="(max-width: 768px) 100vw, 1160px"
+              sizes="(max-width: 768px) 100vw, 760px"
               className={styles.thumbImg}
               priority
             />
