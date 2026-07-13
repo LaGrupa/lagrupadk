@@ -1,14 +1,15 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import styles from "@/components/EventGrid.module.css";
+import ImageLightbox from "@/components/ImageLightbox";
 
 type TallerPageData = {
   title: string;
   date: string;
   excerpt?: string | null;
   image?: any;
+  imageDimensions?: { width: number; height: number } | null;
   imageAlt?: string | null;
   signupUrl?: string | null;
 };
@@ -19,6 +20,7 @@ const QUERY = `
   date,
   excerpt,
   image,
+  "imageDimensions": image.asset->metadata.dimensions{width, height},
   imageAlt,
   signupUrl
 }
@@ -56,17 +58,13 @@ export default async function Page({
         <p className={styles.date}>{formattedDate}</p>
 
         {data.image ? (
-          <div
-            className={styles.thumb}
-            style={{ maxWidth: "760px", marginBottom: "1.5rem" }}
-          >
-            <Image
+          <div style={{ marginBottom: "1.5rem" }}>
+            <ImageLightbox
               src={urlFor(data.image).width(1400).fit("max").url()}
+              fullSrc={urlFor(data.image).width(2200).fit("max").url()}
               alt={data.imageAlt ?? data.title}
-              fill
-              sizes="(max-width: 768px) 100vw, 760px"
-              className={styles.thumbImg}
-              priority
+              width={data.imageDimensions?.width ?? 1400}
+              height={data.imageDimensions?.height ?? 900}
             />
           </div>
         ) : null}
