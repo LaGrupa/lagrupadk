@@ -58,7 +58,9 @@
     "workshops": "Talleres",
     "workshopsAlt": "Talleres",
     "meetings": "Encuentros",
-    "meetingsAlt": "Encuentros"
+    "meetingsAlt": "Encuentros",
+    "events": "Eventos",
+    "eventsAlt": "Eventos"
   },
   "contact": {
     "title": "Contacto",

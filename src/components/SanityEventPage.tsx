@@ -43,7 +43,7 @@ export default async function SanityEventPage({
   labels,
 }: {
   locale: "es" | "da";
-  type: "encuentro" | "taller";
+  type: "encuentro" | "taller" | "evento";
   labels: Labels;
 }) {
   const query = buildQuery(type);
@@ -69,7 +69,8 @@ export default async function SanityEventPage({
 
   const t = <T,>(obj: { es: T; da: T }) => (locale === "da" ? obj.da : obj.es);
 
-  const basePath = type === "encuentro" ? "encuentros" : "talleres";
+  const basePath =
+    type === "encuentro" ? "encuentros" : type === "evento" ? "eventos" : "talleres";
 
   return (
     <section className={styles.section}>

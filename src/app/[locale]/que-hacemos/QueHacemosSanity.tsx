@@ -51,7 +51,9 @@ export default function QueHacemosSanity({
               ? "/site/talleres-port.jpg"
               : cleanHref === "/encuentros"
                 ? "/site/quienes2.jpg"
-                : "/site/talleres-port.jpg");
+                : cleanHref === "/eventos"
+                  ? "/site/quienes1.jpg"
+                  : "/site/talleres-port.jpg");
 
           return (
             <Link key={idx} href={localizedHref} className={styles.card}>

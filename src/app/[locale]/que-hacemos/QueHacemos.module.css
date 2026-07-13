@@ -17,7 +17,7 @@
   align-items: stretch;              /* stretch rows evenly */
 }
 @media (min-width: 900px) {
-  .cards { grid-template-columns: 1fr 1fr; }
+  .cards { grid-template-columns: 1fr 1fr 1fr; }
 }
 
 .card {

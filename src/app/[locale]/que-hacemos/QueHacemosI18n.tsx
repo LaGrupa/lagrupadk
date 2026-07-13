@@ -7,12 +7,14 @@ import { useT } from "../../../i18n";
 
 const encuentrosImg = "/site/quienes2.jpg";
 const talleresImg = "/site/talleres-port.jpg";
+const eventosImg = "/site/quienes1.jpg";
 
 export default function QueHacemosI18n() {
   const { t, locale } = useT("quehacemos");
 
   const workshopsAlt = (t("workshopsAlt") as string | undefined) ?? "";
   const meetingsAlt = (t("meetingsAlt") as string | undefined) ?? "";
+  const eventsAlt = (t("eventsAlt") as string | undefined) ?? "";
 
   return (
     <div className={styles.container}>
@@ -25,7 +27,7 @@ export default function QueHacemosI18n() {
               src={talleresImg}
               alt={workshopsAlt}
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 33vw"
               className={styles.img}
             />
           </div>
@@ -40,12 +42,27 @@ export default function QueHacemosI18n() {
               src={encuentrosImg}
               alt={meetingsAlt}
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 33vw"
               className={styles.img}
             />
           </div>
           <div className={styles.body}>
             <h2 className={styles.cardTitle}>{t("meetings") as string}</h2>
+          </div>
+        </Link>
+
+        <Link href={`/${locale}/eventos`} className={styles.card}>
+          <div className={styles.media}>
+            <Image
+              src={eventosImg}
+              alt={eventsAlt}
+              fill
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className={styles.img}
+            />
+          </div>
+          <div className={styles.body}>
+            <h2 className={styles.cardTitle}>{t("events") as string}</h2>
           </div>
         </Link>
       </div>

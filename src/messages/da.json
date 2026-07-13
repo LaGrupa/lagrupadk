@@ -58,7 +58,9 @@
     "workshops": "Workshops",
     "workshopsAlt": "Workshops",
     "meetings": "Møder",
-    "meetingsAlt": "Møder"
+    "meetingsAlt": "Møder",
+    "events": "Begivenheder",
+    "eventsAlt": "Begivenheder"
   },
   "contact": {
     "title": "Kontakt",
