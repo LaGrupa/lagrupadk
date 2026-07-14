@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import sgMail, { MailDataRequired } from "@sendgrid/mail";
+import { Resend } from "resend";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY || "");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 /** ---------- Typed API helpers ---------- */
 type ApiSuccess<T = undefined> = T extends undefined
@@ -45,8 +45,8 @@ export async function POST(req: Request) {
     const from = process.env.MAIL_FROM as string | undefined;
     const to = process.env.MAIL_TO as string | undefined;
 
-    if (!process.env.SENDGRID_API_KEY) {
-      console.error("Missing SENDGRID_API_KEY");
+    if (!process.env.RESEND_API_KEY) {
+      console.error("Missing RESEND_API_KEY");
       return jsonError("Server not configured (no API key)", 500);
     }
     if (!from || !to) {
@@ -68,9 +68,9 @@ export async function POST(req: Request) {
           }[c] as string)
       );
 
-    const msg: MailDataRequired = {
+    const { error } = await resend.emails.send({
       to,
-      from: { email: from, name: "La Grupa Website" }, // consistent, recognizable sender name
+      from: `La Grupa Website <${from}>`, // consistent, recognizable sender name
       subject: `New contact form message from ${name}`, // simpler subject can help deliverability
       text: `From: ${name} <${email}>\n\n${message}`, // keep plain text (important)
       html: `
@@ -81,28 +81,19 @@ export async function POST(req: Request) {
       message
     )}</pre>
   `.trim(), // minimal HTML version (no trackers, no styling bloat)
-      replyTo: { email }, // keep reply-to
-      trackingSettings: {
-        clickTracking: { enable: false, enableText: false },
-        openTracking: { enable: false },
-      },
-      categories: ["contact-form"], // mild hint for ESPs, and useful in SendGrid UI
-      // customArgs can help thread grouping on your side without affecting spam:
-      customArgs: { app: "lagrupa", route: "contact" },
-    };
+      replyTo: email, // keep reply-to
+    });
 
-    await sgMail.send(msg);
+    if (error) {
+      console.error("Send error:", error.message);
+      return jsonError(`Email send failed: ${error.message}`, 500);
+    }
 
     return jsonOk();
   } catch (err: unknown) {
-    const e = err as any; // SendGrid types can be loose
-    const detail =
-      e?.response?.body?.errors
-        ?.map((x: { message: string }) => x.message)
-        .join("; ") ||
-      e?.message ||
-      "Unknown error";
-    console.error("Send error:", detail, e?.response?.body);
+    const e = err as any;
+    const detail = e?.message || "Unknown error";
+    console.error("Send error:", detail);
     return jsonError(`Email send failed: ${detail}`, 500);
   }
 }
@@ -110,7 +101,7 @@ export async function POST(req: Request) {
 export async function GET() {
   return NextResponse.json({
     runtime: "nodejs",
-    hasApiKey: Boolean(process.env.SENDGRID_API_KEY),
+    hasApiKey: Boolean(process.env.RESEND_API_KEY),
     hasMailFrom: Boolean(process.env.MAIL_FROM),
     hasMailTo: Boolean(process.env.MAIL_TO),
   });
