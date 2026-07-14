@@ -3,6 +3,8 @@ import ThreeColumnsSanity from "@/components/ThreeColumnsSanity";
 import CtaSanity from "@/components/CtaSanity";
 import { client } from "@/sanity/lib/client";
 
+export const revalidate = 60;
+
 const HOME_QUERY = `
 *[_type == "homePage" && locale == $locale][0]{
   locale,

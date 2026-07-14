@@ -1,6 +1,8 @@
 ﻿import PublicacionesSanity from "./PublicacionesSanity";
 import PublicacionesFs from "./PublicacionesFs";
 
+export const revalidate = 60;
+
 export default async function Page({
   params,
 }: {

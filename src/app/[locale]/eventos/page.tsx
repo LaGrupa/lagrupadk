@@ -1,6 +1,8 @@
 import EventosI18n from "./EventosI18n";
 import EventosSanity from "./EventosSanity";
 
+export const revalidate = 60;
+
 export default async function Page({
   params,
 }: {

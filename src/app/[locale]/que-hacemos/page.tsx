@@ -2,6 +2,8 @@
 import QueHacemosSanity from "./QueHacemosSanity";
 import QueHacemosI18n from "./QueHacemosI18n";
 
+export const revalidate = 60;
+
 const QUERY = `
 *[_type == "whatWeDoPage" && locale == $locale][0]{
   title,

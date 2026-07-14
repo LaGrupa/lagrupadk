@@ -1,6 +1,8 @@
 import EmprendedorasI18n from "./EmprendedorasI18n";
 import EmprendedorasSanity from "./EmprendedorasSanity";
 
+export const revalidate = 60;
+
 export default function Page() {
   const useSanity = process.env.NEXT_PUBLIC_USE_SANITY_EMPRENDEDORAS === "true";
 

@@ -1,6 +1,8 @@
 ﻿import FaqI18n from "./FaqI18n";
 import FaqSanity from "./FaqSanity";
 
+export const revalidate = 60;
+
 export default async function Page({
   params,
 }: {

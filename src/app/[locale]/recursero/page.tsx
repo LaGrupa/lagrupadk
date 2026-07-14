@@ -2,6 +2,8 @@
 import RecurseroSanity from "./RecurseroSanity";
 import RecurseroI18n from "./RecurseroI18n";
 
+export const revalidate = 60;
+
 const QUERY = `
 *[_type == "recurseroPage" && locale == $locale][0]{
   title,

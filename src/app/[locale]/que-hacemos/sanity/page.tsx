@@ -1,6 +1,8 @@
 ﻿import { client } from "@/sanity/lib/client";
 import QueHacemosSanity from "../QueHacemosSanity";
 
+export const revalidate = 60;
+
 const QUERY = `
 *[_type == "whatWeDoPage" && locale == $locale][0]{
   title,

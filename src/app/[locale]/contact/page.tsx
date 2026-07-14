@@ -1,6 +1,8 @@
 ﻿import Contact from "@/components/Contact";
 import ContactSanity from "./ContactSanity";
 
+export const revalidate = 60;
+
 export default async function Page({
   params,
 }: {

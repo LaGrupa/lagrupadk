@@ -1,6 +1,8 @@
 ﻿import LibrosI18n from "./LibrosI18n";
 import LibrosSanity from "./LibrosSanity";
 
+export const revalidate = 60;
+
 export default async function Page({
   params,
 }: {

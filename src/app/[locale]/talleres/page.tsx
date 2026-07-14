@@ -1,6 +1,8 @@
 ﻿import TalleresI18n from "./TalleresI18n";
 import TalleresSanity from "./TalleresSanity";
 
+export const revalidate = 60;
+
 export default async function Page({
   params,
 }: {
