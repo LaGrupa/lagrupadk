@@ -4,8 +4,6 @@ import { Resend } from "resend";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 /** ---------- Typed API helpers ---------- */
 type ApiSuccess<T = undefined> = T extends undefined
   ? { ok: true }
@@ -53,6 +51,8 @@ export async function POST(req: Request) {
       console.error("Missing MAIL_FROM or MAIL_TO");
       return jsonError("Server not configured (MAIL_FROM/MAIL_TO)", 500);
     }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     // small utility to safely render HTML
     const escapeHtml = (s: string) =>
